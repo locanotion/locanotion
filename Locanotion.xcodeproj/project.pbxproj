@@ -1,0 +1,538 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3DF965BF1AC5BF430011ABC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */; };
+		3DF965C21AC5BF430011ABC2 /* Locanotion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3DF965C01AC5BF430011ABC2 /* Locanotion.xcdatamodeld */; };
+		3DF965C41AC5BF430011ABC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF965C31AC5BF430011ABC2 /* ViewController.swift */; };
+		3DF965C71AC5BF430011ABC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DF965C51AC5BF430011ABC2 /* Main.storyboard */; };
+		3DF965C91AC5BF430011ABC2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DF965C81AC5BF430011ABC2 /* Images.xcassets */; };
+		3DF965CC1AC5BF430011ABC2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF965CA1AC5BF430011ABC2 /* LaunchScreen.xib */; };
+		3DF965D81AC5BF430011ABC2 /* LocanotionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF965D71AC5BF430011ABC2 /* LocanotionTests.swift */; };
+		3DF965EB1AC5C24C0011ABC2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965E11AC5C24C0011ABC2 /* AudioToolbox.framework */; };
+		3DF965EC1AC5C24C0011ABC2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965E21AC5C24C0011ABC2 /* CoreGraphics.framework */; };
+		3DF965ED1AC5C24C0011ABC2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965E31AC5C24C0011ABC2 /* CoreLocation.framework */; };
+		3DF965EE1AC5C24C0011ABC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965E41AC5C24C0011ABC2 /* Foundation.framework */; };
+		3DF965EF1AC5C24C0011ABC2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965E51AC5C24C0011ABC2 /* libz.dylib */; };
+		3DF965F01AC5C24C0011ABC2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965E61AC5C24C0011ABC2 /* MobileCoreServices.framework */; };
+		3DF965F11AC5C24C0011ABC2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965E71AC5C24C0011ABC2 /* QuartzCore.framework */; };
+		3DF965F21AC5C24C0011ABC2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965E81AC5C24C0011ABC2 /* Security.framework */; };
+		3DF965F31AC5C24C0011ABC2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965E91AC5C24C0011ABC2 /* StoreKit.framework */; };
+		3DF965F41AC5C24C0011ABC2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965EA1AC5C24C0011ABC2 /* SystemConfiguration.framework */; };
+		3DF965FC1AC5C3E30011ABC2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965F61AC5C3E30011ABC2 /* Bolts.framework */; };
+		3DF965FD1AC5C3E40011ABC2 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965F71AC5C3E30011ABC2 /* Parse.framework */; };
+		3DF965FE1AC5C3E40011ABC2 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965F81AC5C3E30011ABC2 /* ParseCrashReporting.framework */; };
+		3DF965FF1AC5C3E40011ABC2 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965F91AC5C3E30011ABC2 /* ParseFacebookUtils.framework */; };
+		3DF966001AC5C3E40011ABC2 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965FA1AC5C3E30011ABC2 /* ParseFacebookUtilsV4.framework */; };
+		3DF966011AC5C3E40011ABC2 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965FB1AC5C3E30011ABC2 /* ParseUI.framework */; };
+		3DF966071AC5C6740011ABC2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF966061AC5C6740011ABC2 /* libsqlite3.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3DF965D21AC5BF430011ABC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DF965B11AC5BF430011ABC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3DF965B81AC5BF430011ABC2;
+			remoteInfo = Locanotion;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3DF965B91AC5BF430011ABC2 /* Locanotion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Locanotion.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DF965BD1AC5BF430011ABC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3DF965C11AC5BF430011ABC2 /* Locanotion.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Locanotion.xcdatamodel; sourceTree = "<group>"; };
+		3DF965C31AC5BF430011ABC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3DF965C61AC5BF430011ABC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3DF965C81AC5BF430011ABC2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3DF965CB1AC5BF430011ABC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3DF965D11AC5BF430011ABC2 /* LocanotionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocanotionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DF965D61AC5BF430011ABC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DF965D71AC5BF430011ABC2 /* LocanotionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocanotionTests.swift; sourceTree = "<group>"; };
+		3DF965E11AC5C24C0011ABC2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3DF965E21AC5C24C0011ABC2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3DF965E31AC5C24C0011ABC2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3DF965E41AC5C24C0011ABC2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3DF965E51AC5C24C0011ABC2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		3DF965E61AC5C24C0011ABC2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		3DF965E71AC5C24C0011ABC2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3DF965E81AC5C24C0011ABC2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3DF965E91AC5C24C0011ABC2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		3DF965EA1AC5C24C0011ABC2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3DF965F61AC5C3E30011ABC2 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		3DF965F71AC5C3E30011ABC2 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		3DF965F81AC5C3E30011ABC2 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
+		3DF965F91AC5C3E30011ABC2 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		3DF965FA1AC5C3E30011ABC2 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
+		3DF965FB1AC5C3E30011ABC2 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		3DF966031AC5C4D10011ABC2 /* Locanotion-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Locanotion-Bridging-Header.h"; sourceTree = "<group>"; };
+		3DF966061AC5C6740011ABC2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3DF965B61AC5BF430011ABC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DF966071AC5C6740011ABC2 /* libsqlite3.dylib in Frameworks */,
+				3DF965FF1AC5C3E40011ABC2 /* ParseFacebookUtils.framework in Frameworks */,
+				3DF965EB1AC5C24C0011ABC2 /* AudioToolbox.framework in Frameworks */,
+				3DF965EC1AC5C24C0011ABC2 /* CoreGraphics.framework in Frameworks */,
+				3DF965ED1AC5C24C0011ABC2 /* CoreLocation.framework in Frameworks */,
+				3DF965EE1AC5C24C0011ABC2 /* Foundation.framework in Frameworks */,
+				3DF965EF1AC5C24C0011ABC2 /* libz.dylib in Frameworks */,
+				3DF966011AC5C3E40011ABC2 /* ParseUI.framework in Frameworks */,
+				3DF965F01AC5C24C0011ABC2 /* MobileCoreServices.framework in Frameworks */,
+				3DF965F11AC5C24C0011ABC2 /* QuartzCore.framework in Frameworks */,
+				3DF965F21AC5C24C0011ABC2 /* Security.framework in Frameworks */,
+				3DF965FC1AC5C3E30011ABC2 /* Bolts.framework in Frameworks */,
+				3DF965F31AC5C24C0011ABC2 /* StoreKit.framework in Frameworks */,
+				3DF965FD1AC5C3E40011ABC2 /* Parse.framework in Frameworks */,
+				3DF965F41AC5C24C0011ABC2 /* SystemConfiguration.framework in Frameworks */,
+				3DF965FE1AC5C3E40011ABC2 /* ParseCrashReporting.framework in Frameworks */,
+				3DF966001AC5C3E40011ABC2 /* ParseFacebookUtilsV4.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DF965CE1AC5BF430011ABC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3DF965B01AC5BF430011ABC2 = {
+			isa = PBXGroup;
+			children = (
+				3DF966061AC5C6740011ABC2 /* libsqlite3.dylib */,
+				3DF965E11AC5C24C0011ABC2 /* AudioToolbox.framework */,
+				3DF965E21AC5C24C0011ABC2 /* CoreGraphics.framework */,
+				3DF965E31AC5C24C0011ABC2 /* CoreLocation.framework */,
+				3DF965E41AC5C24C0011ABC2 /* Foundation.framework */,
+				3DF965E51AC5C24C0011ABC2 /* libz.dylib */,
+				3DF965E61AC5C24C0011ABC2 /* MobileCoreServices.framework */,
+				3DF965E71AC5C24C0011ABC2 /* QuartzCore.framework */,
+				3DF965E81AC5C24C0011ABC2 /* Security.framework */,
+				3DF965E91AC5C24C0011ABC2 /* StoreKit.framework */,
+				3DF965EA1AC5C24C0011ABC2 /* SystemConfiguration.framework */,
+				3DF965F51AC5C3E30011ABC2 /* parse-library-1.7.0 */,
+				3DF966021AC5C3EA0011ABC2 /* Libraries */,
+				3DF965BB1AC5BF430011ABC2 /* Locanotion */,
+				3DF965D41AC5BF430011ABC2 /* LocanotionTests */,
+				3DF965BA1AC5BF430011ABC2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3DF965BA1AC5BF430011ABC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3DF965B91AC5BF430011ABC2 /* Locanotion.app */,
+				3DF965D11AC5BF430011ABC2 /* LocanotionTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3DF965BB1AC5BF430011ABC2 /* Locanotion */ = {
+			isa = PBXGroup;
+			children = (
+				3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */,
+				3DF965C31AC5BF430011ABC2 /* ViewController.swift */,
+				3DF965C51AC5BF430011ABC2 /* Main.storyboard */,
+				3DF965C81AC5BF430011ABC2 /* Images.xcassets */,
+				3DF965CA1AC5BF430011ABC2 /* LaunchScreen.xib */,
+				3DF965C01AC5BF430011ABC2 /* Locanotion.xcdatamodeld */,
+				3DF965BC1AC5BF430011ABC2 /* Supporting Files */,
+				3DF966031AC5C4D10011ABC2 /* Locanotion-Bridging-Header.h */,
+			);
+			path = Locanotion;
+			sourceTree = "<group>";
+		};
+		3DF965BC1AC5BF430011ABC2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3DF965BD1AC5BF430011ABC2 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3DF965D41AC5BF430011ABC2 /* LocanotionTests */ = {
+			isa = PBXGroup;
+			children = (
+				3DF965D71AC5BF430011ABC2 /* LocanotionTests.swift */,
+				3DF965D51AC5BF430011ABC2 /* Supporting Files */,
+			);
+			path = LocanotionTests;
+			sourceTree = "<group>";
+		};
+		3DF965D51AC5BF430011ABC2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3DF965D61AC5BF430011ABC2 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3DF965F51AC5C3E30011ABC2 /* parse-library-1.7.0 */ = {
+			isa = PBXGroup;
+			children = (
+				3DF965F61AC5C3E30011ABC2 /* Bolts.framework */,
+				3DF965F71AC5C3E30011ABC2 /* Parse.framework */,
+				3DF965F81AC5C3E30011ABC2 /* ParseCrashReporting.framework */,
+				3DF965F91AC5C3E30011ABC2 /* ParseFacebookUtils.framework */,
+				3DF965FA1AC5C3E30011ABC2 /* ParseFacebookUtilsV4.framework */,
+				3DF965FB1AC5C3E30011ABC2 /* ParseUI.framework */,
+			);
+			path = "parse-library-1.7.0";
+			sourceTree = "<group>";
+		};
+		3DF966021AC5C3EA0011ABC2 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3DF965B81AC5BF430011ABC2 /* Locanotion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DF965DB1AC5BF430011ABC2 /* Build configuration list for PBXNativeTarget "Locanotion" */;
+			buildPhases = (
+				3DF965B51AC5BF430011ABC2 /* Sources */,
+				3DF965B61AC5BF430011ABC2 /* Frameworks */,
+				3DF965B71AC5BF430011ABC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Locanotion;
+			productName = Locanotion;
+			productReference = 3DF965B91AC5BF430011ABC2 /* Locanotion.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3DF965D01AC5BF430011ABC2 /* LocanotionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DF965DE1AC5BF430011ABC2 /* Build configuration list for PBXNativeTarget "LocanotionTests" */;
+			buildPhases = (
+				3DF965CD1AC5BF430011ABC2 /* Sources */,
+				3DF965CE1AC5BF430011ABC2 /* Frameworks */,
+				3DF965CF1AC5BF430011ABC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3DF965D31AC5BF430011ABC2 /* PBXTargetDependency */,
+			);
+			name = LocanotionTests;
+			productName = LocanotionTests;
+			productReference = 3DF965D11AC5BF430011ABC2 /* LocanotionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3DF965B11AC5BF430011ABC2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Locanotion;
+				TargetAttributes = {
+					3DF965B81AC5BF430011ABC2 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					3DF965D01AC5BF430011ABC2 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 3DF965B81AC5BF430011ABC2;
+					};
+				};
+			};
+			buildConfigurationList = 3DF965B41AC5BF430011ABC2 /* Build configuration list for PBXProject "Locanotion" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3DF965B01AC5BF430011ABC2;
+			productRefGroup = 3DF965BA1AC5BF430011ABC2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3DF965B81AC5BF430011ABC2 /* Locanotion */,
+				3DF965D01AC5BF430011ABC2 /* LocanotionTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3DF965B71AC5BF430011ABC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DF965C71AC5BF430011ABC2 /* Main.storyboard in Resources */,
+				3DF965CC1AC5BF430011ABC2 /* LaunchScreen.xib in Resources */,
+				3DF965C91AC5BF430011ABC2 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DF965CF1AC5BF430011ABC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3DF965B51AC5BF430011ABC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DF965C41AC5BF430011ABC2 /* ViewController.swift in Sources */,
+				3DF965BF1AC5BF430011ABC2 /* AppDelegate.swift in Sources */,
+				3DF965C21AC5BF430011ABC2 /* Locanotion.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DF965CD1AC5BF430011ABC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DF965D81AC5BF430011ABC2 /* LocanotionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3DF965D31AC5BF430011ABC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3DF965B81AC5BF430011ABC2 /* Locanotion */;
+			targetProxy = 3DF965D21AC5BF430011ABC2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3DF965C51AC5BF430011ABC2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DF965C61AC5BF430011ABC2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3DF965CA1AC5BF430011ABC2 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DF965CB1AC5BF430011ABC2 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3DF965D91AC5BF430011ABC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3DF965DA1AC5BF430011ABC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3DF965DC1AC5BF430011ABC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/parse-library-1.7.0",
+				);
+				INFOPLIST_FILE = Locanotion/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Locanotion/Locanotion-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3DF965DD1AC5BF430011ABC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/parse-library-1.7.0",
+				);
+				INFOPLIST_FILE = Locanotion/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Locanotion/Locanotion-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		3DF965DF1AC5BF430011ABC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = LocanotionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Locanotion.app/Locanotion";
+			};
+			name = Debug;
+		};
+		3DF965E01AC5BF430011ABC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = LocanotionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Locanotion.app/Locanotion";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3DF965B41AC5BF430011ABC2 /* Build configuration list for PBXProject "Locanotion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DF965D91AC5BF430011ABC2 /* Debug */,
+				3DF965DA1AC5BF430011ABC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DF965DB1AC5BF430011ABC2 /* Build configuration list for PBXNativeTarget "Locanotion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DF965DC1AC5BF430011ABC2 /* Debug */,
+				3DF965DD1AC5BF430011ABC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3DF965DE1AC5BF430011ABC2 /* Build configuration list for PBXNativeTarget "LocanotionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DF965DF1AC5BF430011ABC2 /* Debug */,
+				3DF965E01AC5BF430011ABC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3DF965C01AC5BF430011ABC2 /* Locanotion.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3DF965C11AC5BF430011ABC2 /* Locanotion.xcdatamodel */,
+			);
+			currentVersion = 3DF965C11AC5BF430011ABC2 /* Locanotion.xcdatamodel */;
+			path = Locanotion.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 3DF965B11AC5BF430011ABC2 /* Project object */;
+}
