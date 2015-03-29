@@ -10,9 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var ViewMapButton: UIButton!
+    @IBOutlet weak var ViewFriendsButton: UIButton!
+    @IBOutlet weak var ViewClubsButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        ViewMapButton.layer.cornerRadius = 3
+        ViewFriendsButton.layer.cornerRadius = 3
+        ViewClubsButton.layer.cornerRadius = 3
+        
     }
 
     override func didReceiveMemoryWarning() {

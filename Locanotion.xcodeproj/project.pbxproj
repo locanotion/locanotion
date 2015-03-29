@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D168E451AC5D6CC005BF0DB /* FriendsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D168E441AC5D6CC005BF0DB /* FriendsPageViewController.swift */; };
+		3DD8B5FC1AC88A250002BBB7 /* FriendViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8B5FB1AC88A250002BBB7 /* FriendViewTableCell.swift */; };
 		3DF965BF1AC5BF430011ABC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */; };
 		3DF965C21AC5BF430011ABC2 /* Locanotion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3DF965C01AC5BF430011ABC2 /* Locanotion.xcdatamodeld */; };
 		3DF965C41AC5BF430011ABC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF965C31AC5BF430011ABC2 /* ViewController.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D168E441AC5D6CC005BF0DB /* FriendsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsPageViewController.swift; path = ../FriendsPageViewController.swift; sourceTree = "<group>"; };
+		3DD8B5FB1AC88A250002BBB7 /* FriendViewTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewTableCell.swift; sourceTree = "<group>"; };
 		3DF965B91AC5BF430011ABC2 /* Locanotion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Locanotion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF965BD1AC5BF430011ABC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,8 +149,10 @@
 			isa = PBXGroup;
 			children = (
 				3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */,
+				3D168E441AC5D6CC005BF0DB /* FriendsPageViewController.swift */,
 				3DF965C31AC5BF430011ABC2 /* ViewController.swift */,
 				3DF965C51AC5BF430011ABC2 /* Main.storyboard */,
+				3DD8B5FB1AC88A250002BBB7 /* FriendViewTableCell.swift */,
 				3DF965C81AC5BF430011ABC2 /* Images.xcassets */,
 				3DF965CA1AC5BF430011ABC2 /* LaunchScreen.xib */,
 				3DF965C01AC5BF430011ABC2 /* Locanotion.xcdatamodeld */,
@@ -302,6 +308,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DF965C41AC5BF430011ABC2 /* ViewController.swift in Sources */,
+				3D168E451AC5D6CC005BF0DB /* FriendsPageViewController.swift in Sources */,
+				3DD8B5FC1AC88A250002BBB7 /* FriendViewTableCell.swift in Sources */,
 				3DF965BF1AC5BF430011ABC2 /* AppDelegate.swift in Sources */,
 				3DF965C21AC5BF430011ABC2 /* Locanotion.xcdatamodeld in Sources */,
 			);
@@ -510,6 +518,7 @@
 				3DF965DD1AC5BF430011ABC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3DF965DE1AC5BF430011ABC2 /* Build configuration list for PBXNativeTarget "LocanotionTests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +527,7 @@
 				3DF965E01AC5BF430011ABC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

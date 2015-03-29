@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUW-Jm-c0C">
-                                <rect key="frame" x="246" y="468" width="108" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUW-Jm-c0C">
+                                <rect key="frame" x="116" y="468" width="368" height="27"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.73333333329999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="2" maxX="10" maxY="2"/>
                                 <state key="normal" title="View Map">
@@ -25,8 +26,8 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jrn-gH-c4u">
-                                <rect key="frame" x="246" y="498" width="108" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jrn-gH-c4u">
+                                <rect key="frame" x="116" y="498" width="368" height="27"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.73333333329999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="2" maxX="10" maxY="2"/>
                                 <state key="normal" title="View Friends">
@@ -37,8 +38,14 @@
                                     <segue destination="CUn-Wq-ZIq" kind="show" id="I14-Tn-G3U"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locanotion" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4W-Hu-6Ey">
+                                <rect key="frame" x="223" y="239" width="153" height="41"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BpJ-mg-Bth">
-                                <rect key="frame" x="246" y="528" width="108" height="22"/>
+                                <rect key="frame" x="116" y="528" width="368" height="22"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.73333333329999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="2" maxX="10" maxY="2"/>
                                 <state key="normal" title="View Clubs">
@@ -46,36 +53,41 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locanotion" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4W-Hu-6Ey">
-                                <rect key="frame" x="223.5" y="239" width="153" height="41"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Jrn-gH-c4u" firstAttribute="width" secondItem="qUW-Jm-c0C" secondAttribute="width" id="3sV-1n-mVp"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BpJ-mg-Bth" secondAttribute="bottom" constant="50" id="6uv-e5-Cdy"/>
                             <constraint firstAttribute="centerX" secondItem="qUW-Jm-c0C" secondAttribute="centerX" constant="4" id="7OB-9Q-eOs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jrn-gH-c4u" secondAttribute="trailing" constant="100" id="ARJ-BM-I5Q"/>
                             <constraint firstItem="Jrn-gH-c4u" firstAttribute="top" secondItem="qUW-Jm-c0C" secondAttribute="bottom" constant="8" id="DO1-iq-OYT"/>
                             <constraint firstAttribute="centerX" secondItem="qUW-Jm-c0C" secondAttribute="centerX" constant="-0.5" id="J4A-lj-IDY"/>
                             <constraint firstAttribute="centerX" secondItem="BpJ-mg-Bth" secondAttribute="centerX" constant="-0.5" id="L8G-IU-oyj"/>
                             <constraint firstAttribute="centerX" secondItem="Jrn-gH-c4u" secondAttribute="centerX" id="QxA-qN-bq6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BpJ-mg-Bth" secondAttribute="trailing" constant="100" id="S4Z-8k-JMW"/>
                             <constraint firstAttribute="centerY" secondItem="d4W-Hu-6Ey" secondAttribute="centerY" constant="40.5" id="YP3-wJ-FEO"/>
                             <constraint firstItem="BpJ-mg-Bth" firstAttribute="top" secondItem="Jrn-gH-c4u" secondAttribute="bottom" constant="8" id="ao6-rQ-Rkc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qUW-Jm-c0C" secondAttribute="trailing" constant="100" id="c0D-Nd-x7W"/>
+                            <constraint firstItem="BpJ-mg-Bth" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="100" id="iQV-sa-Iqo"/>
                             <constraint firstAttribute="centerX" secondItem="d4W-Hu-6Ey" secondAttribute="centerX" id="k4o-bl-2fG"/>
+                            <constraint firstItem="qUW-Jm-c0C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="100" id="lHd-4y-pfO"/>
+                            <constraint firstItem="Jrn-gH-c4u" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="100" id="s6M-24-xUc"/>
                             <constraint firstItem="BpJ-mg-Bth" firstAttribute="width" secondItem="Jrn-gH-c4u" secondAttribute="width" id="wbl-5V-U6D"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ViewClubsButton" destination="BpJ-mg-Bth" id="tDw-4b-Yi3"/>
+                        <outlet property="ViewFriendsButton" destination="Jrn-gH-c4u" id="fzt-2d-IaA"/>
+                        <outlet property="ViewMapButton" destination="qUW-Jm-c0C" id="UjP-ku-hS5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--View Controller-->
+        <!--Friends Page View Controller-->
         <scene sceneID="3bZ-Fj-XwH">
             <objects>
-                <viewController id="CUn-Wq-ZIq" sceneMemberID="viewController">
+                <viewController id="CUn-Wq-ZIq" customClass="FriendsPageViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gww-6e-RG2"/>
                         <viewControllerLayoutGuide type="bottom" id="2YV-LC-aRz"/>
@@ -90,6 +102,30 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GMT-fZ-gCf">
+                                <rect key="frame" x="0.0" y="105" width="600" height="495"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendCell" id="qpA-Mc-e9a" customClass="FriendViewTableCell" customModule="Locanotion" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qpA-Mc-e9a" id="gvW-Gl-Pcy">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26v-Md-Cer">
+                                                    <rect key="frame" x="32" y="11" width="88" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="26v-Md-Cer" secondAttribute="centerY" constant="0.25" id="Xta-Re-8OB"/>
+                                                <constraint firstItem="26v-Md-Cer" firstAttribute="leading" secondItem="gvW-Gl-Pcy" secondAttribute="leadingMargin" constant="24" id="x9o-tb-8sN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -97,10 +133,13 @@
                             <constraint firstItem="h4p-gM-W3m" firstAttribute="top" secondItem="gww-6e-RG2" secondAttribute="top" constant="20" id="vtm-u8-xYi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="friendsTableView" destination="GMT-fZ-gCf" id="07o-Hd-htg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X7V-mu-4tK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="912" y="1101"/>
+            <point key="canvasLocation" x="947" y="976"/>
         </scene>
     </scenes>
 </document>
