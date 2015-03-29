@@ -33,6 +33,7 @@
 		3DF966001AC5C3E40011ABC2 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965FA1AC5C3E30011ABC2 /* ParseFacebookUtilsV4.framework */; };
 		3DF966011AC5C3E40011ABC2 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF965FB1AC5C3E30011ABC2 /* ParseUI.framework */; };
 		3DF966071AC5C6740011ABC2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF966061AC5C6740011ABC2 /* libsqlite3.dylib */; };
+		CED6158D1AC89298002BC56F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6158C1AC89298002BC56F /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		3DF965FB1AC5C3E30011ABC2 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		3DF966031AC5C4D10011ABC2 /* Locanotion-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Locanotion-Bridging-Header.h"; sourceTree = "<group>"; };
 		3DF966061AC5C6740011ABC2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		CED6158C1AC89298002BC56F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			children = (
 				3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */,
 				3D168E441AC5D6CC005BF0DB /* FriendsPageViewController.swift */,
+				CED6158C1AC89298002BC56F /* SignUpViewController.swift */,
 				3DF965C31AC5BF430011ABC2 /* ViewController.swift */,
 				3DF965C51AC5BF430011ABC2 /* Main.storyboard */,
 				3DD8B5FB1AC88A250002BBB7 /* FriendViewTableCell.swift */,
@@ -307,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED6158D1AC89298002BC56F /* SignUpViewController.swift in Sources */,
 				3DF965C41AC5BF430011ABC2 /* ViewController.swift in Sources */,
 				3D168E451AC5D6CC005BF0DB /* FriendsPageViewController.swift in Sources */,
 				3DD8B5FC1AC88A250002BBB7 /* FriendViewTableCell.swift in Sources */,
