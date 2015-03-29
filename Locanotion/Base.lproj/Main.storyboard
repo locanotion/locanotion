@@ -112,17 +112,39 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26v-Md-Cer">
-                                                    <rect key="frame" x="32" y="11" width="88" height="21"/>
+                                                    <rect key="frame" x="32" y="11" width="87.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loc Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNj-fV-LLd">
+                                                    <rect key="frame" x="171" y="11" width="75.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="DNj-fV-LLd" secondAttribute="trailing" constant="40" id="UXv-Vo-By4"/>
+                                                <constraint firstItem="DNj-fV-LLd" firstAttribute="leading" secondItem="gvW-Gl-Pcy" secondAttribute="leadingMargin" constant="163" id="Vdq-UJ-pHb"/>
                                                 <constraint firstAttribute="centerY" secondItem="26v-Md-Cer" secondAttribute="centerY" constant="0.25" id="Xta-Re-8OB"/>
+                                                <constraint firstAttribute="centerY" secondItem="DNj-fV-LLd" secondAttribute="centerY" constant="0.25" id="gRQ-ur-vXb"/>
+                                                <constraint firstItem="DNj-fV-LLd" firstAttribute="leading" secondItem="26v-Md-Cer" secondAttribute="trailing" constant="107.5" id="ken-37-gWM"/>
+                                                <constraint firstAttribute="centerX" secondItem="DNj-fV-LLd" secondAttribute="centerX" constant="61" id="ln6-lS-suI"/>
                                                 <constraint firstItem="26v-Md-Cer" firstAttribute="leading" secondItem="gvW-Gl-Pcy" secondAttribute="leadingMargin" constant="24" id="x9o-tb-8sN"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="UXv-Vo-By4"/>
+                                                    <exclude reference="ken-37-gWM"/>
+                                                    <exclude reference="ln6-lS-suI"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="locLabel" destination="DNj-fV-LLd" id="CdI-OV-o8q"/>
+                                            <outlet property="nameLabel" destination="26v-Md-Cer" id="iEy-4M-3Dd"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

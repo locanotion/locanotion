@@ -11,6 +11,12 @@ import Foundation
 class FriendViewTableCell : UITableViewCell {
     @IBOutlet var nameLabel : UILabel!
     @IBOutlet var locLabel : UILabel!
-    @IBOutlet var locImageView : UIImageView!
+    //@IBOutlet var locImageView : UIImageView!
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
     
 }

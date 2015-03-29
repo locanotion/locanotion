@@ -47,15 +47,15 @@ class FriendsPageViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as FriendViewTableCell
         
         let row = indexPath.row
+        let cellUser = friends[row] as PFUser
+        let loc = cellUser["LocationName"] as String
         
-        cell.textLabel.text = friends[row].username
-        cell.detailTextLabel?.text = "detail"
-        //cell.imageView.image = UIImage(named:"ViewOnMap")
-        
-        
+        cell.nameLabel.text = cellUser.username
+        cell.locLabel.text = loc
+        //cell.locImageView.image = UIImage(named: "ViewOnMap")
         return cell
         
     }
