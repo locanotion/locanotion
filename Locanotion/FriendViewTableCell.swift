@@ -19,4 +19,10 @@ class FriendViewTableCell : UITableViewCell {
     }
     
     
+    @IBAction func viewOnMap (sender: AnyObject) {
+        NSLog("pushed")
+    }
+    
+    
+    
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D168E451AC5D6CC005BF0DB /* FriendsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D168E441AC5D6CC005BF0DB /* FriendsPageViewController.swift */; };
+		3D27820A1ACAFF2C0088F95D /* MapPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2782091ACAFF2C0088F95D /* MapPageViewController.swift */; };
 		3DD8B5FC1AC88A250002BBB7 /* FriendViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8B5FB1AC88A250002BBB7 /* FriendViewTableCell.swift */; };
 		3DF965BF1AC5BF430011ABC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */; };
 		3DF965C21AC5BF430011ABC2 /* Locanotion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3DF965C01AC5BF430011ABC2 /* Locanotion.xcdatamodeld */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		3D168E441AC5D6CC005BF0DB /* FriendsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsPageViewController.swift; path = ../FriendsPageViewController.swift; sourceTree = "<group>"; };
+		3D2782091ACAFF2C0088F95D /* MapPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPageViewController.swift; sourceTree = "<group>"; };
 		3DD8B5FB1AC88A250002BBB7 /* FriendViewTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewTableCell.swift; sourceTree = "<group>"; };
 		3DF965B91AC5BF430011ABC2 /* Locanotion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Locanotion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF965BD1AC5BF430011ABC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */,
 				3D168E441AC5D6CC005BF0DB /* FriendsPageViewController.swift */,
+				3D2782091ACAFF2C0088F95D /* MapPageViewController.swift */,
 				CED6158C1AC89298002BC56F /* SignUpViewController.swift */,
 				3DF965C31AC5BF430011ABC2 /* ViewController.swift */,
 				3DF965C51AC5BF430011ABC2 /* Main.storyboard */,
@@ -315,6 +318,7 @@
 				3D168E451AC5D6CC005BF0DB /* FriendsPageViewController.swift in Sources */,
 				3DD8B5FC1AC88A250002BBB7 /* FriendViewTableCell.swift in Sources */,
 				3DF965BF1AC5BF430011ABC2 /* AppDelegate.swift in Sources */,
+				3D27820A1ACAFF2C0088F95D /* MapPageViewController.swift in Sources */,
 				3DF965C21AC5BF430011ABC2 /* Locanotion.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

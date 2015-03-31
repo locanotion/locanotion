@@ -65,9 +65,24 @@ class FriendsPageViewController: UIViewController, UITableViewDataSource, UITabl
         // Dispose of any resources that can be recreated.
     }
     
+
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //double tap, schedule method with delay of .3-.4 seconds, then cancel that action and schedule new action 
+        //if user does not tap again
+        
+        var cell : FriendViewTableCell = friendsTableView.cellForRowAtIndexPath(indexPath) as FriendViewTableCell
+        self.performSegueWithIdentifier("toDetailView", sender: cell)
+        
         friendsTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let row = indexPath.row
+        
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toDetailView" {
+            //send data over to the detail VC 
+        }
         
     }
     
