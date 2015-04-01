@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JmG-2f-0gb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IJv-w4-28j">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -102,10 +102,10 @@
             </objects>
             <point key="canvasLocation" x="252" y="205"/>
         </scene>
-        <!--Friends Page View Controller-->
+        <!--View Friends View Controller-->
         <scene sceneID="3bZ-Fj-XwH">
             <objects>
-                <viewController id="CUn-Wq-ZIq" customClass="FriendsPageViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CUn-Wq-ZIq" customClass="ViewFriendsViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gww-6e-RG2"/>
                         <viewControllerLayoutGuide type="bottom" id="2YV-LC-aRz"/>
@@ -144,8 +144,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hU-DH-TaI">
-                                                    <rect key="frame" x="488" y="7" width="46" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hU-DH-TaI">
+                                                    <rect key="frame" x="456" y="7" width="46" height="30"/>
                                                     <state key="normal" title="View &gt;">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -153,8 +153,8 @@
                                                         <action selector="viewOnMap:" destination="qpA-Mc-e9a" eventType="touchUpInside" id="mdp-9k-B5i"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loc Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNj-fV-LLd">
-                                                    <rect key="frame" x="368" y="11" width="75.5" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loc Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNj-fV-LLd">
+                                                    <rect key="frame" x="336" y="11" width="75.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -323,9 +323,30 @@
             </objects>
             <point key="canvasLocation" x="-550" y="477"/>
         </scene>
+        <!--Sign In Page View Controller-->
+        <scene sceneID="4uK-nh-JhA">
+            <objects>
+                <viewController id="IJv-w4-28j" customClass="SignInPageViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l5u-w1-Ag5"/>
+                        <viewControllerLayoutGuide type="bottom" id="aWd-FQ-3bC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HcK-TV-v6V">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toMainViewSignIn" id="WCE-dI-Exa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M7B-ad-6cz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-464" y="1287"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yI3-Z8-fhT"/>
-        <segue reference="IL1-yW-ExE"/>
+        <segue reference="WCE-dI-Exa"/>
+        <segue reference="dB5-6W-NZZ"/>
     </inferredMetricsTieBreakers>
 </document>

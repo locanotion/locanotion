@@ -19,9 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         Parse.setApplicationId("iSRhYxaFTbrT3cr4bwrkiOy31IQVAmJRps4DnoFP", clientKey: "YF8DVJYXOw3sOaUQKQUyfjfGlIC7hrifjnWtnabr")
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
+        FBSDKLoginButton.initialize()
+        FBSDKAccessToken.initialize()
         return true
     }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
