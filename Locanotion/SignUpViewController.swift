@@ -20,7 +20,6 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         SignUpButton.layer.cornerRadius = 3
         LogInButton.layer.cornerRadius = 3
-        
     }
     
     @IBAction func logIn() {
