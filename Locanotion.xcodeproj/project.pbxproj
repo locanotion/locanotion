@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D20C12B1ACB991800DFD43C /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D20C12A1ACB991800DFD43C /* ParseFacebookUtilsV4.framework */; };
 		3D20C1351ACBA54000DFD43C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D20C1321ACBA54000DFD43C /* FBSDKCoreKit.framework */; };
 		3D20C1361ACBA54000DFD43C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D20C1331ACBA54000DFD43C /* FBSDKLoginKit.framework */; };
 		3D20C1371ACBA54000DFD43C /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D20C1341ACBA54000DFD43C /* FBSDKShareKit.framework */; };
@@ -51,7 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3D20C12A1ACB991800DFD43C /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../parse-library-1.7.0 2/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
 		3D20C1321ACBA54000DFD43C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		3D20C1331ACBA54000DFD43C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		3D20C1341ACBA54000DFD43C /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -97,7 +95,6 @@
 				3D54969F1ACB884200C133D7 /* CFNetwork.framework in Frameworks */,
 				3DF966071AC5C6740011ABC2 /* libsqlite3.dylib in Frameworks */,
 				3D8E82451ACCD0510074DD5D /* ParseFacebookUtilsV4.framework in Frameworks */,
-				3D20C12B1ACB991800DFD43C /* ParseFacebookUtilsV4.framework in Frameworks */,
 				3D20C1351ACBA54000DFD43C /* FBSDKCoreKit.framework in Frameworks */,
 				3D20C1371ACBA54000DFD43C /* FBSDKShareKit.framework in Frameworks */,
 				3DF965EB1AC5C24C0011ABC2 /* AudioToolbox.framework in Frameworks */,
@@ -133,7 +130,6 @@
 				3D20C1321ACBA54000DFD43C /* FBSDKCoreKit.framework */,
 				3D20C1331ACBA54000DFD43C /* FBSDKLoginKit.framework */,
 				3D20C1341ACBA54000DFD43C /* FBSDKShareKit.framework */,
-				3D20C12A1ACB991800DFD43C /* ParseFacebookUtilsV4.framework */,
 				3D54969E1ACB884200C133D7 /* CFNetwork.framework */,
 				3D54969A1ACB881E00C133D7 /* Bolts.framework */,
 				3D54969B1ACB881E00C133D7 /* Parse.framework */,
@@ -385,6 +381,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -429,6 +426,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;

@@ -13,20 +13,26 @@ class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         NSLog("loaded")
-        
         //check acces token to skip log in if they
         if FBSDKAccessToken.currentAccessToken() != nil{
              NSLog("loaded: not nil")
-            self.performSegueWithIdentifier("toMainViewSignIn", sender: self)
+            let loginButton : FBSDKLoginButton = FBSDKLoginButton()
+            loginButton.readPermissions = ["public_profile", "email", "user_friends"]
+            self.view.addSubview(loginButton)
+            loginButton.center = self.view.center
+            loginButton.center.y = self.view.center.y + (self.view.frame.height / 2) - 75
+            loginButton.delegate = self
         }
         else {
             
             let loginButton : FBSDKLoginButton = FBSDKLoginButton()
             loginButton.readPermissions = ["public_profile", "email", "user_friends"]
             self.view.addSubview(loginButton)
-           // var FBLoginConstraint = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Bottom, relatedBy: <#NSLayoutRelation#>, toItem: <#AnyObject?#>, attribute: <#NSLayoutAttribute#>, multiplier: <#CGFloat#>, constant: <#CGFloat#>)
+           var FBLoginConstraint = NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.BottomMargin, multiplier: 1, constant: 75)
             loginButton.center = self.view.center
+            loginButton.center.y = self.view.center.y + (self.view.frame.height / 2) - 75
             loginButton.delegate = self
+            self.view.addConstraint(FBLoginConstraint)
         }
         
     }
