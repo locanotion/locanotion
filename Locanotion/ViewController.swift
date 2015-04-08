@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var ViewClubsButton: UIButton!
     @IBOutlet var CurrentUserLabel: UILabel!
     
+    @IBOutlet var logoView: UIImageView!
     @IBOutlet var asd: UIButton!
     override func viewWillAppear(animated: Bool) {
         var currentUser = PFUser.currentUser()
@@ -35,6 +36,9 @@ class ViewController: UIViewController {
         
     }
 
+    @IBAction func switchPressed(sender: AnyObject) {
+        logoView.image = UIImage(named: "LocIcon")
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

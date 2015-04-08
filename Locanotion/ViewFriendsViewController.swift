@@ -12,7 +12,8 @@ import UIKit
 class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var friendsTableView: UITableView!
-    var friends = []
+    var friends : Array<PFUser> = Array()
+    var friendIDs : Array<String> = Array()
     let textCellIdentifier = "FriendCell"
     
     override func viewWillAppear(animated: Bool) {
@@ -22,12 +23,70 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
             //display some error message
         }
         
-        var query = PFUser.query()
-        friends = query.findObjects()
         
+        /*var query = PFUser.query()
+        query.findObjectsInBackgroundWithBlock { (objects : [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                for u : PFUser in (objects as [PFUser]) {
+                    self.friends.append(u)
+                }
+                dispatch_async(dispatch_get_main_queue()){
+                    self.friendsTableView.reloadData()
+                }
+            }
+        }*/
         
+        self.getFacebookFriends()
         
     }
+    
+    
+    func getFacebookFriends() {
+        var idArray : Array<String> = Array()
+        NSLog("called method")
+        var request : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil)
+        
+        request.startWithCompletionHandler { (connection:FBSDKGraphRequestConnection!, result: AnyObject!, error:NSError!) -> Void in
+            NSLog("In handler")
+            if error == nil {
+                print(result)
+                var resultDict : NSDictionary = result as NSDictionary
+                print("data we get from result: ")
+                var data : NSArray = resultDict.objectForKey("data") as NSArray
+                
+                let valueDict : NSDictionary = data[0] as NSDictionary
+                let id = valueDict.objectForKey("name") as String
+                idArray.append(id)
+                self.friendIDs.append(id)
+                self.friendsTableView.reloadData()
+            }
+            
+        }
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.friendsTableView.reloadData()
+        })
+        
+    }
+    
+    func getMyFacebookInfo() {
+        NSLog("called method")
+        var request : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        
+        request.startWithCompletionHandler { (connection:FBSDKGraphRequestConnection!, result: AnyObject!, error:NSError!) -> Void in
+            NSLog("In handler")
+            if error == nil {
+                print(result)
+                var resultDict : NSDictionary = result as NSDictionary
+                print("data we get from result: ")
+                var name : String = resultDict.objectForKey("name") as String
+                println("the name is : \(name)")
+                
+            }
+            
+            
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,18 +102,22 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friends.count
+        if friendIDs.count == 0 {
+            NSLog("zero count")
+            return 0
+        }
+        return friendIDs.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as FriendViewTableCell
         
         let row = indexPath.row
-        let cellUser = friends[row] as PFUser
-        let loc = cellUser["LocationName"] as String
+        let cellUser = friendIDs[row] as String
+        //let loc = cellUser["LocationName"] as String
         
-        cell.nameLabel.text = cellUser.username
-        cell.locLabel.text = loc
+        cell.nameLabel.text = cellUser
+        cell.locLabel.text = "xx"
         //cell.locImageView.image = UIImage(named: "ViewOnMap")
         return cell
         

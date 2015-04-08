@@ -11,12 +11,14 @@
 		3D20C1361ACBA54000DFD43C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D20C1331ACBA54000DFD43C /* FBSDKLoginKit.framework */; };
 		3D20C1371ACBA54000DFD43C /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D20C1341ACBA54000DFD43C /* FBSDKShareKit.framework */; };
 		3D27820A1ACAFF2C0088F95D /* MapPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2782091ACAFF2C0088F95D /* MapPageViewController.swift */; };
+		3D3B3C791AD4C627000D10EF /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B3C781AD4C627000D10EF /* CustomPointAnnotation.swift */; };
 		3D4203D31ACB96B2004B647D /* SignInPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4203D21ACB96B2004B647D /* SignInPageViewController.swift */; };
 		3D54969C1ACB881E00C133D7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D54969A1ACB881E00C133D7 /* Bolts.framework */; };
 		3D54969D1ACB881E00C133D7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D54969B1ACB881E00C133D7 /* Parse.framework */; };
 		3D54969F1ACB884200C133D7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D54969E1ACB884200C133D7 /* CFNetwork.framework */; };
 		3D5496B21ACB910200C133D7 /* ViewFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5496B11ACB910200C133D7 /* ViewFriendsViewController.swift */; };
 		3D8E82451ACCD0510074DD5D /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8E82441ACCD0510074DD5D /* ParseFacebookUtilsV4.framework */; };
+		3D8E824B1ACEF5270074DD5D /* FriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E824A1ACEF5270074DD5D /* FriendDetailViewController.swift */; };
 		3DD8B5FC1AC88A250002BBB7 /* FriendViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8B5FB1AC88A250002BBB7 /* FriendViewTableCell.swift */; };
 		3DF965BF1AC5BF430011ABC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */; };
 		3DF965C21AC5BF430011ABC2 /* Locanotion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3DF965C01AC5BF430011ABC2 /* Locanotion.xcdatamodeld */; };
@@ -54,12 +56,14 @@
 		3D20C1331ACBA54000DFD43C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		3D20C1341ACBA54000DFD43C /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		3D2782091ACAFF2C0088F95D /* MapPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPageViewController.swift; sourceTree = "<group>"; };
+		3D3B3C781AD4C627000D10EF /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		3D4203D21ACB96B2004B647D /* SignInPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInPageViewController.swift; sourceTree = "<group>"; };
 		3D54969A1ACB881E00C133D7 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		3D54969B1ACB881E00C133D7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		3D54969E1ACB884200C133D7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3D5496B11ACB910200C133D7 /* ViewFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFriendsViewController.swift; sourceTree = "<group>"; };
 		3D8E82441ACCD0510074DD5D /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../parse-library-1.7.0 2/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
+		3D8E824A1ACEF5270074DD5D /* FriendDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDetailViewController.swift; sourceTree = "<group>"; };
 		3DD8B5FB1AC88A250002BBB7 /* FriendViewTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewTableCell.swift; sourceTree = "<group>"; };
 		3DF965B91AC5BF430011ABC2 /* Locanotion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Locanotion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF965BD1AC5BF430011ABC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 				3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */,
 				3D5496B11ACB910200C133D7 /* ViewFriendsViewController.swift */,
 				3D2782091ACAFF2C0088F95D /* MapPageViewController.swift */,
+				3D3B3C781AD4C627000D10EF /* CustomPointAnnotation.swift */,
+				3D8E824A1ACEF5270074DD5D /* FriendDetailViewController.swift */,
 				CED6158C1AC89298002BC56F /* SignUpViewController.swift */,
 				3D4203D21ACB96B2004B647D /* SignInPageViewController.swift */,
 				3DF965C31AC5BF430011ABC2 /* ViewController.swift */,
@@ -318,8 +324,10 @@
 				3DF965BF1AC5BF430011ABC2 /* AppDelegate.swift in Sources */,
 				3D27820A1ACAFF2C0088F95D /* MapPageViewController.swift in Sources */,
 				3D4203D31ACB96B2004B647D /* SignInPageViewController.swift in Sources */,
+				3D3B3C791AD4C627000D10EF /* CustomPointAnnotation.swift in Sources */,
 				3DF965C21AC5BF430011ABC2 /* Locanotion.xcdatamodeld in Sources */,
 				3D5496B21ACB910200C133D7 /* ViewFriendsViewController.swift in Sources */,
+				3D8E824B1ACEF5270074DD5D /* FriendDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
