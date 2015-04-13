@@ -17,30 +17,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locanotion" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4W-Hu-6Ey">
-                                <rect key="frame" x="223" y="239" width="153" height="41"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BpJ-mg-Bth">
-                                <rect key="frame" x="116" y="528" width="368" height="22"/>
+                                <rect key="frame" x="86" y="497" width="428" height="28"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.73333333329999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="2" maxX="10" maxY="2"/>
                                 <state key="normal" title="View Clubs">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current User" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGW-Rk-tvM">
-                                <rect key="frame" x="16" y="20" width="99" height="23.5"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                <color key="textColor" red="0.30196078431372547" green="0.67450980392156867" blue="0.83137254901960789" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jrn-gH-c4u">
-                                <rect key="frame" x="116" y="498" width="368" height="22"/>
+                                <rect key="frame" x="86" y="461" width="428" height="28"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.73333333329999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="2" maxX="10" maxY="2"/>
                                 <state key="normal" title="View Friends">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,19 +40,10 @@
                                     <segue destination="CUn-Wq-ZIq" kind="show" id="I14-Tn-G3U"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhu-eJ-e4D">
-                                <rect key="frame" x="16" y="47" width="10" height="30"/>
-                                <state key="normal" title="Sign Out">
-                                    <color key="titleColor" red="0.30196078431372547" green="0.67450980392156867" blue="0.83137254901960789" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="SignOutPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gU9-g7-gPH"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUW-Jm-c0C">
-                                <rect key="frame" x="116" y="468" width="368" height="22"/>
+                                <rect key="frame" x="86" y="425" width="428" height="28"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.73333333329999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="2" maxX="10" maxY="2"/>
                                 <state key="normal" title="View Map">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -72,72 +53,50 @@
                                     <segue destination="CUy-WP-Vbk" kind="show" id="1Wh-v2-Lqb"/>
                                 </connections>
                             </button>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" image="VoleLogo" translatesAutoresizingMaskIntoConstraints="NO" id="KHc-dw-CIl">
-                                <rect key="frame" x="50" y="-40" width="500" height="500"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="500" id="Vgo-Uf-NJc"/>
-                                    <constraint firstAttribute="height" constant="500" id="dkj-K3-ehK"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lJ5-gR-oDr">
+                                <rect key="frame" x="86" y="236" width="428" height="128"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZN0-hx-yp1">
-                                <rect key="frame" x="277" y="558" width="47" height="30"/>
-                                <state key="normal" title="Switch">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="switchPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9mE-W3-7e4"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Current User" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGW-Rk-tvM">
+                                <rect key="frame" x="16" y="20" width="109" height="24.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" red="0.30196078431372547" green="0.67450980392156867" blue="0.83137254901960789" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qUW-Jm-c0C" firstAttribute="top" secondItem="KHc-dw-CIl" secondAttribute="bottom" constant="48" id="2HS-BZ-YzV"/>
-                            <constraint firstAttribute="centerX" secondItem="ZN0-hx-yp1" secondAttribute="centerX" id="33h-Dj-OGr"/>
-                            <constraint firstItem="Jrn-gH-c4u" firstAttribute="leading" secondItem="BpJ-mg-Bth" secondAttribute="leading" id="59D-sc-5Z7"/>
-                            <constraint firstItem="KHc-dw-CIl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Acd-Xc-GAn"/>
-                            <constraint firstItem="KHc-dw-CIl" firstAttribute="leading" secondItem="Rhu-eJ-e4D" secondAttribute="trailing" constant="24" id="BTy-Uz-q3N"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BpJ-mg-Bth" secondAttribute="bottom" constant="50" id="C5H-JU-FxO"/>
-                            <constraint firstAttribute="centerX" secondItem="d4W-Hu-6Ey" secondAttribute="centerX" constant="0.5" id="HAn-oB-gcu"/>
-                            <constraint firstItem="Rhu-eJ-e4D" firstAttribute="top" secondItem="hGW-Rk-tvM" secondAttribute="bottom" constant="3.5" id="Iul-T1-FvH"/>
-                            <constraint firstItem="Jrn-gH-c4u" firstAttribute="width" secondItem="BpJ-mg-Bth" secondAttribute="width" id="RxA-tr-o7x"/>
-                            <constraint firstItem="ZN0-hx-yp1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="17" id="UHJ-tl-VFd"/>
-                            <constraint firstItem="BpJ-mg-Bth" firstAttribute="top" secondItem="qUW-Jm-c0C" secondAttribute="bottom" constant="38" id="Wvd-lL-TNo"/>
-                            <constraint firstItem="qUW-Jm-c0C" firstAttribute="leading" secondItem="BpJ-mg-Bth" secondAttribute="leading" id="X32-dZ-X5u"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="BpJ-mg-Bth" secondAttribute="trailing" constant="100" id="eAc-Gg-TWm"/>
-                            <constraint firstAttribute="centerY" secondItem="d4W-Hu-6Ey" secondAttribute="centerY" constant="40.5" id="gDU-f0-kOh"/>
-                            <constraint firstAttribute="centerX" secondItem="KHc-dw-CIl" secondAttribute="centerX" id="k6p-SF-pMc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KHc-dw-CIl" secondAttribute="trailing" constant="84" id="lb6-Ad-Q9x"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZN0-hx-yp1" secondAttribute="bottom" constant="12" id="mjO-ja-Aat"/>
-                            <constraint firstAttribute="centerY" secondItem="KHc-dw-CIl" secondAttribute="centerY" constant="80" id="noo-K6-gOH"/>
-                            <constraint firstItem="BpJ-mg-Bth" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="100" id="pdc-Aq-j3w"/>
-                            <constraint firstItem="hGW-Rk-tvM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qur-dU-LYv"/>
-                            <constraint firstItem="hGW-Rk-tvM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="rXg-Xn-XR3"/>
-                            <constraint firstAttribute="centerX" secondItem="BpJ-mg-Bth" secondAttribute="centerX" id="tDk-5o-6KF"/>
-                            <constraint firstItem="Rhu-eJ-e4D" firstAttribute="leading" secondItem="hGW-Rk-tvM" secondAttribute="leading" id="uvS-Ov-KL9"/>
-                            <constraint firstItem="BpJ-mg-Bth" firstAttribute="top" secondItem="Jrn-gH-c4u" secondAttribute="bottom" constant="8" id="vqo-Bw-h7X"/>
-                            <constraint firstItem="qUW-Jm-c0C" firstAttribute="width" secondItem="BpJ-mg-Bth" secondAttribute="width" id="zKZ-u3-8FO"/>
+                            <constraint firstItem="Jrn-gH-c4u" firstAttribute="top" secondItem="qUW-Jm-c0C" secondAttribute="bottom" constant="8" id="0KF-UJ-8oK"/>
+                            <constraint firstItem="BpJ-mg-Bth" firstAttribute="top" secondItem="Jrn-gH-c4u" secondAttribute="bottom" constant="8" id="1Tq-zC-6rP"/>
+                            <constraint firstItem="lJ5-gR-oDr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="70" id="2Wk-7E-fVS"/>
+                            <constraint firstAttribute="centerY" secondItem="lJ5-gR-oDr" secondAttribute="centerY" id="64e-R8-Cfj"/>
+                            <constraint firstItem="hGW-Rk-tvM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="6hO-Mw-61f"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qUW-Jm-c0C" secondAttribute="trailing" constant="70" id="8Aw-fX-XMT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jrn-gH-c4u" secondAttribute="trailing" constant="70" id="8JY-v9-M3f"/>
+                            <constraint firstItem="BpJ-mg-Bth" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="70" id="BqP-A6-2nr"/>
+                            <constraint firstAttribute="centerX" secondItem="Jrn-gH-c4u" secondAttribute="centerX" id="HJn-eN-N1d"/>
+                            <constraint firstAttribute="centerX" secondItem="lJ5-gR-oDr" secondAttribute="centerX" id="HqX-Ae-0Ai"/>
+                            <constraint firstAttribute="centerX" secondItem="BpJ-mg-Bth" secondAttribute="centerX" id="Ri2-O0-Wlc"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BpJ-mg-Bth" secondAttribute="bottom" constant="75" id="UQW-7q-W3L"/>
+                            <constraint firstAttribute="centerX" secondItem="qUW-Jm-c0C" secondAttribute="centerX" id="bFE-KN-pNQ"/>
+                            <constraint firstItem="hGW-Rk-tvM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="eT2-z7-TG5"/>
+                            <constraint firstItem="Jrn-gH-c4u" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="70" id="eoZ-Yq-cOn"/>
+                            <constraint firstItem="qUW-Jm-c0C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="70" id="s9x-3G-nxh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BpJ-mg-Bth" secondAttribute="trailing" constant="70" id="sub-Cd-mnG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lJ5-gR-oDr" secondAttribute="trailing" constant="70" id="veE-N5-eFk"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Acd-Xc-GAn"/>
-                                <exclude reference="noo-K6-gOH"/>
-                                <exclude reference="2HS-BZ-YzV"/>
-                                <exclude reference="UHJ-tl-VFd"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="CurrentUserLabel" destination="hGW-Rk-tvM" id="VIn-in-Y1h"/>
                         <outlet property="ViewClubsButton" destination="BpJ-mg-Bth" id="tDw-4b-Yi3"/>
                         <outlet property="ViewFriendsButton" destination="Jrn-gH-c4u" id="fzt-2d-IaA"/>
                         <outlet property="ViewMapButton" destination="qUW-Jm-c0C" id="UjP-ku-hS5"/>
-                        <outlet property="logoView" destination="KHc-dw-CIl" id="CGr-UH-ADI"/>
+                        <outlet property="logoView" destination="lJ5-gR-oDr" id="LbL-5F-lM8"/>
                         <segue destination="JmG-2f-0gb" kind="show" identifier="backToLogIn" id="Aln-OT-swW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="252" y="205"/>
+            <point key="canvasLocation" x="253" y="214"/>
         </scene>
         <!--Map Page View Controller-->
         <scene sceneID="ufH-pc-YR7">
@@ -151,7 +110,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jWJ-G3-HUp">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWJ-G3-HUp">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
                         </subviews>
@@ -458,9 +417,6 @@
             <point key="canvasLocation" x="-464" y="1287"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="VoleLogo" width="800" height="600"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="I14-Tn-G3U"/>
         <segue reference="yI3-Z8-fhT"/>

@@ -32,9 +32,9 @@ class SignUpViewController: UIViewController {
             alert.show()
             return
         }
-
-        PFUser.logInWithUsernameInBackground(nameField.text, password: "password") {
-            (user: PFUser!, error: NSError!) -> Void in
+        let username : String = nameField.text as String
+        PFUser.logInWithUsernameInBackground(username, password: "password") {
+            (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
                 dispatch_async(dispatch_get_main_queue()) {
                     self.performSegueWithIdentifier("goToMainView", sender: self)
@@ -72,7 +72,7 @@ class SignUpViewController: UIViewController {
         
         user["LocationName"] = locField.text
         
-        user.signUpInBackgroundWithBlock({ (succeeded: Bool!, error: NSError!) -> Void in
+        user.signUpInBackgroundWithBlock({ (succeeded: Bool, error: NSError?) -> Void in
             if error != nil {
                 let alert = UIAlertView()
                 alert.title = "Error"

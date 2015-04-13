@@ -50,12 +50,12 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
             NSLog("In handler")
             if error == nil {
                 print(result)
-                var resultDict : NSDictionary = result as NSDictionary
+                var resultDict : NSDictionary = result as! NSDictionary
                 print("data we get from result: ")
-                var data : NSArray = resultDict.objectForKey("data") as NSArray
+                var data : NSArray = resultDict.objectForKey("data") as! NSArray
                 
-                let valueDict : NSDictionary = data[0] as NSDictionary
-                let id = valueDict.objectForKey("name") as String
+                let valueDict : NSDictionary = data[0] as! NSDictionary
+                let id = valueDict.objectForKey("name") as! String
                 idArray.append(id)
                 self.friendIDs.append(id)
                 self.friendsTableView.reloadData()
@@ -76,9 +76,9 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
             NSLog("In handler")
             if error == nil {
                 print(result)
-                var resultDict : NSDictionary = result as NSDictionary
+                var resultDict : NSDictionary = result as! NSDictionary
                 print("data we get from result: ")
-                var name : String = resultDict.objectForKey("name") as String
+                var name : String = resultDict.objectForKey("name") as! String
                 println("the name is : \(name)")
                 
             }
@@ -110,7 +110,7 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as FriendViewTableCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! FriendViewTableCell
         
         let row = indexPath.row
         let cellUser = friendIDs[row] as String
@@ -134,7 +134,7 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
         //double tap, schedule method with delay of .3-.4 seconds, then cancel that action and schedule new action
         //if user does not tap again
         
-        var cell : FriendViewTableCell = friendsTableView.cellForRowAtIndexPath(indexPath) as FriendViewTableCell
+        var cell : FriendViewTableCell = friendsTableView.cellForRowAtIndexPath(indexPath) as! FriendViewTableCell
         self.performSegueWithIdentifier("toDetailView", sender: cell)
         
         friendsTableView.deselectRowAtIndexPath(indexPath, animated: true)

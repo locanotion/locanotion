@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         var currentUser = PFUser.currentUser()
         if currentUser != nil {
-            CurrentUserLabel.text = currentUser.username
+            CurrentUserLabel.text = currentUser!.username
         }
         else {
             CurrentUserLabel.text = "No User"
@@ -33,12 +33,13 @@ class ViewController: UIViewController {
         ViewMapButton.layer.cornerRadius = 3
         ViewFriendsButton.layer.cornerRadius = 3
         ViewClubsButton.layer.cornerRadius = 3
+        logoView.image = UIImage(named: "VoleCute")
+        logoView.contentMode = .ScaleAspectFit
+        logoView.center = self.view.center
+        logoView.center.x = ViewClubsButton.center.x
         
     }
 
-    @IBAction func switchPressed(sender: AnyObject) {
-        logoView.image = UIImage(named: "LocIcon")
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
