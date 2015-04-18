@@ -50,81 +50,105 @@ class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
         }
             
         else {
-            //query parse to see if there is a user already with this facebook id
-            let newUserQuery : PFQuery = PFUser.query()!
-            newUserQuery.whereKey("facebook_ID", equalTo:result.token.userID)
             
-            newUserQuery.findObjectsInBackgroundWithBlock({ (objectArray:[AnyObject]?, error:NSError?) -> Void in
-                if error != nil {
-                    //error with query
-                }
-                else {
-                    let objects = objectArray!
-                    if objects.count == 0 {
-                        
-                        var request : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-                        
-                        request.startWithCompletionHandler { (connection:FBSDKGraphRequestConnection!, result: AnyObject!, error:NSError!) -> Void in
-                            if error == nil {
-                                let resultDict : NSDictionary  = result as! NSDictionary
-                                let fullName : String = resultDict.objectForKey("name") as! String
-                                //email not always available
-                                let email : String! = resultDict.objectForKey("email") as! String
-                                //var gender : String! = resultDict.objectForKey("gender") as String
-                                let fbID : String = resultDict.objectForKey("id") as! String
+            var id: String = "Uninit"
+            //get facebook id
+            var request : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+            
+            request.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result: AnyObject!, error : NSError!) -> Void in
+                if error == nil {
+                    print(result)
+                    var resultDict : NSDictionary = result as! NSDictionary
+                    id = resultDict.objectForKey("id") as! String
+                    println("the id from FB is : \(id)")
+                    
+                    
+                    let newUserQuery : PFQuery = PFUser.query()!
+                    newUserQuery.whereKey("facebook_ID", equalTo:id)
+                    
+                    newUserQuery.findObjectsInBackgroundWithBlock({ (objectArray:[AnyObject]?, error:NSError?) -> Void in
+                        if error != nil {
+                            //error with query
+                        }
+                        else {
+                            let objects = objectArray!
+                            
+                            if objects.count == 0 {
                                 
-                                //create the PFUser
-                                var newUser : PFUser = PFUser()
-                                if email != nil {
-                                    newUser.username = email
-                                }
-                                newUser["Full_Name"] = fullName
-                                newUser.email = email
-                                newUser["facebook_ID"] = fbID
-                                newUser.password = "tempPassword"
+                                var request : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
                                 
-                                newUser.signUpInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
-                                    if success {
-                                        let alertView = UIAlertView()
-                                        alertView.title = "Signed up as new user!"
-                                        alertView.addButtonWithTitle("Ok")
-                                        alertView.show()
-                                    }
-                                })
-                                
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    let permissions = ["public_profile", "email", "user_friends"]
-                                    PFFacebookUtils.linkUserInBackground(PFUser.currentUser()!, withReadPermissions: permissions, block: { (success : Bool, error : NSError?) -> Void in
-                                        if success {
-                                           NSLog("linked new user with new pfuser")
+                                request.startWithCompletionHandler { (connection:FBSDKGraphRequestConnection!, result: AnyObject!, error:NSError!) -> Void in
+                                    if error == nil {
+                                        let resultDict : NSDictionary  = result as! NSDictionary
+                                        let fullName : String = resultDict.objectForKey("name") as! String
+                                        //email not always available
+                                        let email : String! = resultDict.objectForKey("email") as! String
+                                        //var gender : String! = resultDict.objectForKey("gender") as String
+                                        let fbID : String = resultDict.objectForKey("id") as! String
+                                        
+                                        //create the PFUser
+                                        var newUser : PFUser = PFUser()
+                                        if email != nil {
+                                            newUser.username = email
                                         }
-                                    })
-                                })
+                                        newUser["Full_Name"] = fullName
+                                        newUser.email = email
+                                        newUser["facebook_ID"] = fbID
+                                        newUser.password = "tempPassword"
+                                        
+                                        newUser.signUpInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
+                                            if success {
+                                                let alertView = UIAlertView()
+                                                alertView.title = "Signed up as new user!"
+                                                alertView.addButtonWithTitle("Ok")
+                                                alertView.show()
+                                                
+                                                let permissions = ["public_profile", "email", "user_friends"]
+                                                PFFacebookUtils.linkUserInBackground(PFUser.currentUser()!, withReadPermissions: permissions, block: { (success : Bool, error : NSError?) -> Void in
+                                                    if success {
+                                                        NSLog("linked new user with new pfuser")
+                                                        self.performSegueWithIdentifier("toMainViewSignIn", sender: self)
+                                                    }
+                                                })
+                                                
+                                            }
+                                        })
+                                        
+                                    }
+                                    
+                                }
                                 
+                            }//end of objects.count == 0
+                            else if objects.count == 1 {
+                                //log in this user
+                                var  curUser : PFUser = objects[0] as! PFUser
+                                let username = curUser["username"] as! String
+                                let password = "temppassword"
+                                
+                                PFUser.logInWithUsernameInBackground(username, password: password, block: { (user:PFUser?, error:NSError?) -> Void in
+                                    if user != nil {
+                                        NSLog("logged in \(username)")
+                                        self.performSegueWithIdentifier("toMainViewSignIn", sender: self)
+                                    }
+                                    
+                                })
                             }
                             
-                            
+                            else {
+                                
+                            }
                         }
                         
-                    }//end of objects.count == 0
-                    else if objects.count == 1{
-                        //link with existing pfUser
-                        let userWithID : PFUser = objects[0] as! PFUser
-                        
-                        let permissions = ["public_profile", "email", "user_friends"]
-                        PFFacebookUtils.linkUserInBackground(userWithID, withReadPermissions: permissions, block: { (success : Bool, error : NSError?) -> Void in
-                            if success {
-                                let alertView = UIAlertView()
-                                alertView.title = "Signed in as existing user!"
-                                alertView.addButtonWithTitle("Ok")
-                                alertView.show()
-                            }
-                        })
-                    }
+                    })
+                    
                 }
                 
-            })
-            self.performSegueWithIdentifier("toMainViewSignIn", sender: self)
+            }
+            NSLog("id from fb outside of comp: %s", id)
+            
+            
+            //query parse to see if there is a user already with this facebook id
+            
         }
         
     }

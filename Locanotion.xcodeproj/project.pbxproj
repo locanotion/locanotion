@@ -20,6 +20,7 @@
 		3D8E82451ACCD0510074DD5D /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8E82441ACCD0510074DD5D /* ParseFacebookUtilsV4.framework */; };
 		3D8E824B1ACEF5270074DD5D /* FriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E824A1ACEF5270074DD5D /* FriendDetailViewController.swift */; };
 		3DD8B5FC1AC88A250002BBB7 /* FriendViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8B5FB1AC88A250002BBB7 /* FriendViewTableCell.swift */; };
+		3DECE30A1ADCBFE6000149CE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DECE3091ADCBFE6000149CE /* Constants.swift */; };
 		3DF965BF1AC5BF430011ABC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */; };
 		3DF965C21AC5BF430011ABC2 /* Locanotion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3DF965C01AC5BF430011ABC2 /* Locanotion.xcdatamodeld */; };
 		3DF965C41AC5BF430011ABC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF965C31AC5BF430011ABC2 /* ViewController.swift */; };
@@ -65,6 +66,7 @@
 		3D8E82441ACCD0510074DD5D /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../parse-library-1.7.0 2/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
 		3D8E824A1ACEF5270074DD5D /* FriendDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDetailViewController.swift; sourceTree = "<group>"; };
 		3DD8B5FB1AC88A250002BBB7 /* FriendViewTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewTableCell.swift; sourceTree = "<group>"; };
+		3DECE3091ADCBFE6000149CE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3DF965B91AC5BF430011ABC2 /* Locanotion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Locanotion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF965BD1AC5BF430011ABC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				3D5496B11ACB910200C133D7 /* ViewFriendsViewController.swift */,
 				3D2782091ACAFF2C0088F95D /* MapPageViewController.swift */,
 				3D3B3C781AD4C627000D10EF /* CustomPointAnnotation.swift */,
+				3DECE3091ADCBFE6000149CE /* Constants.swift */,
 				3D8E824A1ACEF5270074DD5D /* FriendDetailViewController.swift */,
 				CED6158C1AC89298002BC56F /* SignUpViewController.swift */,
 				3D4203D21ACB96B2004B647D /* SignInPageViewController.swift */,
@@ -319,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CED6158D1AC89298002BC56F /* SignUpViewController.swift in Sources */,
+				3DECE30A1ADCBFE6000149CE /* Constants.swift in Sources */,
 				3DF965C41AC5BF430011ABC2 /* ViewController.swift in Sources */,
 				3DD8B5FC1AC88A250002BBB7 /* FriendViewTableCell.swift in Sources */,
 				3DF965BF1AC5BF430011ABC2 /* AppDelegate.swift in Sources */,

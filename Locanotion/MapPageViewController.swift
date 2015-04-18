@@ -39,20 +39,19 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
             CLLocationCoordinate2D(latitude: 40.344314, longitude: -74.655556), 2000, 2000)
         
         mapView.setRegion(region, animated: true)
+        
+        for loc in GLOBAL_ClubLocations {
+            var clubAnnot = CustomPointAnnotation()
+            clubAnnot.imageName = "testClub"
+            clubAnnot.coordinate = loc.coordinate
+            mapView.addAnnotation(clubAnnot)
+        }
+        
+        
         //mapView.addAnnotation(userLocationAnnotation)
         self.getFacebookFriendsLocations()
     }
     
-    func updatePosition(){
-        print("updating")
-        let region = MKCoordinateRegionMakeWithDistance(
-            userLocation.coordinate, 0.1, 0.1)
-        
-        mapView.setRegion(region, animated: true)
-
-        
-        
-    }
 
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         if annotation is CustomPointAnnotation {
@@ -140,7 +139,6 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
         print("updating location")
         var location :CLLocation = locations[locations.count - 1] as! CLLocation
         userLocation = location
-        self.updatePosition()
     }
     
 }

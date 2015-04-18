@@ -10,7 +10,10 @@ import Foundation
 import MapKit
 
 class FriendDetailViewControlelr: UIViewController {
-
+    
+    
+    var friendFacebook_ID : String = String()
+    
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var backButton : UIButton!
     @IBOutlet var detailScrollView : UIScrollView!

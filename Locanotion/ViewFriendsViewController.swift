@@ -6,14 +6,19 @@
 //  Copyright (c) 2015 Locanotion. All rights reserved.
 //
 
+
+//TODO:
+//Change way that friends are aquired to using a Friendship Activity
+
 import Foundation
 import UIKit
 
 class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var friendsTableView: UITableView!
-    var friends : Array<PFUser> = Array()
+    var friendNames : Array<String> = Array()
     var friendIDs : Array<String> = Array()
+    var friendLocations : Array<String> = Array()
     let textCellIdentifier = "FriendCell"
     
     override func viewWillAppear(animated: Bool) {
@@ -55,16 +60,25 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
                 var data : NSArray = resultDict.objectForKey("data") as! NSArray
                 
                 let valueDict : NSDictionary = data[0] as! NSDictionary
-                let id = valueDict.objectForKey("name") as! String
+                let id = valueDict.objectForKey("id") as! String
+                var name = (valueDict.objectForKey("name") as! String)
+                NSLog(name)
+                
+                //todo: implement pic request
+                //var picRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "\(id)/friends", parameters: nil)
+                
+                // picRequest.startWithCompletionHandler({ (FBSDKGraphRequestConnection?, result:AnyObject!, error:NSError!) -> Void in
+                    //get data array, i guess data[0] will be the prof picture 
+                //})
+                
                 idArray.append(id)
                 self.friendIDs.append(id)
-                self.friendsTableView.reloadData()
+                self.friendNames.append(name)
+                NSLog("friend names count: %d", self.friendNames.count)
+                self.getFriendLocations()
             }
             
         }
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.friendsTableView.reloadData()
-        })
         
     }
     
@@ -85,6 +99,38 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
             
             
         }
+    }
+    
+    
+    func getFriendLocations() {
+        if self.friendIDs.count > 0 {
+            //get friend PFUsers
+            var friendQuery : PFQuery = PFUser.query()!
+            friendQuery.whereKey("facebook_ID", containedIn: self.friendIDs)
+            
+            friendQuery.findObjectsInBackgroundWithBlock({ (objects:[AnyObject]?, error:NSError?) -> Void in
+                if error != nil {
+                    NSLog("Error finding friend objects")
+                }
+                let results : [PFUser] = objects as! [PFUser]
+                NSLog("results count: %d", results.count)
+                for user in results {
+                    let name : String = user["Full_Name"] as! String
+                    self.friendNames.append(name)
+                    let loc : String = user["LocationName"] as! String
+                    self.friendLocations.append(loc)
+                    
+                }
+                self.friendsTableView.reloadData()
+                
+            })
+            
+            
+        }
+        else {
+            //no friends
+        }
+
     }
     
     
@@ -113,11 +159,14 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! FriendViewTableCell
         
         let row = indexPath.row
-        let cellUser = friendIDs[row] as String
+        let cellUser = friendNames[row] as String
+        let cellLoc = friendLocations[row] as String
         //let loc = cellUser["LocationName"] as String
         
         cell.nameLabel.text = cellUser
-        cell.locLabel.text = "xx"
+        
+        cell.locLabel.text = cellLoc
+        
         //cell.locImageView.image = UIImage(named: "ViewOnMap")
         return cell
         
@@ -145,6 +194,7 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toDetailView" {
             //send data over to the detail VC
+            var destViewController : FriendDetailViewControlelr = segue.destinationViewController as! FriendDetailViewControlelr
         }
         
     }
