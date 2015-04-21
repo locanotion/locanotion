@@ -26,6 +26,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Wcf-me-8Tc" kind="show" id="wwe-Bv-N0P"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jrn-gH-c4u">
                                 <rect key="frame" x="86" y="461" width="428" height="28"/>
@@ -222,6 +225,94 @@
             </objects>
             <point key="canvasLocation" x="675" y="1153"/>
         </scene>
+        <!--View Clubs View Controller-->
+        <scene sceneID="30k-oY-VKX">
+            <objects>
+                <viewController id="Wcf-me-8Tc" customClass="ViewClubsViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dbw-bY-NBV"/>
+                        <viewControllerLayoutGuide type="bottom" id="fZ6-MX-hw0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IZC-zm-42d">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMv-2l-9gf">
+                                <rect key="frame" x="16" y="20" width="59" height="30"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.73333333329999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="y9R-ZL-H8J"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MMv-2l-9gf" firstAttribute="leading" secondItem="IZC-zm-42d" secondAttribute="leadingMargin" id="JVX-hC-esl"/>
+                            <constraint firstItem="MMv-2l-9gf" firstAttribute="top" secondItem="Dbw-bY-NBV" secondAttribute="bottom" id="jd3-1n-axL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="MMv-2l-9gf" id="xIf-rn-j1K"/>
+                        <segue destination="1VT-53-zm0" kind="show" identifier="toDetailClubView" id="m2z-lT-glk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AGU-tJ-fYJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1691" y="347"/>
+        </scene>
+        <!--Club Detail View Controller-->
+        <scene sceneID="UEW-UC-d4Z">
+            <objects>
+                <viewController id="1VT-53-zm0" customClass="ClubDetailViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ifc-j6-iwl"/>
+                        <viewControllerLayoutGuide type="bottom" id="sP9-01-er0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kFW-b7-x84">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqh-nB-Kjl">
+                                <rect key="frame" x="279" y="20" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QsO-B0-OIK">
+                                <rect key="frame" x="16" y="16" width="59" height="30"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.73333333329999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Wcf-me-8Tc" kind="show" id="qse-9O-Z6l"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QsO-B0-OIK" firstAttribute="top" secondItem="Ifc-j6-iwl" secondAttribute="bottom" constant="-4" id="1oo-ik-Faq"/>
+                            <constraint firstAttribute="centerX" secondItem="uqh-nB-Kjl" secondAttribute="centerX" id="Gq1-Ye-vQh"/>
+                            <constraint firstItem="uqh-nB-Kjl" firstAttribute="top" secondItem="Ifc-j6-iwl" secondAttribute="bottom" id="gOL-Ah-t03"/>
+                            <constraint firstItem="QsO-B0-OIK" firstAttribute="leading" secondItem="kFW-b7-x84" secondAttribute="leadingMargin" id="mOk-Ji-MyE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="QsO-B0-OIK" id="Xai-2h-Ezh"/>
+                        <outlet property="clubNameLabel" destination="uqh-nB-Kjl" id="wLR-Ww-vuT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="63B-Mb-Vdx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2347" y="347"/>
+        </scene>
         <!--Friend Detail View Controlelr-->
         <scene sceneID="e7U-nj-TkJ">
             <objects>
@@ -410,7 +501,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yI3-Z8-fhT"/>
-        <segue reference="WJa-lA-zQT"/>
+        <segue reference="y9R-ZL-H8J"/>
+        <segue reference="qse-9O-Z6l"/>
+        <segue reference="I14-Tn-G3U"/>
     </inferredMetricsTieBreakers>
 </document>

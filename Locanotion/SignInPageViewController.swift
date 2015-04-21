@@ -124,7 +124,7 @@ class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
                                 var  curUser : PFUser = objects[0] as! PFUser
                                 let username = curUser["username"] as! String
                                 let password = "temppassword"
-                                
+                                NSLog("HELLO!!!")
                                 PFUser.logInWithUsernameInBackground(username, password: password, block: { (user:PFUser?, error:NSError?) -> Void in
                                     if user != nil {
                                         NSLog("logged in \(username)")

@@ -14,7 +14,7 @@ import Foundation
 
 //Constants for club location
 
-
+let NUM_CLUBS = 11
 let TERRACE : CLLocation = CLLocation(latitude: 40.347173,longitude: -74.653914)
 let TOWER : CLLocation = CLLocation(latitude:40.347688, longitude : -74.653960)
 let CANNON : CLLocation = CLLocation(latitude:40.347808, longitude :-74.653345)
@@ -34,3 +34,4 @@ let TEST_RADIUS = 0.1
 
 
 let GLOBAL_ClubLocations : Array<CLLocation> = [TERRACE,TOWER,CANNON,QUAD,IVY,COTTAGE,CAP,CLOISTER,TI,COLONIAL,CHARTER,BOGGLE]
+let CLUB_NAMES : Array<String> = ["Cannon", "Cap", "Charter", "Cloister", "Colonial","Cottage", "Ivy", "Quad", "Terrace", "TI", "Tower"]

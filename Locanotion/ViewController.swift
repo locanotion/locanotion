@@ -99,50 +99,49 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
         var currentLocationDescription = "No location description"
         
         if loc.distanceFromLocation(TERRACE) < RADIUS {
-            currentLocationDescription = "In Terrace"
+            currentLocationDescription = "Terrace"
         }
         else if loc.distanceFromLocation(TOWER) < RADIUS {
-            currentLocationDescription = "In Tower"
+            currentLocationDescription = "Tower"
         }
         else if loc.distanceFromLocation(CANNON) < RADIUS {
-            currentLocationDescription = "In Cannon"
+            currentLocationDescription = "Cannon"
         }
         else if loc.distanceFromLocation(QUAD) < RADIUS {
-            currentLocationDescription = "In Quad"
+            currentLocationDescription = "Quad"
         }
         else if loc.distanceFromLocation(IVY) < RADIUS {
-            currentLocationDescription = "In Ivy"
+            currentLocationDescription = "Ivy"
         }
         else if loc.distanceFromLocation(COTTAGE) < RADIUS {
-            currentLocationDescription = "In Cottage"
+            currentLocationDescription = "Cottage"
         }
         else if loc.distanceFromLocation(CAP) < RADIUS {
-            currentLocationDescription = "In Cap"
+            currentLocationDescription = "Cap"
         }
         else if loc.distanceFromLocation(CLOISTER) < RADIUS {
-            currentLocationDescription = "In Cloister"
+            currentLocationDescription = "Cloister"
         }
         else if loc.distanceFromLocation(TI) < RADIUS {
-            currentLocationDescription = "In TI"
+            currentLocationDescription = "TI"
         }
         else if loc.distanceFromLocation(COLONIAL) < RADIUS {
-            currentLocationDescription = "In Colonial"
+            currentLocationDescription = "Colonial"
         }
         else if loc.distanceFromLocation(CHARTER) < RADIUS {
-            currentLocationDescription = "In Charter"
+            currentLocationDescription = "Charter"
         }
         else if loc.distanceFromLocation(BOGGLE) < RADIUS {
-            currentLocationDescription = "In Boggle"
+            currentLocationDescription = "Boggle"
         }
         else if loc.distanceFromLocation(CS_BUILDING) < RADIUS {
-            currentLocationDescription = "In CS Building"
+            currentLocationDescription = "CS Building"
         }
         else if loc.distanceFromLocation(WILCOX_DINING) < RADIUS {
-            currentLocationDescription = "In CS Building"
+            currentLocationDescription = "WILCOX"
         }
  
         var user : PFUser? = PFUser.currentUser() // problem with updating could be here if the users are not being linked correctly
-        NSLog("Saving in background")
         if user != nil {
             let user2 : PFUser = user! as PFUser
             user2["LocationName"] = currentLocationDescription
@@ -153,12 +152,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
     
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        var cookie : NSHTTPCookie
-        var storage : NSHTTPCookieStorage = NSHTTPCookieStorage()
-        for cookie in (storage.cookies as! [NSHTTPCookie]) {
-            NSLog("deleted cookie")
-            storage.deleteCookie(cookie)
-        }
         self.locationManager.stopUpdatingLocation()
         self.performSegueWithIdentifier("backToSignInPage", sender: self)
         
