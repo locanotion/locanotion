@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IJv-w4-28j">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -105,6 +106,7 @@
         <!--Map Page View Controller-->
         <scene sceneID="ufH-pc-YR7">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ehy-ew-icC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="CUy-WP-Vbk" customClass="MapPageViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UVu-Ff-QoC"/>
@@ -114,12 +116,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97Y-Zb-RuW">
+                                <rect key="frame" x="16" y="28" width="35" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="BXy-zR-KMe"/>
+                                </connections>
+                            </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWJ-G3-HUp">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="97Y-Zb-RuW" firstAttribute="top" secondItem="UVu-Ff-QoC" secondAttribute="bottom" constant="8" id="9bW-QI-mYn"/>
+                            <constraint firstItem="97Y-Zb-RuW" firstAttribute="leading" secondItem="N3h-wC-hPU" secondAttribute="leadingMargin" id="A98-RT-UNS"/>
                             <constraint firstItem="jWJ-G3-HUp" firstAttribute="top" secondItem="N3h-wC-hPU" secondAttribute="topMargin" id="J8x-y8-eUk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jWJ-G3-HUp" secondAttribute="trailing" constant="-16" id="Jyu-73-uwJ"/>
                             <constraint firstItem="jWJ-G3-HUp" firstAttribute="leading" secondItem="N3h-wC-hPU" secondAttribute="leadingMargin" constant="-16" id="Nhp-kZ-n7W"/>
@@ -130,7 +143,6 @@
                         <outlet property="mapView" destination="jWJ-G3-HUp" id="9ty-Wd-fHj"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ehy-ew-icC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1054" y="-133"/>
         </scene>
@@ -277,10 +289,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqh-nB-Kjl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqh-nB-Kjl">
                                 <rect key="frame" x="279" y="20" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QsO-B0-OIK">
@@ -295,13 +306,64 @@
                                     <segue destination="Wcf-me-8Tc" kind="show" id="qse-9O-Z6l"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LjB-zm-Wj3">
+                                <rect key="frame" x="180" y="99" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LjB-zm-Wj3" secondAttribute="height" multiplier="15:8" id="Ta6-Vc-HnW"/>
+                                    <constraint firstAttribute="height" constant="128" id="U0P-g0-jzM"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g34-yP-WaE">
+                                <rect key="frame" x="274" y="252" width="53" height="24"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends There: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTU-Nc-09h">
+                                <rect key="frame" x="245" y="409" width="111" height="24"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total People There" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UV6-jv-9Ka">
+                                <rect key="frame" x="231" y="328" width="139" height="24"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIp-C5-akb">
+                                <rect key="frame" x="296" y="367" width="10" height="24"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GeO-Eb-oh3">
+                                <rect key="frame" x="296" y="447" width="10" height="24"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tonights Photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmC-VW-Ql8">
+                                <rect key="frame" x="241" y="479" width="121" height="24"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QsO-B0-OIK" firstAttribute="top" secondItem="Ifc-j6-iwl" secondAttribute="bottom" constant="-4" id="1oo-ik-Faq"/>
+                            <constraint firstItem="QsO-B0-OIK" firstAttribute="top" secondItem="Ifc-j6-iwl" secondAttribute="bottom" constant="5" id="1oo-ik-Faq"/>
+                            <constraint firstAttribute="centerX" secondItem="LjB-zm-Wj3" secondAttribute="centerX" id="2tA-zA-34C"/>
+                            <constraint firstAttribute="centerX" secondItem="NTU-Nc-09h" secondAttribute="centerX" constant="-0.5" id="31t-jQ-RP1"/>
+                            <constraint firstItem="NTU-Nc-09h" firstAttribute="top" secondItem="UV6-jv-9Ka" secondAttribute="bottom" constant="57" id="3ra-2f-gAx"/>
+                            <constraint firstAttribute="centerX" secondItem="g34-yP-WaE" secondAttribute="centerX" constant="-0.5" id="6VR-BZ-qMz"/>
+                            <constraint firstAttribute="centerX" secondItem="UV6-jv-9Ka" secondAttribute="centerX" constant="-0.5" id="AHz-kf-qXQ"/>
                             <constraint firstAttribute="centerX" secondItem="uqh-nB-Kjl" secondAttribute="centerX" id="Gq1-Ye-vQh"/>
-                            <constraint firstItem="uqh-nB-Kjl" firstAttribute="top" secondItem="Ifc-j6-iwl" secondAttribute="bottom" id="gOL-Ah-t03"/>
+                            <constraint firstItem="LjB-zm-Wj3" firstAttribute="top" secondItem="uqh-nB-Kjl" secondAttribute="bottom" constant="50" id="Kha-7n-MYo"/>
+                            <constraint firstAttribute="centerX" secondItem="mIp-C5-akb" secondAttribute="centerX" constant="-0.5" id="dAi-Gp-xaa"/>
+                            <constraint firstAttribute="centerX" secondItem="GeO-Eb-oh3" secondAttribute="centerX" id="ekF-ph-Mho"/>
+                            <constraint firstItem="uqh-nB-Kjl" firstAttribute="top" secondItem="Ifc-j6-iwl" secondAttribute="bottom" constant="5" id="gOL-Ah-t03"/>
                             <constraint firstItem="QsO-B0-OIK" firstAttribute="leading" secondItem="kFW-b7-x84" secondAttribute="leadingMargin" id="mOk-Ji-MyE"/>
+                            <constraint firstItem="GeO-Eb-oh3" firstAttribute="top" secondItem="NTU-Nc-09h" secondAttribute="bottom" constant="14" id="pcG-vc-QIZ"/>
+                            <constraint firstItem="UV6-jv-9Ka" firstAttribute="top" secondItem="g34-yP-WaE" secondAttribute="bottom" constant="52" id="rp5-Ow-JOc"/>
+                            <constraint firstAttribute="centerX" secondItem="kmC-VW-Ql8" secondAttribute="centerX" constant="-1.5" id="uqu-mK-uWU"/>
+                            <constraint firstItem="kmC-VW-Ql8" firstAttribute="top" secondItem="NTU-Nc-09h" secondAttribute="bottom" constant="46" id="vgl-Yf-Qan"/>
+                            <constraint firstItem="mIp-C5-akb" firstAttribute="top" secondItem="UV6-jv-9Ka" secondAttribute="bottom" constant="15" id="xC9-gN-715"/>
+                            <constraint firstItem="g34-yP-WaE" firstAttribute="top" secondItem="LjB-zm-Wj3" secondAttribute="bottom" constant="25" id="zTr-D0-QEW"/>
                         </constraints>
                     </view>
                     <connections>
@@ -501,8 +563,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="y9R-ZL-H8J"/>
-        <segue reference="qse-9O-Z6l"/>
         <segue reference="I14-Tn-G3U"/>
+        <segue reference="BXy-zR-KMe"/>
+        <segue reference="qse-9O-Z6l"/>
     </inferredMetricsTieBreakers>
 </document>

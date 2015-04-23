@@ -9,33 +9,10 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Launch" translatesAutoresizingMaskIntoConstraints="NO" id="iAl-Hw-0n3">
-                    <rect key="frame" x="80" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" red="0.38039215686274508" green="0.80392156862745101" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                </imageView>
-            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="iAl-Hw-0n3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9iS-Fo-MrP"/>
-                <constraint firstItem="iAl-Hw-0n3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="g3x-nO-d5A"/>
-                <constraint firstAttribute="trailing" secondItem="iAl-Hw-0n3" secondAttribute="trailing" id="lzi-gs-7Js"/>
-                <constraint firstAttribute="centerX" secondItem="iAl-Hw-0n3" secondAttribute="centerX" constant="-40" id="pvm-g6-2g5"/>
-                <constraint firstAttribute="centerY" secondItem="iAl-Hw-0n3" secondAttribute="centerY" id="z7Y-ej-XRe"/>
-            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="9iS-Fo-MrP"/>
-                    <exclude reference="g3x-nO-d5A"/>
-                    <exclude reference="lzi-gs-7Js"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
-    <resources>
-        <image name="Launch" width="320" height="568"/>
-    </resources>
 </document>

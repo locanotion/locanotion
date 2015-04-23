@@ -34,4 +34,6 @@ let TEST_RADIUS = 0.1
 
 
 let GLOBAL_ClubLocations : Array<CLLocation> = [TERRACE,TOWER,CANNON,QUAD,IVY,COTTAGE,CAP,CLOISTER,TI,COLONIAL,CHARTER,BOGGLE]
-let CLUB_NAMES : Array<String> = ["Cannon", "Cap", "Charter", "Cloister", "Colonial","Cottage", "Ivy", "Quad", "Terrace", "TI", "Tower"]
+let CLUB_NAMES : Array<String> = ["Cannon", "Cap", "Charter", "Cloister", "Colonial","Cottage", "Ivy", "Quad", "Terrace", "TigerInn", "Tower"]
+
+let CLUB_DISPLAY_NAMES : Array<String> = ["Cannon Dial and Elm", "Cap and Gown", "Charter", "Cloister Inn", "Colonial","Cottage", "Ivy", "Quad", "Terrace", "Tiger Inn", "Tower"]
