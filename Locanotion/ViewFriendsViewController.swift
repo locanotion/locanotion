@@ -56,14 +56,15 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
             if error == nil {
                 print(result)
                 var resultDict : NSDictionary = result as! NSDictionary
-                print("data we get from result: ")
                 var data : NSArray = resultDict.objectForKey("data") as! NSArray
-                
-                let valueDict : NSDictionary = data[0] as! NSDictionary
-                let id = valueDict.objectForKey("id") as! String
-                var name = (valueDict.objectForKey("name") as! String)
-                NSLog(name)
-                
+                for value in data {
+                    let valueDict : NSDictionary = value as! NSDictionary
+                    let id = valueDict.objectForKey("id") as! String
+                    var name = (valueDict.objectForKey("name") as! String)
+                    idArray.append(id)
+                    self.friendIDs.append(id)
+                    self.friendNames.append(name)
+                }
                 //todo: implement pic request
                 //var picRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "\(id)/friends", parameters: nil)
                 
@@ -71,10 +72,6 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
                     //get data array, i guess data[0] will be the prof picture 
                 //})
                 
-                idArray.append(id)
-                self.friendIDs.append(id)
-                self.friendNames.append(name)
-                NSLog("friend names count: %d", self.friendNames.count)
                 self.getFriendLocations()
             }
             
@@ -83,7 +80,6 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func getMyFacebookInfo() {
-        NSLog("called method")
         var request : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
         
         request.startWithCompletionHandler { (connection:FBSDKGraphRequestConnection!, result: AnyObject!, error:NSError!) -> Void in

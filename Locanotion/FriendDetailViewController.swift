@@ -37,4 +37,9 @@ class FriendDetailViewControlelr: UIViewController {
         
         
     }
+    
+    
+    func sendPushNotificationTo(userName:String){
+        
+    }
 }

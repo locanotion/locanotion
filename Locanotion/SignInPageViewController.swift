@@ -11,12 +11,17 @@ import UIKit
 
 class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
     
+    
+    @IBOutlet var previewScrollView: UIScrollView!
+    let previewImages : Array<String> = ["previewFriends","FindFriends","viewClubs","previewNotifications"]
+    
+    
     override func viewDidLoad() {
-        //check acces token to skip log in if they
+        let loginButton : FBSDKLoginButton = FBSDKLoginButton()
+        //check acces token to skip log in if they haven't lost access 
         if FBSDKAccessToken.currentAccessToken() != nil{
             NSLog("loaded: not nil")
             self.performSegueWithIdentifier("toMainViewSignIn", sender: self)
-            let loginButton : FBSDKLoginButton = FBSDKLoginButton()
             loginButton.readPermissions = ["public_profile", "email", "user_friends"]
             self.view.addSubview(loginButton)
             loginButton.center.x = self.view.center.x
@@ -25,14 +30,18 @@ class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
         }
         else {
             
-            let loginButton : FBSDKLoginButton = FBSDKLoginButton()
+            
             loginButton.readPermissions = ["public_profile", "email", "user_friends"]
             self.view.addSubview(loginButton)
             loginButton.center.x = self.view.center.x
             loginButton.center.y = self.view.center.y + (self.view.frame.height / 2) - 75
             loginButton.delegate = self
         }
-        
+        var getStarted : UIImageView = UIImageView()
+        getStarted.image = UIImage(named: "GetStarted")
+        getStarted.frame = CGRect(x: loginButton.frame.origin.x, y:loginButton.frame.origin.y - loginButton.frame.height - 5, width:loginButton.frame.width, height: loginButton.frame.height)
+        getStarted.contentMode=UIViewContentMode.ScaleAspectFit
+        self.view.addSubview(getStarted)
     }
     
     override func didReceiveMemoryWarning() {
@@ -111,6 +120,8 @@ class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
                                                     }
                                                 })
                                                 
+                                                self.createFriendshipRelations()
+                                                
                                             }
                                         })
                                         
@@ -124,37 +135,87 @@ class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
                                 var  curUser : PFUser = objects[0] as! PFUser
                                 let username = curUser["username"] as! String
                                 let password = "temppassword"
-                                NSLog("HELLO!!!")
+                                
                                 PFUser.logInWithUsernameInBackground(username, password: password, block: { (user:PFUser?, error:NSError?) -> Void in
                                     if user != nil {
                                         NSLog("logged in \(username)")
+                                        self.createFriendshipRelations()
                                         self.performSegueWithIdentifier("toMainViewSignIn", sender: self)
                                     }
                                     
                                 })
                             }
                             
-                            else {
-                                
-                            }
+                            else {}
                         }
                         
                     })
                     
                 }
-                
             }
-            NSLog("id from fb outside of comp: %s", id)
-            
-            
-            //query parse to see if there is a user already with this facebook id
-            
         }
-        
     }
+    
+    func createFriendshipRelations() {
+        //get all PFUsers with facebook Id's
+        var idArray : Array<String> = Array()
+        var request : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil)
+        
+        request.startWithCompletionHandler({ (connection:FBSDKGraphRequestConnection!, result:AnyObject!, error:NSError!) -> Void in
+            if error == nil {
+                var resultDict : NSDictionary = result as! NSDictionary
+                var data : NSArray = resultDict.objectForKey("data") as! NSArray
+                
+                for value in data {
+                    let valueDict : NSDictionary = value as! NSDictionary
+                    let id = valueDict.objectForKey("id") as! String
+                    idArray.append(id)
+                }
+                
+                //now make a friendship activity for each friend found
+                for id in idArray {
+                    
+                    var friendQuery : PFQuery = PFUser.query()!
+                    friendQuery.whereKey("facebook_ID", equalTo: id)
+                    
+                    friendQuery.findObjectsInBackgroundWithBlock({ (result:[AnyObject]?, error:NSError?) -> Void in
+                        let resultUser = result?.first as! PFUser
+                        //create friend activity
+                        var friendShip : PFObject = PFObject(className: "Activity")
+                        friendShip["Type"] = "Friend"
+                        friendShip["From_User"] = PFUser.currentUser()
+                        friendShip["To_User"] = resultUser
+                        friendShip.saveInBackground()
+                    })
+                }
+            }
+        })
+    }
+    
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         NSLog("User Logged Out")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        frame.size = CGSizeMake(self.previewScrollView.bounds.size.width, previewScrollView.frame.height / 2)
+        
+        //set up preview images
+        for index in 0..<previewImages.count {
+            frame.origin.x = previewScrollView.frame.size.width * CGFloat(index)
+            print("frame.x: \(frame.origin.x)")
+            print("width: \(frame.size.width)")
+            frame.origin.y = previewScrollView.frame.size.height / 4
+            var subView = UIImageView(frame: frame)
+            subView.image = UIImage(named: previewImages[index])
+            subView.contentMode = UIViewContentMode.ScaleAspectFit
+            previewScrollView.pagingEnabled = true
+            previewScrollView.addSubview(subView)
+            
+        }
+        
+        self.previewScrollView.contentSize = CGSizeMake(self.previewScrollView.frame.size.width * CGFloat(previewImages.count), self.previewScrollView.frame.size.height)
     }
     
     

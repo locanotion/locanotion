@@ -18,10 +18,37 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
     //@IBOutlet var scrollView : UIScrollView!
     @IBOutlet var mapView: MKMapView!
     
+    //hash map for attendences
+    //var attendenceArray : Array(String, Int) = Array()
+    
+    ///Array of tuples:(string,int) to hold club, num people
+    var clubInfoArray:[(String, Int)] = []
+    //another array to hold just friend attendence counts
+    var friendsInfoArray = [String: Int]()
+    
+    
+
+    
+    
+    
+    var backButton : UIButton!
     var userLocation : CLLocation!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for club in CLUB_NAMES {
+            friendsInfoArray[club] = 0
+        }
+        print(friendsInfoArray)
+        
+        
+        backButton = UIButton(frame:CGRect(x: 0, y: 0, width: 100, height: 40))
+        backButton.setTitle("Back", forState: UIControlState.Normal)
+        backButton.layer.backgroundColor = UIColor.orangeColor().CGColor
+        backButton.layer.cornerRadius = 3
+        backButton.addTarget(self, action: "backToMainScreen", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(backButton)
         swipeRec.addTarget(self, action: "swipeHandler:")
         mapView.delegate = self
         
@@ -40,16 +67,10 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
         
         mapView.setRegion(region, animated: true)
         
-        for loc in GLOBAL_ClubLocations {
-            var clubAnnot = CustomPointAnnotation()
-            clubAnnot.imageName = "testClub"
-            clubAnnot.coordinate = loc.coordinate
-            mapView.addAnnotation(clubAnnot)
-        }
-        
-        
         //mapView.addAnnotation(userLocationAnnotation)
         self.getFacebookFriendsLocations()
+        
+        self.getAllClubInfo()
     }
     
 
@@ -67,6 +88,7 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
             
             let cpa = annotation as! CustomPointAnnotation
             anView.image = UIImage(named: cpa.imageName)
+            
             return anView
             
         }
@@ -98,15 +120,12 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
                 self.friendIDs.append(id)
                 print(id)
             }
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.getPFUsersWithIDAndAddToMap()
-            })
-            
         }
         
     }
     
+    //Won't be using this for now
+    /*
     func getPFUsersWithIDAndAddToMap(){
         var friendQuery : PFQuery = PFUser.query()!
         NSLog("friendIDS %d", friendIDs.count)
@@ -129,6 +148,7 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
             }
         }
     }
+    */
     
     func swipeHadler(recognizer:UIGestureRecognizer) {
         //go back to the friends page
@@ -139,6 +159,63 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
         print("updating location")
         var location :CLLocation = locations[locations.count - 1] as! CLLocation
         userLocation = location
+    }
+    func backToMainScreen(){
+        self.performSegueWithIdentifier("backToMainScreen", sender: self)
+    }
+    
+    
+    func displayClubAnnotations() {
+        for loc in GLOBAL_ClubLocations {
+            var clubAnnot = CustomPointAnnotation()
+            clubAnnot.imageName = "testClub"
+            clubAnnot.type = "clubLabel"
+            clubAnnot.coordinate = loc.coordinate
+            mapView.addAnnotation(clubAnnot)
+        }
+    }
+    
+    
+    func getAllClubInfo() {
+        var query : PFQuery = PFUser.query()!
+        query.orderByDescending("At_Club")
+        
+        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error: NSError?) -> Void in
+            
+            var currentClubCount : Int = 1
+            let resArray = result as! [PFUser]
+            let firstUser = resArray[0] as PFUser
+            var currentClub : String = firstUser["LocationName"] as! String
+            for user in resArray{
+                //total attendence for each club
+                if currentClub == (user["LocationName"] as! String) {
+                    currentClubCount++
+                }
+                else {
+                    self.clubInfoArray += [(currentClub, currentClubCount)]
+                    currentClubCount = 1
+                    currentClub = user["LocationName"] as! String
+                }
+                
+            }
+            print("PRINTING SELF ARRAY")
+            print(self.clubInfoArray)
+        }
+    }
+    
+    func getFriendsClubInfo(){
+        var friendQuery: PFQuery = PFQuery(className: "Activity")
+        friendQuery.whereKey("Type", equalTo: "Friend")
+        friendQuery.whereKey("From_User", equalTo: PFUser.currentUser()!) //check this to make sure linking with current user works correctly
+        friendQuery.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error:NSError?) -> Void in
+            let resArray = result as! [PFUser]
+            for user in resArray {
+                let clubName = user["LocationName"] as! String
+                self.friendsInfoArray[clubName] = self.friendsInfoArray[clubName]! + 1
+            }
+            
+        }
+        
     }
     
 }

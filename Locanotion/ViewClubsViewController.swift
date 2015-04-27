@@ -7,11 +7,11 @@
 //
 
 import Foundation
-
 class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet var backButton : UIButton!
     var clubCollectionView : UICollectionView?
+    var mostPopularClub : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +42,9 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ClubCell", forIndexPath: indexPath) as! ClubCollectionViewCell
         if indexPath.row == 0 {
             cell.clubNameLabel.text = "Tonight's Most Popular Club"
-            cell.clubOpenLabel.text = ""
+            cell.clubOpenLabel.text = "club name"
             cell.clubAttendanceLabel.text = "0"
+            cell.clubImageView.image = UIImage(named: "lightShow")
         }
         else {
             cell.clubNameLabel.text = CLUB_NAMES[indexPath.row - 1]
@@ -70,6 +71,19 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
             let destVC = segue.destinationViewController as! ClubDetailViewController
             let clubName = sender as! String
             destVC.clubName = clubName
+        }
+    }
+    
+    func getMostPopularClub(){
+        var clubQuery : PFQuery = PFQuery(className: "Club")
+        clubQuery.orderByDescending("Attendance")
+        clubQuery.findObjectsInBackgroundWithBlock { (objects:[AnyObject]?, error:NSError?) -> Void in
+            if error == nil {
+                self.mostPopularClub = ""
+                for object in (objects as! [PFObject]){
+                    
+                }
+            }
         }
     }
     

@@ -37,3 +37,7 @@ let GLOBAL_ClubLocations : Array<CLLocation> = [TERRACE,TOWER,CANNON,QUAD,IVY,CO
 let CLUB_NAMES : Array<String> = ["Cannon", "Cap", "Charter", "Cloister", "Colonial","Cottage", "Ivy", "Quad", "Terrace", "TigerInn", "Tower"]
 
 let CLUB_DISPLAY_NAMES : Array<String> = ["Cannon Dial and Elm", "Cap and Gown", "Charter", "Cloister Inn", "Colonial","Cottage", "Ivy", "Quad", "Terrace", "Tiger Inn", "Tower"]
+
+func GET_NEAREST_CLUB() -> String{
+    return ""
+}

@@ -9,6 +9,9 @@
 import UIKit
 import CoreLocation
 
+//Global
+var UserCurrentClub : String!
+
 class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginButtonDelegate {
 
     @IBOutlet weak var ViewMapButton: UIButton!
@@ -98,49 +101,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
         let lon = loc.coordinate.longitude
         var currentLocationDescription = "No location description"
         
-        if loc.distanceFromLocation(TERRACE) < RADIUS {
-            currentLocationDescription = "Terrace"
+        var currentClosestClub : String = "Not in a CLub"
+        var currentClosestDistance = CGFloat(1.0)
+        
+        for clubLocIndex in 0 ..< GLOBAL_ClubLocations.count {
+            if CGFloat(GLOBAL_ClubLocations[clubLocIndex].distanceFromLocation(loc)) < currentClosestDistance {
+                currentClosestClub = CLUB_DISPLAY_NAMES[clubLocIndex]
+            }
         }
-        else if loc.distanceFromLocation(TOWER) < RADIUS {
-            currentLocationDescription = "Tower"
-        }
-        else if loc.distanceFromLocation(CANNON) < RADIUS {
-            currentLocationDescription = "Cannon"
-        }
-        else if loc.distanceFromLocation(QUAD) < RADIUS {
-            currentLocationDescription = "Quad"
-        }
-        else if loc.distanceFromLocation(IVY) < RADIUS {
-            currentLocationDescription = "Ivy"
-        }
-        else if loc.distanceFromLocation(COTTAGE) < RADIUS {
-            currentLocationDescription = "Cottage"
-        }
-        else if loc.distanceFromLocation(CAP) < RADIUS {
-            currentLocationDescription = "Cap"
-        }
-        else if loc.distanceFromLocation(CLOISTER) < RADIUS {
-            currentLocationDescription = "Cloister"
-        }
-        else if loc.distanceFromLocation(TI) < RADIUS {
-            currentLocationDescription = "TI"
-        }
-        else if loc.distanceFromLocation(COLONIAL) < RADIUS {
-            currentLocationDescription = "Colonial"
-        }
-        else if loc.distanceFromLocation(CHARTER) < RADIUS {
-            currentLocationDescription = "Charter"
-        }
-        else if loc.distanceFromLocation(BOGGLE) < RADIUS {
-            currentLocationDescription = "Boggle"
-        }
-        else if loc.distanceFromLocation(CS_BUILDING) < RADIUS {
-            currentLocationDescription = "CS Building"
-        }
-        else if loc.distanceFromLocation(WILCOX_DINING) < RADIUS {
-            currentLocationDescription = "WILCOX"
-        }
- 
+        
+        UserCurrentClub = currentClosestClub
+        
         var user : PFUser? = PFUser.currentUser() // problem with updating could be here if the users are not being linked correctly
         if user != nil {
             let user2 : PFUser = user! as PFUser

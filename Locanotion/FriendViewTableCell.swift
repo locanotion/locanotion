@@ -14,9 +14,5 @@ class FriendViewTableCell : UITableViewCell {
     @IBOutlet var pictureView : UIImageView!
     
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     
 }

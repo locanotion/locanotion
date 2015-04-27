@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D05EFFE1AEAA56C00F83AD5 /* ClubLabelAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05EFFD1AEAA56C00F83AD5 /* ClubLabelAnnotation.swift */; };
 		3D20C1351ACBA54000DFD43C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D20C1321ACBA54000DFD43C /* FBSDKCoreKit.framework */; };
 		3D20C1361ACBA54000DFD43C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D20C1331ACBA54000DFD43C /* FBSDKLoginKit.framework */; };
 		3D20C1371ACBA54000DFD43C /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D20C1341ACBA54000DFD43C /* FBSDKShareKit.framework */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D05EFFD1AEAA56C00F83AD5 /* ClubLabelAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubLabelAnnotation.swift; sourceTree = "<group>"; };
 		3D20C1321ACBA54000DFD43C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		3D20C1331ACBA54000DFD43C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		3D20C1341ACBA54000DFD43C /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */,
 				3D5496B11ACB910200C133D7 /* ViewFriendsViewController.swift */,
 				3D2782091ACAFF2C0088F95D /* MapPageViewController.swift */,
+				3D05EFFD1AEAA56C00F83AD5 /* ClubLabelAnnotation.swift */,
 				3D3B3C781AD4C627000D10EF /* CustomPointAnnotation.swift */,
 				3DECE3091ADCBFE6000149CE /* Constants.swift */,
 				3D8E824A1ACEF5270074DD5D /* FriendDetailViewController.swift */,
@@ -338,6 +341,7 @@
 				3DF965BF1AC5BF430011ABC2 /* AppDelegate.swift in Sources */,
 				3D27820A1ACAFF2C0088F95D /* MapPageViewController.swift in Sources */,
 				3D4203D31ACB96B2004B647D /* SignInPageViewController.swift in Sources */,
+				3D05EFFE1AEAA56C00F83AD5 /* ClubLabelAnnotation.swift in Sources */,
 				3D3B3C791AD4C627000D10EF /* CustomPointAnnotation.swift in Sources */,
 				3DB35C251AE430970009FA90 /* ClubDetailViewController.swift in Sources */,
 				3DF965C21AC5BF430011ABC2 /* Locanotion.xcdatamodeld in Sources */,
