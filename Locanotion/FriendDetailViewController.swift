@@ -18,7 +18,12 @@ class FriendDetailViewControlelr: UIViewController {
     @IBOutlet var backButton : UIButton!
     @IBOutlet var detailScrollView : UIScrollView!
     @IBOutlet var friendNameLabel : UILabel!
+    var friendUser : PFUser!
     var friendName : String!
+    var friendID : String!
+    var friendLoc : String!
+    var friendHistory : Array<String>!
+    var historyScrollView : UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +38,16 @@ class FriendDetailViewControlelr: UIViewController {
         
         mapView.setRegion(region, animated: true)
         
-        //set up the detail scroll view 
+        
+        var label = UILabel(frame: CGRect(x: 0, y: (self.view.frame.height / 2) - 40, width: 100, height: 40))
+        label.text = "\(friendName)'s History"
+        label.font = UIFont(name: "Avenir Next", size: 14)
+        label.textColor = VOLE_COLOR
+        self.view.addSubview(label)
+        historyScrollView.frame = CGRect(x: 0, y: self.view.frame.height / 2, width: self.view.frame.width, height: self.view.frame.height / 2)
+        historyScrollView.backgroundColor = VOLE_COLOR
+        self.view.addSubview(historyScrollView)
+        
         
         
     }
@@ -42,4 +56,41 @@ class FriendDetailViewControlelr: UIViewController {
     func sendPushNotificationTo(userName:String){
         
     }
+    
+    func getUserInfoFromFacebookID(){
+        var userQuery : PFQuery = PFUser.query()!
+        userQuery.whereKey("facebook_ID", equalTo: friendID)
+        userQuery.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
+            let user = result?.first as! PFUser
+            self.friendUser = user
+            self.friendLoc = user["LocationName"] as! String
+            self.friendHistory = user["history"] as! Array<String>
+            
+            if self.friendHistory.count == 0 {
+                
+            }
+            else {
+                self.setUpHistoryTable()
+            }
+        }
+    }
+    
+    func setUpHistoryTable() {
+        var frame = CGRect(x: 10, y: 0, width: self.view.frame.width, height: 40)
+        for i in 0 ..< friendHistory.count {
+            frame.origin.y = CGFloat(i) * frame.height
+            var label = UILabel(frame: frame)
+            label.font = UIFont(name: "Avenir Next", size: 14)
+            label.text = friendHistory[i]
+            self.historyScrollView.addSubview(label)
+        }
+        
+        self.historyScrollView.contentSize = CGSize(width: self.view.frame.width, height: (frame.height * CGFloat(friendHistory.count)) + 200)
+        
+    }
+    
 }
+
+
+
+

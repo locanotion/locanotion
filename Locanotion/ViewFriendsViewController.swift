@@ -20,6 +20,10 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     var friendIDs : Array<String> = Array()
     var friendLocations : Array<String> = Array()
     let textCellIdentifier = "FriendCell"
+    var backButton : UIButton!
+    
+    var selectedName : String!
+    var SelectedFriendID : String!
     
     override func viewWillAppear(animated: Bool) {
         //get the user's
@@ -40,9 +44,18 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
                 }
             }
         }*/
-        
         self.getFacebookFriends()
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        backButton = UIButton(frame:CGRect(x: (self.view.frame.width / 2) - 50, y: self.view.frame.height - 50, width: 100, height: 40))
+        backButton.setTitle("home", forState: UIControlState.Normal)
+        backButton.layer.backgroundColor = VOLE_COLOR.CGColor
+        backButton.titleLabel?.textColor = UIColor.whiteColor()
+        backButton.layer.cornerRadius = 3
+        backButton.addTarget(self, action: "backToMainScreen", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(backButton)
     }
     
     
@@ -180,6 +193,8 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
         //if user does not tap again
         
         var cell : FriendViewTableCell = friendsTableView.cellForRowAtIndexPath(indexPath) as! FriendViewTableCell
+        self.selectedName = cell.nameLabel.text
+        self.SelectedFriendID = self.friendIDs[indexPath.row]
         self.performSegueWithIdentifier("toDetailView", sender: cell)
         
         friendsTableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -191,8 +206,13 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
         if segue.identifier == "toDetailView" {
             //send data over to the detail VC
             var destViewController : FriendDetailViewControlelr = segue.destinationViewController as! FriendDetailViewControlelr
+            destViewController.friendName = selectedName
         }
         
+    }
+    
+    func backToMainScreen(){
+        self.performSegueWithIdentifier("backToMainScreen", sender: self)
     }
     
 }

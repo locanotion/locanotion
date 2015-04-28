@@ -43,9 +43,10 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
         print(friendsInfoArray)
         
         
-        backButton = UIButton(frame:CGRect(x: 0, y: 0, width: 100, height: 40))
-        backButton.setTitle("Back", forState: UIControlState.Normal)
-        backButton.layer.backgroundColor = UIColor.orangeColor().CGColor
+        backButton = UIButton(frame:CGRect(x: (self.view.frame.width / 2) - 50, y: self.view.frame.height - 50, width: 100, height: 40))
+        backButton.setTitle("home", forState: UIControlState.Normal)
+        backButton.layer.backgroundColor = VOLE_COLOR.CGColor
+        backButton.titleLabel?.textColor = UIColor.whiteColor()
         backButton.layer.cornerRadius = 3
         backButton.addTarget(self, action: "backToMainScreen", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(backButton)

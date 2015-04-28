@@ -19,6 +19,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
     @IBOutlet weak var ViewClubsButton: UIButton!
     @IBOutlet var CurrentUserLabel: UILabel!
     
+    //used for the history
+    var lastClubName : String!
+    
+    
     @IBOutlet var logoView: UIImageView!
     @IBOutlet var asd: UIButton!
     
@@ -111,11 +115,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
         }
         
         UserCurrentClub = currentClosestClub
+        if currentClosestClub != lastClubName && currentClosestClub != "Not in a Club" {
+            HISTORY_TONIGHT.append(currentClosestClub)
+        }
         
         var user : PFUser? = PFUser.currentUser() // problem with updating could be here if the users are not being linked correctly
         if user != nil {
             let user2 : PFUser = user! as PFUser
             user2["LocationName"] = currentLocationDescription
+            user2["history"] = HISTORY_TONIGHT
             user2.saveInBackground()
         }
         
@@ -126,12 +134,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
         self.locationManager.stopUpdatingLocation()
         self.performSegueWithIdentifier("backToSignInPage", sender: self)
         
-        
-        
     }
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         //?
     }
+    
+    
+    
     
 }
 

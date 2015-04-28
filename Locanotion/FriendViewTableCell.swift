@@ -14,5 +14,19 @@ class FriendViewTableCell : UITableViewCell {
     @IBOutlet var pictureView : UIImageView!
     
     
+    override func awakeFromNib() {
+        let frame = self.frame
+        self.backgroundColor = UIColor.clearColor()
+        
+        //add blur view for background
+        
+        var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        var blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = frame
+        self.contentView.addSubview(blurView)
+        
+    }
+    
+    
     
 }

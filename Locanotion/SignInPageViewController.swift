@@ -37,11 +37,7 @@ class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
             loginButton.center.y = self.view.center.y + (self.view.frame.height / 2) - 75
             loginButton.delegate = self
         }
-        var getStarted : UIImageView = UIImageView()
-        getStarted.image = UIImage(named: "GetStarted")
-        getStarted.frame = CGRect(x: loginButton.frame.origin.x, y:loginButton.frame.origin.y - loginButton.frame.height - 5, width:loginButton.frame.width, height: loginButton.frame.height)
-        getStarted.contentMode=UIViewContentMode.ScaleAspectFit
-        self.view.addSubview(getStarted)
+       
     }
     
     override func didReceiveMemoryWarning() {
@@ -216,6 +212,7 @@ class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
         }
         
         self.previewScrollView.contentSize = CGSizeMake(self.previewScrollView.frame.size.width * CGFloat(previewImages.count), self.previewScrollView.frame.size.height)
+        self.previewScrollView.showsHorizontalScrollIndicator = false
     }
     
     

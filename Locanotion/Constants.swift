@@ -41,3 +41,9 @@ let CLUB_DISPLAY_NAMES : Array<String> = ["Cannon Dial and Elm", "Cap and Gown",
 func GET_NEAREST_CLUB() -> String{
     return ""
 }
+
+var HISTORY_TONIGHT : Array<String> = Array()
+
+
+//color of blue for Vole
+var VOLE_COLOR = UIColor(hue: 0.546, saturation: 0.58, brightness: 0.87, alpha: 1.0)

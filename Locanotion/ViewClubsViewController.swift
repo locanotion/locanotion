@@ -9,7 +9,7 @@
 import Foundation
 class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-    @IBOutlet var backButton : UIButton!
+    var backButton : UIButton!
     var clubCollectionView : UICollectionView?
     var mostPopularClub : String!
     
@@ -24,18 +24,26 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
         layout.scrollDirection = .Vertical
         let clubCollectionViewFrame = CGRect(x: 0, y: 50, width: self.view.frame.width, height: self.view.frame.height)
         
-        backButton.layer.cornerRadius = 3
+        
         clubCollectionView = UICollectionView(frame: clubCollectionViewFrame, collectionViewLayout: layout)
         clubCollectionView!.dataSource = self
         clubCollectionView!.delegate = self
         clubCollectionView!.registerClass(ClubCollectionViewCell.self, forCellWithReuseIdentifier: "ClubCell")
         clubCollectionView!.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(clubCollectionView!)
+        
+        backButton = UIButton(frame:CGRect(x: (self.view.frame.width / 2) - 50, y: self.view.frame.height - 50, width: 100, height: 40))
+        backButton.setTitle("home", forState: UIControlState.Normal)
+        backButton.layer.backgroundColor = VOLE_COLOR.CGColor
+        backButton.titleLabel?.textColor = UIColor.whiteColor()
+        backButton.layer.cornerRadius = 3
+        backButton.addTarget(self, action: "backToMainScreen", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(backButton)
     }
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return NUM_CLUBS
+        return NUM_CLUBS + 1
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -85,6 +93,10 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
                 }
             }
         }
+    }
+    
+    func backToMainScreen(){
+        self.performSegueWithIdentifier("backToMainScreen", sender: self)
     }
     
 }
