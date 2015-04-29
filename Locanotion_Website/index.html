@@ -63,7 +63,7 @@
     <header id="top" class="header">
         <div class="text-vertical-center">
             <h1>Locanotion</h1>
-            <h3>Find your Friends &amp; Get to the Hottest Party</h3>
+            <h3><span id="changeText" class="italic bold">Find your Friends</span></h3>
             <br>
             <a href="#about" class="btn btn-light btn-lg">Ready to ride the wave?</a>
         </div>
@@ -275,6 +275,24 @@
 
     <!-- Custom Theme JavaScript -->
     <script>
+
+    // Change text on home menu
+    var text = ["Find your Friends", "See Who's at What Club", "Get to the Hottest Party", "Never Lose Your Friends Again", "Win the Night"];
+    var counter = 0;
+    var elem = $("#changeText");
+
+    change();
+
+    function change() {
+        elem.fadeOut(500,function(){
+            elem.html(text[counter]);
+            counter++;
+            if(counter >= text.length) { counter = 0; }
+            elem.fadeIn(500);
+            setTimeout(change, 2000);
+        });
+    }
+    
     // Closes the sidebar menu
     $("#menu-close").click(function(e) {
         e.preventDefault();
