@@ -224,6 +224,7 @@ hr.small {
 /* iPhone Screens */
 
 .screen {
+    margin-top: 50px;
     margin-bottom: 50px;
 }
 
@@ -240,7 +241,7 @@ hr.small {
 
 .textContainer p{
     font-size: 1.5em;
-    font-weight: 300;
+    font-weight: 400;
     display: table-cell;
     vertical-align: middle;
 }
