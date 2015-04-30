@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app requires accesing your location</string>
+	<string>This app requires accessing your location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Let this app find your location?</string>
 	<key>CFBundleExecutable</key>
