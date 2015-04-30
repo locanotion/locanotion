@@ -21,6 +21,7 @@ body {
     text-align: center;
     vertical-align: middle;
     color: #fff;
+    
 }
 
 .text-vertical-center h1 {
@@ -29,6 +30,11 @@ body {
     font-size: 4.5em;
     font-weight: 700;
     color: #fff;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.text-vertical-center h3 {
+    text-shadow: 1px 1px 1px #000;
 }
 
 /* Custom Button Styles */
@@ -158,7 +164,7 @@ hr.small {
     width: 100%;
     height: 100%;
     background: url(../img/blair.jpg) no-repeat center center scroll;
-    -webkit-filter: grayscale(75%);
+    -webkit-filter: grayscale(65%);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -197,7 +203,7 @@ hr.small {
 
 /* Portfolio */
 
-.portfolio {
+/*.portfolio {
     padding: 50px 0;
 }
 
@@ -213,6 +219,30 @@ hr.small {
 .img-portfolio:hover {
     opacity: 0.8;
     height: 400px;
+}*/
+
+/* iPhone Screens */
+
+.screen {
+    margin-bottom: 50px;
+}
+
+.textContainer {
+    display: table;
+    height: 500px;
+}
+.textContainer h3{
+    font-size: 2.5em;
+    font-weight: 600;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.textContainer p{
+    font-size: 1.5em;
+    font-weight: 300;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 /* Call to Action */
