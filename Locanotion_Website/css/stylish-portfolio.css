@@ -223,9 +223,13 @@ hr.small {
 
 /* iPhone Screens */
 
-.screen {
+/*.screen {
     margin-top: 50px;
     margin-bottom: 50px;
+}*/
+
+.img-screen:hover {
+    opacity: 0.8;
 }
 
 .textContainer {
