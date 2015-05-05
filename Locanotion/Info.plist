@@ -4,6 +4,13 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+<<<<<<< HEAD
+=======
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app requires accessing your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Let this app find your location?</string>
+>>>>>>> 461343fb3ea064e8286a4c1bfbf69d723e10d2d9
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
