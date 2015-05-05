@@ -12,5 +12,8 @@ import MapKit
 class CustomPointAnnotation : MKPointAnnotation {
     var imageName : String!
     var type : String!
+    var name : String!
+    var friendAttendence : Int!
+    var totalAttendence : Int!
     
 }

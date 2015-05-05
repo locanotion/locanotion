@@ -25,7 +25,13 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     var selectedName : String!
     var SelectedFriendID : String!
     
+    //Properties for side-panel menu
+    var delegate: CenterViewControllerDelegate?
+    
+    var menuButton : UIButton!
+    
     override func viewWillAppear(animated: Bool) {
+        NSLog("WILL APPEAR")
         //get the user's
         var user = PFUser.currentUser()
         if user == nil {
@@ -49,13 +55,14 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     override func viewDidLayoutSubviews() {
-        backButton = UIButton(frame:CGRect(x: (self.view.frame.width / 2) - 50, y: self.view.frame.height - 50, width: 100, height: 40))
-        backButton.setTitle("home", forState: UIControlState.Normal)
-        backButton.layer.backgroundColor = VOLE_COLOR.CGColor
-        backButton.titleLabel?.textColor = UIColor.whiteColor()
-        backButton.layer.cornerRadius = 3
-        backButton.addTarget(self, action: "backToMainScreen", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(backButton)
+        menuButton = UIButton(frame:CGRect(x: 10, y: 25, width: 40, height: 30))
+        menuButton.setBackgroundImage(UIImage(named: "MenuIcon"), forState: UIControlState.Normal)
+        menuButton.addTarget(self, action: "menuTapped", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(menuButton)
+    }
+    
+    func menuTapped() {
+        delegate?.toggleLeftPanel?()
     }
     
     
@@ -77,6 +84,17 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
                     idArray.append(id)
                     self.friendIDs.append(id)
                     self.friendNames.append(name)
+                    NSLog("friend id's : \(self.friendIDs)")
+                    
+                    let userQuery = PFUser.query()
+                    userQuery?.whereKey("facebook_ID", equalTo: id)
+                    userQuery?.findObjectsInBackgroundWithBlock({ (result:[AnyObject]?, error:NSError?) -> Void in
+                        let res = result as! [PFUser]
+                        let user = res.first!
+                        let loc : String = user["LocationName"] as! String
+                        self.friendLocations.append(loc)
+                        self.friendsTableView.reloadData()
+                    })
                 }
                 //todo: implement pic request
                 //var picRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "\(id)/friends", parameters: nil)
@@ -85,7 +103,7 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
                     //get data array, i guess data[0] will be the prof picture 
                 //})
                 
-                self.getFriendLocations()
+                //self.getFriendLocations()
             }
             
         }
@@ -113,6 +131,22 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     
     func getFriendLocations() {
         if self.friendIDs.count > 0 {
+            
+            //friend query
+            var query : PFQuery = PFQuery(className: "Activity")
+            query.whereKey("From_User", equalTo: PFUser.currentUser()!)
+            query.includeKey("To_User")
+            query.findObjectsInBackgroundWithBlock({ (result:[AnyObject]?, error:NSError?) -> Void in
+                NSLog("firstQueryCount: \(result!.count)")
+                let resultArray = result as! [PFObject]
+                for res in resultArray {
+                    let user = res["To_User"] as! PFUser
+                    NSLog(user["Full_Name"] as! String)
+                
+                    
+                }
+            })
+            
             //get friend PFUsers
             var friendQuery : PFQuery = PFUser.query()!
             friendQuery.whereKey("facebook_ID", containedIn: self.friendIDs)
@@ -128,6 +162,7 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
                     self.friendNames.append(name)
                     let loc : String = user["LocationName"] as! String
                     self.friendLocations.append(loc)
+                    NSLog("name:\(name) loc: \(loc)")
                     
                 }
                 self.friendsTableView.reloadData()
@@ -159,6 +194,9 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if friendIDs.count == 0 {
             NSLog("zero count")
+            return 0
+        }
+        if friendIDs.count != friendLocations.count {
             return 0
         }
         return friendIDs.count
@@ -215,6 +253,39 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
         self.performSegueWithIdentifier("backToMainScreen", sender: self)
     }
     
+    func emptyArrays(){
+        self.friendIDs.removeAll(keepCapacity: false)
+        self.friendNames.removeAll(keepCapacity: false)
+        self.friendLocations.removeAll(keepCapacity: false)
+    }
+    
+}
+
+//Mark sidepanelViewControllerDelegate methods
+
+extension ViewFriendsViewController: SidePanelViewControllerDelegate {
+    
+    func navItemSelected(item: NavItem) {
+        delegate?.collapseSidePanels?()
+        
+        let del = delegate as! ContainerViewController
+        let nav = del.centerNavigationController
+        
+        NSLog("FRIENDSFRIENDSFRIENDS")
+        
+        if item.title == "View Map"{
+            del.leftViewController?.delegate = del.mapPageViewController
+            nav.popToViewController(del.mapPageViewController, animated: true)
+        }
+        else if item.title == "View Friends"{
+            //do nothing
+            //nav.pushViewController(del.friendsViewController, animated: true)
+        }
+        else if item.title == "View Clubs"{
+            del.leftViewController?.delegate = del.clubsViewController
+            nav.popToViewController(del.clubsViewController, animated: true)
+        }
+    }
 }
 
 

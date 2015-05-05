@@ -21,12 +21,8 @@ class ClubDetailViewController : UIViewController, UINavigationControllerDelegat
     var pictureView : UICollectionView!
     var pictureArray : Array<UIImage> = Array()
     
-    //used for photo capture
-    //let captureSession = AVCaptureSession()
-    //var captureDevice : AVCaptureDevice?
-    //var previewLayer : AVCaptureVideoPreviewLayer?
-    
-    
+    //Properties for side-panel menu
+    var delegate: CenterViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +56,11 @@ class ClubDetailViewController : UIViewController, UINavigationControllerDelegat
         }*/
         
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        NSLog("WillAppear")
+        clubNameLabel.text = clubName
     }
     
     func getClubInfo(name:String){
@@ -103,8 +104,9 @@ class ClubDetailViewController : UIViewController, UINavigationControllerDelegat
             cell.contentView.addSubview(button)
         }
         else {
-            let image = pictureArray[indexPath.row]
+            let image = pictureArray[indexPath.row - 1]
             photoView.image = image
+            photoView.backgroundColor = UIColor.blueColor()
         }
         cell.contentView.addSubview(photoView)
         
@@ -152,6 +154,12 @@ class ClubDetailViewController : UIViewController, UINavigationControllerDelegat
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        let del = delegate as! ContainerViewController
+        let nav = del.centerNavigationController
+        nav.popViewControllerAnimated(true)
+    }
+    
     func addPhotoPressed(){
         //check to see that the camera is available
         
@@ -173,7 +181,7 @@ class ClubDetailViewController : UIViewController, UINavigationControllerDelegat
             alertView.show()
             
         }
-        
+        /*
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
             var img = UIImagePickerController()
             img.delegate = self
@@ -181,7 +189,7 @@ class ClubDetailViewController : UIViewController, UINavigationControllerDelegat
             img.mediaTypes = [kUTTypeImage]
             img.allowsEditing = false
             self.presentViewController(img, animated: true, completion: nil)
-        }
+        }*/
         
        
     }
@@ -189,7 +197,10 @@ class ClubDetailViewController : UIViewController, UINavigationControllerDelegat
     func getPhotosForScrollView(){
         var photoQuery : PFQuery = PFQuery(className: "Image")
         //photoQuery.whereKey("Club_Name", equalTo: currentClubName) //need to set this somehow
+        photoQuery.whereKey("Club", equalTo: self.clubName)
         photoQuery.orderByDescending("createdAt")
+        
+        
         photoQuery.limit = 10
         
         photoQuery.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
@@ -201,12 +212,13 @@ class ClubDetailViewController : UIViewController, UINavigationControllerDelegat
                         if error == nil {
                             let image = UIImage(data: dataRes!)
                             self.pictureArray.append(image!)
+                            print("image:\(image)")
+                            self.pictureView.reloadData()
                         }
+                        
                     })
                 }
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.pictureView.reloadData()
-                })
+                
                 
             }
             else {

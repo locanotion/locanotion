@@ -8,10 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3D05EFFE1AEAA56C00F83AD5 /* ClubLabelAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05EFFD1AEAA56C00F83AD5 /* ClubLabelAnnotation.swift */; };
+		3D11BC711AF3E50800015AA0 /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D11BC701AF3E50800015AA0 /* SidePanelViewController.swift */; };
+		3D11BC731AF3E5D700015AA0 /* NavItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D11BC721AF3E5D700015AA0 /* NavItem.swift */; };
+		3D11BC751AF3E77000015AA0 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D11BC741AF3E77000015AA0 /* ContainerViewController.swift */; };
 		3D20C1351ACBA54000DFD43C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D20C1321ACBA54000DFD43C /* FBSDKCoreKit.framework */; };
 		3D20C1361ACBA54000DFD43C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D20C1331ACBA54000DFD43C /* FBSDKLoginKit.framework */; };
 		3D20C1371ACBA54000DFD43C /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D20C1341ACBA54000DFD43C /* FBSDKShareKit.framework */; };
 		3D27820A1ACAFF2C0088F95D /* MapPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2782091ACAFF2C0088F95D /* MapPageViewController.swift */; };
+		3D38CADE1AF48DD900738665 /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38CADD1AF48DD900738665 /* CenterViewController.swift */; };
 		3D3B3C791AD4C627000D10EF /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B3C781AD4C627000D10EF /* CustomPointAnnotation.swift */; };
 		3D4203D31ACB96B2004B647D /* SignInPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4203D21ACB96B2004B647D /* SignInPageViewController.swift */; };
 		3D54969C1ACB881E00C133D7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D54969A1ACB881E00C133D7 /* Bolts.framework */; };
@@ -20,6 +24,7 @@
 		3D5496B21ACB910200C133D7 /* ViewFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5496B11ACB910200C133D7 /* ViewFriendsViewController.swift */; };
 		3D8E82451ACCD0510074DD5D /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8E82441ACCD0510074DD5D /* ParseFacebookUtilsV4.framework */; };
 		3D8E824B1ACEF5270074DD5D /* FriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E824A1ACEF5270074DD5D /* FriendDetailViewController.swift */; };
+		3DA20DAB1AF754F500568136 /* HideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA20DAA1AF754F500568136 /* HideViewController.swift */; };
 		3DB35C211AE41FCB0009FA90 /* ViewClubsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB35C201AE41FCB0009FA90 /* ViewClubsViewController.swift */; };
 		3DB35C231AE421EF0009FA90 /* ClubCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB35C221AE421EF0009FA90 /* ClubCollectionViewCell.swift */; };
 		3DB35C251AE430970009FA90 /* ClubDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB35C241AE430970009FA90 /* ClubDetailViewController.swift */; };
@@ -58,10 +63,14 @@
 
 /* Begin PBXFileReference section */
 		3D05EFFD1AEAA56C00F83AD5 /* ClubLabelAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubLabelAnnotation.swift; sourceTree = "<group>"; };
+		3D11BC701AF3E50800015AA0 /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePanelViewController.swift; sourceTree = "<group>"; };
+		3D11BC721AF3E5D700015AA0 /* NavItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavItem.swift; sourceTree = "<group>"; };
+		3D11BC741AF3E77000015AA0 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		3D20C1321ACBA54000DFD43C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		3D20C1331ACBA54000DFD43C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		3D20C1341ACBA54000DFD43C /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		3D2782091ACAFF2C0088F95D /* MapPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPageViewController.swift; sourceTree = "<group>"; };
+		3D38CADD1AF48DD900738665 /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
 		3D3B3C781AD4C627000D10EF /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		3D4203D21ACB96B2004B647D /* SignInPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInPageViewController.swift; sourceTree = "<group>"; };
 		3D54969A1ACB881E00C133D7 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -70,6 +79,7 @@
 		3D5496B11ACB910200C133D7 /* ViewFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFriendsViewController.swift; sourceTree = "<group>"; };
 		3D8E82441ACCD0510074DD5D /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../parse-library-1.7.0 2/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
 		3D8E824A1ACEF5270074DD5D /* FriendDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDetailViewController.swift; sourceTree = "<group>"; };
+		3DA20DAA1AF754F500568136 /* HideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideViewController.swift; sourceTree = "<group>"; };
 		3DB35C201AE41FCB0009FA90 /* ViewClubsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewClubsViewController.swift; sourceTree = "<group>"; };
 		3DB35C221AE421EF0009FA90 /* ClubCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubCollectionViewCell.swift; sourceTree = "<group>"; };
 		3DB35C241AE430970009FA90 /* ClubDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +196,11 @@
 			children = (
 				3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */,
 				3D5496B11ACB910200C133D7 /* ViewFriendsViewController.swift */,
+				3D11BC701AF3E50800015AA0 /* SidePanelViewController.swift */,
+				3D11BC721AF3E5D700015AA0 /* NavItem.swift */,
+				3D11BC741AF3E77000015AA0 /* ContainerViewController.swift */,
+				3DA20DAA1AF754F500568136 /* HideViewController.swift */,
+				3D38CADD1AF48DD900738665 /* CenterViewController.swift */,
 				3D2782091ACAFF2C0088F95D /* MapPageViewController.swift */,
 				3D05EFFD1AEAA56C00F83AD5 /* ClubLabelAnnotation.swift */,
 				3D3B3C781AD4C627000D10EF /* CustomPointAnnotation.swift */,
@@ -282,6 +297,7 @@
 				TargetAttributes = {
 					3DF965B81AC5BF430011ABC2 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 4Z7P2YNH2G;
 					};
 					3DF965D01AC5BF430011ABC2 = {
 						CreatedOnToolsVersion = 6.1;
@@ -337,7 +353,9 @@
 				CED6158D1AC89298002BC56F /* SignUpViewController.swift in Sources */,
 				3DECE30A1ADCBFE6000149CE /* Constants.swift in Sources */,
 				3DF965C41AC5BF430011ABC2 /* ViewController.swift in Sources */,
+				3DA20DAB1AF754F500568136 /* HideViewController.swift in Sources */,
 				3DD8B5FC1AC88A250002BBB7 /* FriendViewTableCell.swift in Sources */,
+				3D11BC731AF3E5D700015AA0 /* NavItem.swift in Sources */,
 				3DF965BF1AC5BF430011ABC2 /* AppDelegate.swift in Sources */,
 				3D27820A1ACAFF2C0088F95D /* MapPageViewController.swift in Sources */,
 				3D4203D31ACB96B2004B647D /* SignInPageViewController.swift in Sources */,
@@ -345,8 +363,11 @@
 				3D3B3C791AD4C627000D10EF /* CustomPointAnnotation.swift in Sources */,
 				3DB35C251AE430970009FA90 /* ClubDetailViewController.swift in Sources */,
 				3DF965C21AC5BF430011ABC2 /* Locanotion.xcdatamodeld in Sources */,
+				3D11BC711AF3E50800015AA0 /* SidePanelViewController.swift in Sources */,
 				3D5496B21ACB910200C133D7 /* ViewFriendsViewController.swift in Sources */,
 				3D8E824B1ACEF5270074DD5D /* FriendDetailViewController.swift in Sources */,
+				3D38CADE1AF48DD900738665 /* CenterViewController.swift in Sources */,
+				3D11BC751AF3E77000015AA0 /* ContainerViewController.swift in Sources */,
 				3DB35C211AE41FCB0009FA90 /* ViewClubsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,6 +496,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -493,8 +516,10 @@
 				INFOPLIST_FILE = Locanotion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Locanotion/Locanotion-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -503,6 +528,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -521,7 +548,9 @@
 				INFOPLIST_FILE = Locanotion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Locanotion/Locanotion-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

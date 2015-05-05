@@ -9,9 +9,12 @@
 import Foundation
 class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-    var backButton : UIButton!
+    var menuButton : UIButton!
     var clubCollectionView : UICollectionView?
     var mostPopularClub : String!
+    
+    //Properties for side-panel menu
+    var delegate: CenterViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +25,7 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
         layout.sectionInset = UIEdgeInsets(top:0, left:0, bottom: 0, right:0)
         layout.itemSize = CGSize(width: self.view.frame.width, height: 200)
         layout.scrollDirection = .Vertical
-        let clubCollectionViewFrame = CGRect(x: 0, y: 50, width: self.view.frame.width, height: self.view.frame.height)
+        let clubCollectionViewFrame = CGRect(x: 0, y: 20, width: self.view.frame.width, height: self.view.frame.height)
         
         
         clubCollectionView = UICollectionView(frame: clubCollectionViewFrame, collectionViewLayout: layout)
@@ -32,13 +35,15 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
         clubCollectionView!.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(clubCollectionView!)
         
-        backButton = UIButton(frame:CGRect(x: (self.view.frame.width / 2) - 50, y: self.view.frame.height - 50, width: 100, height: 40))
-        backButton.setTitle("home", forState: UIControlState.Normal)
-        backButton.layer.backgroundColor = VOLE_COLOR.CGColor
-        backButton.titleLabel?.textColor = UIColor.whiteColor()
-        backButton.layer.cornerRadius = 3
-        backButton.addTarget(self, action: "backToMainScreen", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(backButton)
+        menuButton = UIButton(frame:CGRect(x: 10, y: 25, width: 40, height: 30))
+        menuButton.setBackgroundImage(UIImage(named: "MenuIcon"), forState: UIControlState.Normal)
+        menuButton.addTarget(self, action: "menuTapped", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(menuButton)
+        
+    }
+    
+    func menuTapped() {
+        delegate?.toggleLeftPanel?()
     }
     
     
@@ -57,7 +62,7 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
         else {
             cell.clubNameLabel.text = CLUB_NAMES[indexPath.row - 1]
             cell.clubOpenLabel.text = "Closed"
-            cell.clubAttendanceLabel.text = "0"
+            cell.clubAttendanceLabel.text = "0" //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ADD THIS
             var name : String = CLUB_NAMES[indexPath.row - 1] + "CellImage"
             cell.clubImageView.image = UIImage(named: name)
         }
@@ -70,7 +75,14 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
             
         }
         else {
-            self.performSegueWithIdentifier("toDetailClubView", sender: CLUB_NAMES[indexPath.row - 1])
+            //self.performSegueWithIdentifier("toDetailClubView", sender: CLUB_NAMES[indexPath.row - 1])
+            let del = delegate as! ContainerViewController
+            let nav = del.centerNavigationController
+            NSLog("clicked:\(CLUB_NAMES[indexPath.row - 1])")
+            del.clubDetailViewController.clubName = CLUB_NAMES[indexPath.row - 1]
+            //del.clubDetailViewController.clubNameLabel.text = CLUB_NAMES[indexPath.row - 1]
+            NSLog(del.clubDetailViewController.clubName)
+            nav.pushViewController(del.clubDetailViewController, animated: true)
         }
     }
     
@@ -99,4 +111,32 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
         self.performSegueWithIdentifier("backToMainScreen", sender: self)
     }
     
+}
+
+
+//Mark sidepanelViewControllerDelegate methods
+
+extension ViewClubsViewController: SidePanelViewControllerDelegate {
+    
+    func navItemSelected(item: NavItem) {
+        delegate?.collapseSidePanels?()
+        
+        let del = delegate as! ContainerViewController
+        let nav = del.centerNavigationController
+        
+        NSLog("CLUBSCLUBSCLUBS")
+        
+        if item.title == "View Map"{
+            del.leftViewController?.delegate = del.mapPageViewController
+            nav.popToViewController(del.mapPageViewController, animated: true)
+        }
+        else if item.title == "View Friends"{
+            del.leftViewController?.delegate = del.friendsViewController
+            nav.popToViewController(del.friendsViewController, animated: true)
+        }
+        else if item.title == "View Clubs"{
+            //do nothing
+            //nav.pushViewController(del.clubsViewController, animated: true)
+        }
+    }
 }
