@@ -9,15 +9,13 @@
 import UIKit
 import CoreLocation
 
-//Global
-var UserCurrentClub : String!
-
 class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginButtonDelegate {
     @IBOutlet var CurrentUserLabel: UILabel!
-    
-    //used for the history
-    var lastClubName : String!
+
     var label : UILabel!
+    var logoImage : UIImageView!
+    
+    var loginButton : FBSDKLoginButton!
     
     
     @IBOutlet var logoView: UIImageView!
@@ -42,41 +40,50 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
         else {
             CurrentUserLabel.text = "No User"
         }
-        if UserCurrentClub != nil {
-            label.text = "You are at \(UserCurrentClub)"
-        }
+        
     }
     
     override func viewDidLoad() {
+        let logoFrame = CGRect(x: 0, y: (self.view.frame.height / 2) - 200, width: self.view.frame.width, height: 400)
+        logoImage = UIImageView(frame: logoFrame)
+        logoImage.image = UIImage(named: "FlockLogo")
+        logoImage.contentMode = UIViewContentMode.ScaleAspectFit
+        self.view.addSubview(logoImage)
+        
+        NSLog("Main Page")
+        var user :PFUser = PFUser.currentUser()!
+        NSLog("\(user)")
+        var userQuery = PFUser.query()
+        userQuery?.getObjectInBackgroundWithId(user.objectId!, block: { (result:PFObject?, error:NSError?) -> Void in
+            if (result == nil){
+                NSLog("user is nil")
+            }
+            let res = result as! PFUser
+            NSLog("\(res)")
+            UserCurrentClub = res["LocationName"] as! String
+            var labelFrame : CGRect = CGRect(x: self.view.frame.width / 2 - 65, y: self.logoImage.frame.origin.y + self.logoImage.frame.height + 10, width: self.logoImage.frame.width, height: 50)
+            self.label = UILabel(frame: labelFrame)
+            self.label.text = UserCurrentClub
+            self.view.addSubview(self.label)
+            NSLog("ended")
+        })
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.createLocationManager()
         print(RADIUS)
         
-        let loginButton : FBSDKLoginButton = FBSDKLoginButton(frame: CGRect(x: self.view.frame.width - 125, y: 40, width: 120, height: 30))
+        loginButton = FBSDKLoginButton(frame: CGRect(x: self.view.frame.width - 125, y: 40, width: 120, height: 30))
         loginButton.delegate = self
         self.view.addSubview(loginButton)
-        
-        let logoFrame = CGRect(x: 0, y: (self.view.frame.height / 2) - 200, width: self.view.frame.width, height: 400)
-        let logoImage = UIImageView(frame: logoFrame)
-        logoImage.image = UIImage(named: "FlockLogo")
-        logoImage.contentMode = UIViewContentMode.ScaleAspectFit
-        self.view.addSubview(logoImage)
+    
         
         
-        var labelFrame : CGRect = CGRect(x: logoFrame.origin.x, y: logoFrame.origin.y + logoFrame.height + 10, width: logoFrame.width, height: 50)
-        label = UILabel(frame: labelFrame)
-        if UserCurrentClub != nil {
-            label.text = "You are at \(UserCurrentClub)"
-        }
-        else {
-            label.text = "No Club Location Info"
-        }
-        self.view.addSubview(label)
+        
     }
     
     func createLocationManager() {
-        NSLog("creating loc manager")
+        
         //begin updating gps
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -107,9 +114,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        print("did update")
+        
         let firstLocation = locations.first as? CLLocation
-        NSLog("updating")
+        
         //println("lat:\(firstLocation?.coordinate.latitude) lon:\(firstLocation?.coordinate.longitude)")
         
         self.getAndUpdateUserLocationDescription(firstLocation!)
@@ -117,17 +124,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
         
     }
     
+    
     func getAndUpdateUserLocationDescription(loc: CLLocation) {
+        var lastLocation = UserCurrentClub
         let lat = loc.coordinate.latitude
         let lon = loc.coordinate.longitude
-        var currentLocationDescription = "Not In A Club"
+        
+        //var currentLocationDescription = "Not In A Club"
         
         var currentClosestClub : String = "Not In A Club"
         var currentClosestDistance = CGFloat(100.0)
         
         for clubLocIndex in 0 ..< GLOBAL_ClubLocations.count {
-            NSLog("LOC")
-            NSLog("\(CLUB_DISPLAY_NAMES[clubLocIndex])  \(CGFloat(GLOBAL_ClubLocations[clubLocIndex].distanceFromLocation(loc)))")
             if CGFloat(GLOBAL_ClubLocations[clubLocIndex].distanceFromLocation(loc)) < currentClosestDistance {
                 currentClosestClub = CLUB_DISPLAY_NAMES[clubLocIndex]
                 currentClosestDistance = CGFloat(GLOBAL_ClubLocations[clubLocIndex].distanceFromLocation(loc))
@@ -135,19 +143,42 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
         }
         
         UserCurrentClub = currentClosestClub
-        currentLocationDescription = currentClosestClub
-        if currentClosestClub != lastClubName && currentClosestClub != "Not In A Club" {
-            HISTORY_TONIGHT.append(currentClosestClub)
+        if currentClosestClub != lastLocation {
+            //query for club
+            if lastLocation != "Not In A Club" {
+                //left a club, subtract from attendence
+                var clubQuery : PFQuery = PFQuery(className: "Club")
+                clubQuery.whereKey("Club_Name", equalTo: lastLocation)
+                clubQuery.findObjectsInBackgroundWithBlock({ (result:[AnyObject]?, error:NSError?) -> Void in
+                    if result!.count == 1 {
+                        let club : PFObject = result?.first as! PFObject
+                        club["Attendance"]! = club["Attendance"] as! Int - 1
+                        club.saveInBackground()
+                    }
+                })
+                
+            }
+            
+            //entered a club
+            if currentClosestClub != "Not In A Club" {
+                var clubQuery : PFQuery = PFQuery(className: "Club")
+                clubQuery.whereKey("Club_Name", equalTo: currentClosestClub)
+                clubQuery.findObjectsInBackgroundWithBlock({ (result:[AnyObject]?, error:NSError?) -> Void in
+                    if result!.count == 1 {
+                        let club : PFObject = result?.first as! PFObject
+                        club["Attendance"]! = club["Attendance"] as! Int + 1
+                        club.saveInBackground()
+                    }
+                })
+            }
+            
         }
         
         var user : PFUser? = PFUser.currentUser() // problem with updating could be here if the users are not being linked correctly
-       
         if user != nil {
-            NSLog("Saving user")
             let user2 : PFUser = user! as PFUser
-            NSLog(user2["Full_Name"] as! String)
-            user2["LocationName"] = currentLocationDescription
-            user2["history"] = HISTORY_TONIGHT
+            user2["LocationName"] = UserCurrentClub
+            //user2["history"] = HISTORY_TONIGHT
             user2.saveInBackground()
         }
         
@@ -156,7 +187,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         self.locationManager.stopUpdatingLocation()
-        self.performSegueWithIdentifier("backToSignInPage", sender: self)
+        let del = delegate as! ContainerViewController
+        let nav = del.centerNavigationController
+        nav.popViewControllerAnimated(true)
         
     }
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
@@ -174,7 +207,6 @@ extension ViewController: SidePanelViewControllerDelegate {
         
         let del = delegate as! ContainerViewController
         let nav = del.centerNavigationController
-        NSLog("VIEWVIEWVIEW")
         if item.title == "View Map"{
             del.leftViewController?.delegate = del.mapPageViewController
             nav.pushViewController(del.mapPageViewController, animated: true)

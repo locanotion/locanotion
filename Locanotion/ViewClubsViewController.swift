@@ -48,38 +48,41 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return NUM_CLUBS + 1
+        return NUM_CLUBS
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ClubCell", forIndexPath: indexPath) as! ClubCollectionViewCell
-        if indexPath.row == 0 {
-            cell.clubNameLabel.text = "Tonight's Most Popular Club"
+        if indexPath.row == -1 {
+            /*cell.clubNameLabel.text = "Tonight's Most Popular Club"
             cell.clubOpenLabel.text = "club name"
             cell.clubAttendanceLabel.text = "0"
-            cell.clubImageView.image = UIImage(named: "lightShow")
+            cell.clubImageView.image = UIImage(named: "lightShow")*/
         }
         else {
-            cell.clubNameLabel.text = CLUB_NAMES[indexPath.row - 1]
+            cell.clubNameLabel.text = CLUB_NAMES[indexPath.row]
             cell.clubOpenLabel.text = "Closed"
             cell.clubAttendanceLabel.text = "0" //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ADD THIS
-            var name : String = CLUB_NAMES[indexPath.row - 1] + "CellImage"
+            var name : String = CLUB_NAMES[indexPath.row] + "CellImage"
             cell.clubImageView.image = UIImage(named: name)
+        }
+        if cell.clubNameLabel.text == "COS Building" {
+            cell.clubAttendanceLabel.text = "2"
         }
         return cell
         
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 0 {
+        if indexPath.row == -1 {
             
         }
         else {
             //self.performSegueWithIdentifier("toDetailClubView", sender: CLUB_NAMES[indexPath.row - 1])
             let del = delegate as! ContainerViewController
             let nav = del.centerNavigationController
-            NSLog("clicked:\(CLUB_NAMES[indexPath.row - 1])")
-            del.clubDetailViewController.clubName = CLUB_NAMES[indexPath.row - 1]
+            NSLog("clicked:\(CLUB_NAMES[indexPath.row])")
+            del.clubDetailViewController.clubName = CLUB_NAMES[indexPath.row]
             //del.clubDetailViewController.clubNameLabel.text = CLUB_NAMES[indexPath.row - 1]
             NSLog(del.clubDetailViewController.clubName)
             nav.pushViewController(del.clubDetailViewController, animated: true)

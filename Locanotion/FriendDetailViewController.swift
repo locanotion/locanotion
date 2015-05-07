@@ -25,6 +25,9 @@ class FriendDetailViewControlelr: UIViewController {
     var friendHistory : Array<String>!
     var historyScrollView : UIScrollView!
     
+    //Properties for side-panel menu
+    var delegate: CenterViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,17 +42,25 @@ class FriendDetailViewControlelr: UIViewController {
         mapView.setRegion(region, animated: true)
         
         
-        var label = UILabel(frame: CGRect(x: 0, y: (self.view.frame.height / 2) - 40, width: 100, height: 40))
+        historyScrollView = UIScrollView(frame:CGRect(x: 0, y: self.view.frame.height / 2, width: self.view.frame.width, height: self.view.frame.height / 2))
+        historyScrollView.backgroundColor = VOLE_COLOR
+        
+        var label = UILabel(frame: CGRect(x: 0, y: 10, width: 180, height: 40))
         label.text = "\(friendName)'s History"
         label.font = UIFont(name: "Avenir Next", size: 14)
-        label.textColor = VOLE_COLOR
-        self.view.addSubview(label)
-        historyScrollView.frame = CGRect(x: 0, y: self.view.frame.height / 2, width: self.view.frame.width, height: self.view.frame.height / 2)
-        historyScrollView.backgroundColor = VOLE_COLOR
+        label.textColor = UIColor.whiteColor()
+        historyScrollView.addSubview(label)
+        
         self.view.addSubview(historyScrollView)
         
+        self.getFriendLocation()
         
-        
+    }
+    
+    @IBAction func backPressed(){
+        let del = delegate as! ContainerViewController
+        let nav = del.centerNavigationController
+        nav.popViewControllerAnimated(true)
     }
     
     
@@ -76,17 +87,49 @@ class FriendDetailViewControlelr: UIViewController {
     }
     
     func setUpHistoryTable() {
-        var frame = CGRect(x: 10, y: 0, width: self.view.frame.width, height: 40)
+        var frame = CGRect(x: 10, y: 50, width: self.view.frame.width, height: 40)
         for i in 0 ..< friendHistory.count {
             frame.origin.y = CGFloat(i) * frame.height
             var label = UILabel(frame: frame)
             label.font = UIFont(name: "Avenir Next", size: 14)
             label.text = friendHistory[i]
+            label.textColor = UIColor.whiteColor()
             self.historyScrollView.addSubview(label)
         }
         
         self.historyScrollView.contentSize = CGSize(width: self.view.frame.width, height: (frame.height * CGFloat(friendHistory.count)) + 200)
         
+    }
+    
+    func getFriendLocation() {
+        var query : PFQuery = PFUser.query()!
+        NSLog("id:\(friendID)")
+        query.whereKey("facebook_ID", equalTo: friendFacebook_ID)
+        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
+            let res = result as! [PFUser]
+            let friend : PFUser = res[0]
+            if friend["LocationName"] as! String == "Not In A Club" {
+                var alert = UIAlertView()
+                alert.title = "That friend is not out right now"
+                alert.addButtonWithTitle("OK")
+                alert.show()
+                let del = self.delegate as! ContainerViewController
+                let nav = del.centerNavigationController
+                nav.popViewControllerAnimated(true)
+            }
+            else if friend["LocationName"] as! String == "COS Building" {
+                let location = CS_BUILDING.coordinate
+                let span = MKCoordinateSpanMake(0.001, 0.0005)
+                let region = MKCoordinateRegion(center: location, span: span)
+                
+                self.mapView.setRegion(region, animated: true)
+                let newAnnot : MKPointAnnotation = MKPointAnnotation()
+                newAnnot.coordinate = CS_BUILDING.coordinate
+                newAnnot.title = "\(self.friendName)'s Location"
+                self.mapView.addAnnotation(newAnnot)
+            }
+            
+        }
     }
     
 }

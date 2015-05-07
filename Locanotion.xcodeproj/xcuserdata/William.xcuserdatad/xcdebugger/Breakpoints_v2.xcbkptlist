@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Locanotion/ViewFriendsViewController.swift"
-            timestampString = "452458468.954985"
+            timestampString = "452659824.274378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "getFacebookFriends()"
             landmarkType = "5">
          </BreakpointContent>
@@ -57,76 +57,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Locanotion/ViewController.swift"
-            timestampString = "452485115.572076"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "getAndUpdateUserLocationDescription(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Locanotion/ViewController.swift"
-            timestampString = "452485220.404512"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "getAndUpdateUserLocationDescription(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Locanotion/MapPageViewController.swift"
-            timestampString = "452487796.366644"
+            timestampString = "452663282.803506"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "getAllClubInfo()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Locanotion/FriendViewTableCell.swift"
-            timestampString = "451811432.183452"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "awakeFromNib()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Locanotion/MapPageViewController.swift"
-            timestampString = "452487796.366644"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "mapView(_:viewForAnnotation:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Locanotion/MapPageViewController.swift"
-            timestampString = "452487796.366644"
+            timestampString = "452663282.803506"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "getFriendsClubInfo()"
             landmarkType = "5">
          </BreakpointContent>
@@ -247,11 +183,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Locanotion/MapPageViewController.swift"
-            timestampString = "452487796.366644"
+            timestampString = "452663282.803506"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
             landmarkName = "navItemSelected(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -263,11 +199,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Locanotion/ViewController.swift"
-            timestampString = "452484215.19446"
+            timestampString = "452661923.964843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "createLocationManager()"
             landmarkType = "5">
          </BreakpointContent>
@@ -279,11 +215,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Locanotion/ViewController.swift"
-            timestampString = "452484215.19446"
+            timestampString = "452661923.964843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "createLocationManager()"
             landmarkType = "5">
          </BreakpointContent>
@@ -295,11 +231,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Locanotion/ViewController.swift"
-            timestampString = "452484215.19446"
+            timestampString = "452661923.964843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "createLocationManager()"
             landmarkType = "5">
          </BreakpointContent>
@@ -311,11 +247,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Locanotion/ViewController.swift"
-            timestampString = "452484215.19446"
+            timestampString = "452661923.964843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "createLocationManager()"
             landmarkType = "5">
          </BreakpointContent>
@@ -327,11 +263,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Locanotion/ViewController.swift"
-            timestampString = "452484215.19446"
+            timestampString = "452661923.964843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "createLocationManager()"
             landmarkType = "5">
          </BreakpointContent>
@@ -343,11 +279,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Locanotion/ViewController.swift"
-            timestampString = "452484215.19446"
+            timestampString = "452661923.964843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "createLocationManager()"
             landmarkType = "5">
          </BreakpointContent>
@@ -359,11 +295,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Locanotion/ViewController.swift"
-            timestampString = "452484215.19446"
+            timestampString = "452661923.964843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "createLocationManager()"
             landmarkType = "5">
          </BreakpointContent>
@@ -375,11 +311,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Locanotion/ViewFriendsViewController.swift"
-            timestampString = "452476109.965713"
+            timestampString = "452660427.26659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "getFriendLocations()"
             landmarkType = "5">
          </BreakpointContent>
@@ -391,11 +327,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Locanotion/ViewFriendsViewController.swift"
-            timestampString = "452476109.965713"
+            timestampString = "452660427.26659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "getFriendLocations()"
             landmarkType = "5">
          </BreakpointContent>
@@ -406,13 +342,173 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Locanotion/ViewController.swift"
-            timestampString = "452484215.19446"
+            filePath = "Locanotion/MapPageViewController.swift"
+            timestampString = "452663282.803506"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "getAndUpdateUserLocationDescription(_:)"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "mapView(_:viewForAnnotation:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Locanotion/ClubDetailViewController.swift"
+            timestampString = "452527426.830744"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "imagePickerController(_:didFinishPickingImage:editingInfo:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Locanotion/ViewController.swift"
+            timestampString = "452661923.964843"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Locanotion/ViewController.swift"
+            timestampString = "452661923.964843"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Locanotion/ViewController.swift"
+            timestampString = "452661923.964843"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Locanotion/ViewController.swift"
+            timestampString = "452661923.964843"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Locanotion/ViewController.swift"
+            timestampString = "452661923.964843"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Locanotion/ViewController.swift"
+            timestampString = "452661923.964843"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Locanotion/ViewController.swift"
+            timestampString = "452661923.964843"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Locanotion/ViewFriendsViewController.swift"
+            timestampString = "452660427.26659"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Locanotion/ViewFriendsViewController.swift"
+            timestampString = "452659242.311521"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "getFacebookFriends()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

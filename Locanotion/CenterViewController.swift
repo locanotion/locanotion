@@ -56,10 +56,7 @@ extension CenterViewController: SidePanelViewControllerDelegate {
             //nav.pushViewController(del.hideView, animated: false)
         }
         
-        if nav.topViewController.isKindOfClass(ViewFriendsViewController) {
-            var vfc = nav.topViewController as! ViewFriendsViewController
-            vfc.emptyArrays()
-        }
+
         
         if !nav.topViewController.isKindOfClass(ViewController) {
             nav.popViewControllerAnimated(true)
@@ -75,10 +72,7 @@ extension CenterViewController: SidePanelViewControllerDelegate {
         else if item.title == "View Friends"{
             if currentPage != FRIEND_PAGE {
                 currentPage = FRIEND_PAGE
-                
                 nav.pushViewController(del.friendsViewController, animated: true)
-                
-                
             }
         }
         else if item.title == "View Clubs"{
@@ -92,6 +86,14 @@ extension CenterViewController: SidePanelViewControllerDelegate {
                 currentPage = HOME
                 //nav.popToViewController(del.viewController, animated: true)
             }
+        }
+        else if item.title == "Log Out" {
+            //clear all variables and data that should be renewed for next user
+            nav.popViewControllerAnimated(true)
+            if !nav.topViewController.isKindOfClass(ViewController){
+                nav.popViewControllerAnimated(true)
+            }
+            del.viewController.loginButtonDidLogOut(del.viewController.loginButton)
         }
     }
 }

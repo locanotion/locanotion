@@ -27,6 +27,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
     var viewController: ViewController!
     var mapPageViewController : MapPageViewController!
     var friendsViewController : ViewFriendsViewController!
+    var friendsDetailViewController : FriendDetailViewControlelr!
     var clubsViewController : ViewClubsViewController!
     var signInViewController : SignInPageViewController!
     var hideView : HideViewController!
@@ -47,23 +48,25 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
     }
     var leftViewController: SidePanelViewController?
     
-    let centerPanelExpandedOffset: CGFloat = 200
+    var centerPanelExpandedOffset: CGFloat = 200
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        centerPanelExpandedOffset = self.view.frame.width / 2
         centerViewController = UIStoryboard.centerViewController()
         centerViewController.delegate = self
         
         
         //instantiate the views for each page
         friendsViewController = UIStoryboard.FriendsPageView()
+        friendsDetailViewController = UIStoryboard.friendDetailView()
         clubsViewController = UIStoryboard.ClubsPageView()
         mapPageViewController = UIStoryboard.MapPageView()
         viewController = UIStoryboard.viewController()
         signInViewController = UIStoryboard.signInPage()
         clubDetailViewController = UIStoryboard.clubDetailView()
         hideView = UIStoryboard.hideView()
+        friendsDetailViewController.delegate = self
         viewController.delegate = self
         mapPageViewController.delegate = self
         friendsViewController.delegate = self
@@ -217,6 +220,10 @@ private extension UIStoryboard {
     
     class func hideView() -> HideViewController? {
         return mainStoryboard().instantiateViewControllerWithIdentifier("HideViewController") as? HideViewController
+    }
+    
+    class func friendDetailView() -> FriendDetailViewControlelr? {
+        return mainStoryboard().instantiateViewControllerWithIdentifier("FriendDetailViewController") as? FriendDetailViewControlelr
     }
     
     

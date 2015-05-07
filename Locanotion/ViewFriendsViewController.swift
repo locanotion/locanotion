@@ -19,6 +19,7 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     var friendNames : Array<String> = Array()
     var friendIDs : Array<String> = Array()
     var friendLocations : Array<String> = Array()
+    var friendCellArray : Array<FriendViewTableCell> = Array()
     let textCellIdentifier = "FriendCell"
     var backButton : UIButton!
     
@@ -32,27 +33,24 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewWillAppear(animated: Bool) {
         NSLog("WILL APPEAR")
+        self.friendsTableView.reloadData()
         //get the user's
         var user = PFUser.currentUser()
         if user == nil {
             //display some error message
         }
-        
-        
-        /*var query = PFUser.query()
-        query.findObjectsInBackgroundWithBlock { (objects : [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                for u : PFUser in (objects as [PFUser]) {
-                    self.friends.append(u)
-                }
-                dispatch_async(dispatch_get_main_queue()){
-                    self.friendsTableView.reloadData()
-                }
-            }
-        }*/
         self.getFacebookFriends()
         
+        //var timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("reloadPage"), userInfo: nil, repeats: true)
+        
     }
+    
+    func reloadPage(){
+        NSLog("Reloading the page")
+        self.getFacebookFriends()
+        // self.friendsTableView.reloadData()
+    }
+    
     
     override func viewDidLayoutSubviews() {
         menuButton = UIButton(frame:CGRect(x: 10, y: 25, width: 40, height: 30))
@@ -67,7 +65,15 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     func getFacebookFriends() {
-        var idArray : Array<String> = Array()
+        friendIDs.removeAll()
+        friendNames.removeAll()
+        friendLocations.removeAll()
+       /* if self.friendLocations.count > 0 {
+            self.friendLocations.removeAll()
+        }
+        if !self.friendNames.isEmpty{
+            self.friendNames.removeAll()
+        }*/
         NSLog("called method")
         var request : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil)
         
@@ -81,7 +87,6 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
                     let valueDict : NSDictionary = value as! NSDictionary
                     let id = valueDict.objectForKey("id") as! String
                     var name = (valueDict.objectForKey("name") as! String)
-                    idArray.append(id)
                     self.friendIDs.append(id)
                     self.friendNames.append(name)
                     NSLog("friend id's : \(self.friendIDs)")
@@ -89,11 +94,15 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
                     let userQuery = PFUser.query()
                     userQuery?.whereKey("facebook_ID", equalTo: id)
                     userQuery?.findObjectsInBackgroundWithBlock({ (result:[AnyObject]?, error:NSError?) -> Void in
-                        let res = result as! [PFUser]
-                        let user = res.first!
-                        let loc : String = user["LocationName"] as! String
-                        self.friendLocations.append(loc)
-                        self.friendsTableView.reloadData()
+                        if result != nil {
+                            NSLog("not nil")
+                            let res = result as! [PFUser]
+                            let user = res.first!
+                            let loc : String = user["LocationName"] as! String
+                            self.friendLocations.append(loc)
+                            self.friendsTableView.reloadData()
+                        }
+                        NSLog("ended friend query")
                     })
                 }
                 //todo: implement pic request
@@ -130,6 +139,9 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     func getFriendLocations() {
+        self.friendLocations.removeAll()
+        self.friendNames.removeAll()
+        
         if self.friendIDs.count > 0 {
             
             //friend query
@@ -192,20 +204,24 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if friendIDs.count == 0 {
+        if friendNames.count == 0 {
             NSLog("zero count")
             return 0
         }
-        if friendIDs.count != friendLocations.count {
+        if friendNames.count != friendLocations.count {
             return 0
         }
-        return friendIDs.count
+        NSLog("Returning num rows: \(friendNames.count)")
+        return friendNames.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        NSLog("making cell for row:\(indexPath.row)")
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! FriendViewTableCell
         
         let row = indexPath.row
+        NSLog("counts: \(friendNames.count) : \(friendLocations.count)")
+
         let cellUser = friendNames[row] as String
         let cellLoc = friendLocations[row] as String
         //let loc = cellUser["LocationName"] as String
@@ -215,6 +231,7 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
         cell.locLabel.text = cellLoc
         
         //cell.locImageView.image = UIImage(named: "ViewOnMap")
+        NSLog("returning cell")
         return cell
         
     }
@@ -233,9 +250,15 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
         var cell : FriendViewTableCell = friendsTableView.cellForRowAtIndexPath(indexPath) as! FriendViewTableCell
         self.selectedName = cell.nameLabel.text
         self.SelectedFriendID = self.friendIDs[indexPath.row]
-        self.performSegueWithIdentifier("toDetailView", sender: cell)
         
-        friendsTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let del = delegate as! ContainerViewController
+        let nav = del.centerNavigationController
+        del.friendsDetailViewController.friendName = self.selectedName
+        del.friendsDetailViewController.friendFacebook_ID = self.SelectedFriendID
+        
+        nav.pushViewController(del.friendsDetailViewController, animated: true)
+        
         
     }
     
@@ -254,9 +277,16 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func emptyArrays(){
-        self.friendIDs.removeAll(keepCapacity: false)
-        self.friendNames.removeAll(keepCapacity: false)
-        self.friendLocations.removeAll(keepCapacity: false)
+        self.friendIDs.removeAll() //keepCapacity: false)
+        self.friendNames.removeAll() //keepCapacity: false)
+        self.friendLocations.removeAll() //keepCapacity: false)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSLog("leaving\(self.friendIDs.count)")
+        self.friendIDs.removeAll()
+        self.friendNames.removeAll()
+        self.friendLocations.removeAll()
     }
     
 }
@@ -287,5 +317,3 @@ extension ViewFriendsViewController: SidePanelViewControllerDelegate {
         }
     }
 }
-
-

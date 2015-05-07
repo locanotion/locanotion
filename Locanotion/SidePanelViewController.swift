@@ -34,6 +34,8 @@ class SidePanelViewController: UIViewController {
         tableView.reloadData()
     }
     
+    
+    
 }
 
 // MARK: Table View Data Source
@@ -49,9 +51,11 @@ extension SidePanelViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(TableView.CellIdentifiers.ItemCell, forIndexPath: indexPath) as! ItemCell
-        cell.configureForItem(items[indexPath.row])
-        return cell
+            let cell = tableView.dequeueReusableCellWithIdentifier(TableView.CellIdentifiers.ItemCell, forIndexPath: indexPath) as! ItemCell
+            cell.configureForItem(items[indexPath.row])
+            return cell
+        
+        
     }
     
     
@@ -74,9 +78,19 @@ class ItemCell: UITableViewCell {
     @IBOutlet weak var imageNameLabel: UILabel!
     
     func configureForItem(item: NavItem) {
-        //itemImageView.image = item.image
-        imageNameLabel.text = item.title
-        imageNameLabel.font = UIFont(name: "Avenir Next", size: 25)
+        
+        if item.title == "Log Out" {
+            var button : UIButton = UIButton(frame: CGRect(x: 10, y: 0, width: 100, height: contentView.frame.height - 1))
+            button.layer.cornerRadius = 3
+            button.backgroundColor = DIM_RED
+            button.setTitle("Log Out", forState: UIControlState.Normal)
+            button.titleLabel?.textColor = UIColor.whiteColor()
+            contentView.addSubview(button)
+        }
+        else {
+            //itemImageView.image = item.image
+            imageNameLabel.text = item.title
+            imageNameLabel.font = UIFont(name: "Avenir Next", size: 25)
+        }
     }
-    
 }
