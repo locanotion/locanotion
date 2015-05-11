@@ -20,6 +20,7 @@ class NavItem {
         self.image = image
     }
     
+    
     class func allItems() -> Array<NavItem> {
         return [ NavItem(title: "View Map", image: UIImage(named: "MapIcon.jpg")),
             NavItem(title: "View Friends", image: UIImage(named: "FriendsIcon.jpg")),
@@ -27,5 +28,7 @@ class NavItem {
             NavItem(title: "Home", image: UIImage(named: "ClubsIcon.jpg")),
             NavItem(title: "Log Out", image: UIImage(named: "ClubsIcon.jpg"))]
     }
+    
+    
     
 }

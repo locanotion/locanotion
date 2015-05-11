@@ -33,6 +33,7 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
     var menuButton : UIButton!
     var userLocation : CLLocation!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,8 +41,6 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
             friendsInfoArray[club] = 0
             clubInfoArray[club] = 0
         }
-        print(friendsInfoArray)
-        
         
         menuButton = UIButton(frame:CGRect(x: 10, y: 25, width: 40, height: 30))
         menuButton.setBackgroundImage(UIImage(named: "MenuIcon"), forState: UIControlState.Normal)
@@ -79,10 +78,7 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
     
     override func viewWillAppear(animated: Bool) {
         NSLog("appear")
-        self.clubInfoArray.removeAll()
-        self.friendsInfoArray.removeAll()
-        mapView.removeAnnotations(MapViewAnnotations)
-        self.getAllClubInfo()
+        //self.getAllClubInfo()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -97,9 +93,13 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
         delegate?.toggleLeftPanel?()
     }
 
+    
+    //create an annotation for each club and add it to the map
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         if annotation is CustomPointAnnotation {
-            let reuseID = "test"
+             NSLog("SET UP YYYYYYYYYY")
+            let cpaAnnotation = annotation as! CustomPointAnnotation
+            let reuseID = cpaAnnotation.name
             var anView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseID)
             if anView == nil {
                 anView = MKAnnotationView(annotation: annotation,reuseIdentifier: reuseID)
@@ -108,7 +108,6 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
             else {
                 anView.annotation = annotation
             }
-            
             let cpa = annotation as! CustomPointAnnotation
             anView.image = UIImage(named:cpa.imageName)
             let frame = anView.frame
@@ -121,10 +120,12 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
             let FriendFrame = CGRect(x: 0, y: textFrame.height, width: frame.width, height: frame.height / 3)
             let friendLabel = UILabel(frame: FriendFrame)
             var intA : Int = self.friendsInfoArray[cpa.name]!
-            if cpa.name == "COS Building" {
-                intA = 2
+            if intA == 1 {
+                friendLabel.text = String(intA) + " Bird of a feather"
             }
-            friendLabel.text = String(intA) + " Birds of a feather"
+            else{
+                friendLabel.text = String(intA) + " Birds of a feather"
+            }
             friendLabel.textAlignment = .Center
             friendLabel.font = UIFont(name: "Avenir Next", size: 9)
             anView.addSubview(friendLabel)
@@ -185,7 +186,6 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        print("updating location")
         var location :CLLocation = locations[locations.count - 1] as! CLLocation
         userLocation = location
     }
@@ -212,46 +212,63 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
         
     }
     
-    func getFriendsClubInfo(){
+    
+    //get info for all of the user's friends based on their facebok ID's
+    func getFriendsClubInfo() {
         for club1 in CLUB_NAMES {
             self.friendsInfoArray[club1] = 0
         }
-
-        //migrating
         self.friendsInfoArray["Not In A Club"] = 0
-        //cerate and call query to find all user's friends at clubs
         
-        NSLog("Before Query")
-        var friendshipQuery: PFQuery = PFQuery(className: "Activity")
-        friendshipQuery.whereKey("Type", equalTo: "Friend")
-        friendshipQuery.whereKey("From_User", equalTo: PFUser.currentUser()!)//current user
-        friendshipQuery.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
-            if error != nil{
-                NSLog("Error with friendship query")
-            }
-            NSLog("no error \(result?.count)")
-            //result is array of activity objects
-            let resultArray = result as! [PFObject]
-            NSLog("res array: \(resultArray.count)")
-            for res in resultArray {
-                let friendId = res["To_User"] as! PFUser
-                
-                var friendQuery = PFUser.query()
-                friendQuery?.getObjectInBackgroundWithId(friendId.objectId!, block: { (object:PFObject?, error:NSError?) -> Void in
-                    if object != nil {
-                        let user = object as! PFUser
-                        let location = user["LocationName"] as! String
-                        self.friendsInfoArray[location] = self.friendsInfoArray[location]! + 1
-                    }
+        var request : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil)
+        
+        request.startWithCompletionHandler { (connection:FBSDKGraphRequestConnection!, result: AnyObject!, error:NSError!) -> Void in
+            if error == nil {
+                print(result)
+                var resultDict : NSDictionary = result as! NSDictionary
+                var data : NSArray = resultDict.objectForKey("data") as! NSArray
+                for value in data {
+                    let valueDict : NSDictionary = value as! NSDictionary
+                    let id = valueDict.objectForKey("id") as! String
+                    var name = (valueDict.objectForKey("name") as! String)
                     
-                })
+                    let userQuery = PFUser.query()
+                    userQuery?.whereKey("facebook_ID", equalTo: id)
+                    userQuery?.findObjectsInBackgroundWithBlock({ (result:[AnyObject]?, error:NSError?) -> Void in
+                        if result != nil {
+                            if result!.count != 0 {
+                                NSLog("not nil")
+                                let res = result as! [PFUser]
+                                let user = res.first!
+                                let loc : String = user["LocationName"] as! String
+                                self.friendsInfoArray[loc] = self.friendsInfoArray[loc]! + 1
+                            }
+                        }
+                        NSLog("ended friend query")
+                        //now that queries are done, update the map views
+                        self.setUpAllClubViews()
+                        
+                    })
+                }
+                //todo: implement pic request
+                //var picRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "\(id)/friends", parameters: nil)
+                
+                // picRequest.startWithCompletionHandler({ (FBSDKGraphRequestConnection?, result:AnyObject!, error:NSError!) -> Void in
+                //get data array, i guess data[0] will be the prof picture
+                //})
+                
+                //self.getFriendLocations()
             }
-            //now that queries are done, update the map views
-            self.setUpAllClubViews()
+            
         }
+        
     }
+
+    
     
 }
+
+
 
 //Mark sidepanelViewControllerDelegate methods
 

@@ -15,6 +15,7 @@ class ClubCollectionViewCell : UICollectionViewCell {
     var clubOpenLabel : UILabel!
     var clubAttendanceLabel : UILabel!
     var clubAttendance : Int!
+    var clubFriendAttendance : String!
     var clubImageName : String!
     var clubImageView : UIImageView!
     

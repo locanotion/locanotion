@@ -29,6 +29,8 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>FacebookAppID</key>
 	<string>794068607315524</string>
 	<key>FacebookDisplayName</key>

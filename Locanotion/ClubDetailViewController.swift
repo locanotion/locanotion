@@ -18,6 +18,9 @@ class ClubDetailViewController : UIViewController, UINavigationControllerDelegat
     @IBOutlet var statusImageView : UIImageView!
     @IBOutlet var totalAttendanceNumberLabel : UILabel!
     @IBOutlet var friendAttendanceNumberLabel : UILabel!
+    var totalAttendance : Int!
+    var friendAttendance : Int!
+    var open : Bool!
     var pictureView : UICollectionView!
     var pictureArray : Array<UIImage> = Array()
     
@@ -41,155 +44,37 @@ class ClubDetailViewController : UIViewController, UINavigationControllerDelegat
         numImages = 5
         pictureView.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(pictureView)
-        self.getClubInfo(clubName)
     
-        //set up AV capturing
-        //captureSession.sessionPreset = AVCaptureSessionPresetMedium
-        //let devices = AVCaptureDevice.devices()
-        /*for device in devices {
-            if (device.hasMediaType(AVMediaTypeVideo)) {
-                // Finally check the position and confirm we've got the back camera
-                if(device.position == AVCaptureDevicePosition.Back) {
-                    captureDevice = device as? AVCaptureDevice
-                }
-            }
-        }*/
-        
-        
     }
     
     override func viewWillAppear(animated: Bool) {
-        NSLog("WillAppear")
-        clubNameLabel.text = clubName
-        self.getClubInfo(clubName)
-        if self.pictureArray.isEmpty {
-            
+        //set text labels
+        totalAttendanceNumberLabel.text = " Flock Size: " + String(totalAttendance)
+        if friendAttendance == 1 {
+            friendAttendanceNumberLabel.text = String(friendAttendance) + " Bird Of A Feather"
         }
-        else{
+        else {
+            friendAttendanceNumberLabel.text = String(friendAttendance) + " Birds Of A Feather"
+        }
+        
+        //set open/closed label 
+        if open == true {
+            statusImageView.image = UIImage(named: "SignOpen")
+        }
+        else {
+            statusImageView.image = UIImage(named: "SignClosed")
+        }
+        
+        clubNameLabel.text = clubName
+        
+        //take care of picture scroll view
+        if !self.pictureArray.isEmpty {
             self.pictureArray.removeAll()
         }
         self.getPhotosForScrollView()
         self.pictureView.reloadData()
     }
     
-    func getClubInfo(name:String){
-        var clubInfoQuery = PFQuery(className: "Club")
-        clubInfoQuery.whereKey("Club_Name", equalTo: name)
-        
-        clubInfoQuery.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
-            let resultObjects = result as! [PFObject]
-            let clubObject : PFObject = resultObjects.first!
-            
-            let clubOpen : Bool = clubObject["Open"] as! Bool
-            if clubOpen {
-                self.statusImageView.image = UIImage(named: "SignOpen")
-            }
-            else {
-                self.statusImageView.image = UIImage(named: "SignClosed")
-
-            }
-            
-        }
-        
-        var query : PFQuery = PFUser.query()!
-        query.whereKey("LocationName", equalTo: clubName)
-        query.findObjectsInBackgroundWithBlock { (res: [AnyObject]?, error: NSError?) -> Void in
-            if res != nil {
-                let resA = res as! [PFUser]
-                self.totalAttendanceNumberLabel.text = String(resA.count)
-                self.friendAttendanceNumberLabel.text = String(resA.count)//this will need to change
-            }
-            else {
-                self.totalAttendanceNumberLabel.text = "0"
-                self.friendAttendanceNumberLabel.text = "0"//this will need to change
-            }
-            if name == "COS Building"{ //THIS NEEDDST O BE FIXED~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                self.totalAttendanceNumberLabel.text = "3"
-                self.friendAttendanceNumberLabel.text = "2"
-            }
-            
-            
-        }
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.pictureArray.count + 1
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("pictureCell", forIndexPath: indexPath) as! UICollectionViewCell
-        
-        let photoView : UIImageView = UIImageView(frame: cell.contentView.frame)
-        if indexPath.row == 0 {
-            let image = UIImage(named: "addPhotoImage")
-            photoView.image = image
-            let button : UIButton = UIButton(frame: cell.contentView.frame)
-            button.backgroundColor = UIColor.clearColor()
-            button.setTitle("Button", forState: UIControlState.Normal)
-            button.addTarget(self, action: "addPhotoPressed", forControlEvents: UIControlEvents.TouchUpInside)
-            cell.contentView.addSubview(button)
-        }
-        else {
-            if pictureArray.isEmpty{
-                
-            }
-            else {
-                NSLog("path \(indexPath.row)")
-                let image = pictureArray[indexPath.row - 1]
-                photoView.image = image
-                photoView.backgroundColor = UIColor.blueColor()
-            }
-        }
-        cell.contentView.addSubview(photoView)
-        
-        return cell
-    }
-    
-    /*func beginCaptureSession(){
-        var err : NSError? = nil
-        captureSession.addInput(AVCaptureDeviceInput(device: captureDevice, error: &err))
-        
-        if err != nil {
-            println("error with camera: \(err?.localizedDescription)")
-            
-        }
-        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        self.view.layer.addSublayer(previewLayer)
-        previewLayer?.frame = self.view.layer.frame
-        captureSession.startRunning()
-    }*/
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        //set picked image and send to parse
-        if image != nil {
-            var imgPFObj : PFObject = PFObject(className: "Image")
-            let imageData = UIImageJPEGRepresentation(image, 1.0)
-            let imgPFFile = PFFile(name:"image.png", data:imageData)
-            imgPFObj["Image_File"] = imgPFFile
-            imgPFObj["Club"] = UserCurrentClub
-            imgPFObj.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
-                if success {
-                    self.getPhotosForScrollView()
-                }
-            })
-            self.dismissViewControllerAnimated(true, completion: nil)
-            
-        }
-        
-        else {
-            let alertView = UIAlertView()
-            alertView.title = "Error Capturing Image"
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
-        
-    }
-    
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
     
     @IBAction func backButtonPressed(sender: AnyObject) {
         let del = delegate as! ContainerViewController
@@ -219,17 +104,7 @@ class ClubDetailViewController : UIViewController, UINavigationControllerDelegat
             alertView.show()
             
         }
-        /*
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-            var img = UIImagePickerController()
-            img.delegate = self
-            img.sourceType = UIImagePickerControllerSourceType.Camera
-            img.mediaTypes = [kUTTypeImage]
-            img.allowsEditing = false
-            self.presentViewController(img, animated: true, completion: nil)
-        }*/
-        
-       
+
     }
     
     func getPhotosForScrollView(){
@@ -271,4 +146,79 @@ class ClubDetailViewController : UIViewController, UINavigationControllerDelegat
         }
         
     }
+    
+    
+    //MARK Collection View Delegate Methods
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.pictureArray.count + 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("pictureCell", forIndexPath: indexPath) as! UICollectionViewCell
+        
+        let photoView : UIImageView = UIImageView(frame: cell.contentView.frame)
+        if indexPath.row == 0 {
+            let image = UIImage(named: "addPhotoImage")
+            photoView.image = image
+            let button : UIButton = UIButton(frame: cell.contentView.frame)
+            button.backgroundColor = UIColor.clearColor()
+            button.setTitle("Button", forState: UIControlState.Normal)
+            button.addTarget(self, action: "addPhotoPressed", forControlEvents: UIControlEvents.TouchUpInside)
+            cell.contentView.addSubview(button)
+        }
+        else {
+            if pictureArray.isEmpty{
+                
+            }
+            else {
+                NSLog("path \(indexPath.row)")
+                let image = pictureArray[indexPath.row - 1]
+                photoView.image = image
+                photoView.backgroundColor = UIColor.blueColor()
+            }
+        }
+        cell.contentView.addSubview(photoView)
+        
+        return cell
+    }
+    
+
+    
+    //MARK ImagePickerControllerDelegate methods - for using camera/photos
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        //set picked image and send to parse
+        if image != nil {
+            var imgPFObj : PFObject = PFObject(className: "Image")
+            let imageData = UIImageJPEGRepresentation(image, 1.0)
+            let imgPFFile = PFFile(name:"image.png", data:imageData)
+            imgPFObj["Image_File"] = imgPFFile
+            imgPFObj["Club"] = UserCurrentClub
+            imgPFObj.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
+                if success {
+                    self.getPhotosForScrollView()
+                }
+            })
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+        }
+            
+        else {
+            let alertView = UIAlertView()
+            alertView.title = "Error Capturing Image"
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+    }
+    
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+
+    
 }

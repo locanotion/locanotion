@@ -20,7 +20,7 @@ enum SlideOutState {
 
 class ContainerViewController: UIViewController, CenterViewControllerDelegate {
     
-    var centerNavigationController: UINavigationController!
+    var centerNavigationController: UINavigationController! //instead of navigation controller, use a refrence to a single view controller
     var centerViewController: CenterViewController!
     
     //View Controllers for the app
@@ -48,11 +48,11 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
     }
     var leftViewController: SidePanelViewController?
     
-    var centerPanelExpandedOffset: CGFloat = 200
+    var centerPanelExpandedOffset: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        centerPanelExpandedOffset = self.view.frame.width / 2
+        centerPanelExpandedOffset = self.view.frame.width * 1 / 5
         centerViewController = UIStoryboard.centerViewController()
         centerViewController.delegate = self
         
@@ -84,6 +84,13 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
         
         centerNavigationController.didMoveToParentViewController(self)
         
+    }
+    
+    
+    func getNewMapPage() -> MapPageViewController {
+        var newMapPageViewController = UIStoryboard.MapPageView()
+        newMapPageViewController?.delegate = self
+        return newMapPageViewController!
     }
     
     

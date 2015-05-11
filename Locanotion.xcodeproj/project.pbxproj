@@ -29,6 +29,7 @@
 		3DB35C231AE421EF0009FA90 /* ClubCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB35C221AE421EF0009FA90 /* ClubCollectionViewCell.swift */; };
 		3DB35C251AE430970009FA90 /* ClubDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB35C241AE430970009FA90 /* ClubDetailViewController.swift */; };
 		3DB39F311AE7F654002D81B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DB39F301AE7F654002D81B8 /* Images.xcassets */; };
+		3DC76ED21AFEBF7D006BB67B /* ParseRetreival.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC76ED11AFEBF7D006BB67B /* ParseRetreival.swift */; };
 		3DD8B5FC1AC88A250002BBB7 /* FriendViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8B5FB1AC88A250002BBB7 /* FriendViewTableCell.swift */; };
 		3DECE30A1ADCBFE6000149CE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DECE3091ADCBFE6000149CE /* Constants.swift */; };
 		3DF965BF1AC5BF430011ABC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */; };
@@ -84,6 +85,7 @@
 		3DB35C221AE421EF0009FA90 /* ClubCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubCollectionViewCell.swift; sourceTree = "<group>"; };
 		3DB35C241AE430970009FA90 /* ClubDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailViewController.swift; sourceTree = "<group>"; };
 		3DB39F301AE7F654002D81B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3DC76ED11AFEBF7D006BB67B /* ParseRetreival.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseRetreival.swift; sourceTree = "<group>"; };
 		3DD8B5FB1AC88A250002BBB7 /* FriendViewTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewTableCell.swift; sourceTree = "<group>"; };
 		3DECE3091ADCBFE6000149CE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3DF965B91AC5BF430011ABC2 /* Locanotion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Locanotion.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,6 +213,7 @@
 				3DB39F301AE7F654002D81B8 /* Images.xcassets */,
 				3DF965C31AC5BF430011ABC2 /* ViewController.swift */,
 				3DB35C201AE41FCB0009FA90 /* ViewClubsViewController.swift */,
+				3DC76ED11AFEBF7D006BB67B /* ParseRetreival.swift */,
 				3DB35C241AE430970009FA90 /* ClubDetailViewController.swift */,
 				3DB35C221AE421EF0009FA90 /* ClubCollectionViewCell.swift */,
 				3DF965C51AC5BF430011ABC2 /* Main.storyboard */,
@@ -361,6 +364,7 @@
 				3D4203D31ACB96B2004B647D /* SignInPageViewController.swift in Sources */,
 				3D05EFFE1AEAA56C00F83AD5 /* ClubLabelAnnotation.swift in Sources */,
 				3D3B3C791AD4C627000D10EF /* CustomPointAnnotation.swift in Sources */,
+				3DC76ED21AFEBF7D006BB67B /* ParseRetreival.swift in Sources */,
 				3DB35C251AE430970009FA90 /* ClubDetailViewController.swift in Sources */,
 				3DF965C21AC5BF430011ABC2 /* Locanotion.xcdatamodeld in Sources */,
 				3D11BC711AF3E50800015AA0 /* SidePanelViewController.swift in Sources */,
