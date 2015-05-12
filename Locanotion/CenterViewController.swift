@@ -24,9 +24,9 @@ class CenterViewController: UIViewController {
     
     var currentPage : String = ""
     
-    let MAP_PAGE = "Map Page"
-    let FRIEND_PAGE = "Friend Page"
-    let CLUB_PAGE = "Club Page"
+    let MAP_PAGE = "View Map"
+    let FRIEND_PAGE = "View Friends"
+    let CLUB_PAGE = "View Clubs"
     let HOME = "Home"
     var firstPush = true
     
@@ -47,44 +47,37 @@ extension CenterViewController: SidePanelViewControllerDelegate {
     
     func navItemSelected(item: NavItem) {
         NSLog("SELECTED!!!!")
+        NSLog("cur \(currentPage)")
+        NSLog("item \(item.title)")
         delegate?.collapseSidePanels?()
         
         let del = delegate as! ContainerViewController
         let nav = del.centerNavigationController
-        if firstPush == true {
-            firstPush = false
-            //nav.pushViewController(del.hideView, animated: false)
-        }
-        
-        if nav.topViewController.isKindOfClass(ViewFriendsViewController) {
-            var vfc = nav.topViewController as! ViewFriendsViewController
-            vfc.emptyArrays()
-        }
-        
+       
         if !nav.topViewController.isKindOfClass(ViewController) {
-            nav.popViewControllerAnimated(true)
+            if item.title != currentPage {
+                nav.popViewControllerAnimated(false)
+            }
         }
         
         if item.title == "View Map"{
             if currentPage != MAP_PAGE {
                 currentPage = MAP_PAGE
-                nav.pushViewController(del.mapPageViewController, animated: true)
+                var newMap = del.getNewMapPage() as MapPageViewController
+                nav.pushViewController(newMap, animated: false)
             }
             
         }
         else if item.title == "View Friends"{
             if currentPage != FRIEND_PAGE {
                 currentPage = FRIEND_PAGE
-                
-                nav.pushViewController(del.friendsViewController, animated: true)
-                
-                
+                nav.pushViewController(del.friendsViewController, animated: false)
             }
         }
         else if item.title == "View Clubs"{
             if currentPage != CLUB_PAGE{
                 currentPage = CLUB_PAGE
-                nav.pushViewController(del.clubsViewController, animated: true)
+                nav.pushViewController(del.clubsViewController, animated: false)
             }
         }
         else if item.title == "Home"{
@@ -92,6 +85,14 @@ extension CenterViewController: SidePanelViewControllerDelegate {
                 currentPage = HOME
                 //nav.popToViewController(del.viewController, animated: true)
             }
+        }
+        else if item.title == "Log Out" {
+            //clear all variables and data that should be renewed for next user
+            nav.popViewControllerAnimated(true)
+            if !nav.topViewController.isKindOfClass(ViewController){
+                nav.popViewControllerAnimated(true)
+            }
+            del.viewController.loginButtonDidLogOut(del.viewController.loginButton)
         }
     }
 }

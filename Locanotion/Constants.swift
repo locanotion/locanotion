@@ -11,10 +11,12 @@ import Foundation
 //todo: add all locations to an array, then go through each element and set the location
 //description to whatever is closest 
 
+//user current location
+var UserCurrentClub : String!
 
 //Constants for club location
 
-let NUM_CLUBS = 11
+let NUM_CLUBS = 14
 let TERRACE : CLLocation = CLLocation(latitude: 40.347173,longitude: -74.653914)
 let TOWER : CLLocation = CLLocation(latitude:40.347688, longitude : -74.653960)
 let CANNON : CLLocation = CLLocation(latitude:40.347808, longitude :-74.653345)
@@ -28,22 +30,19 @@ let COLONIAL : CLLocation = CLLocation(latitude:40.348845, longitude : -74.65281
 let CHARTER : CLLocation = CLLocation(latitude:40.348759, longitude : -74.650019)
 let BOGGLE : CLLocation = CLLocation(latitude:40.344301, longitude : -74.655562)
 let CS_BUILDING : CLLocation = CLLocation(latitude:40.350234, longitude : -74.652240)
-let WILCOX_DINING : CLLocation = CLLocation(latitude: 40.344809, longitude: -74.656118)
-let RADIUS = 0.000435542190839628
-let TEST_RADIUS = 0.1
+let WU : CLLocation = CLLocation(latitude: 40.344773, longitude: -74.656569)
+let WU_LIBRARY : CLLocation = CLLocation(latitude: 40.344530, longitude: -74.656378)
 
+let GLOBAL_ClubLocations : Array<CLLocation> = [CANNON,CAP,CHARTER,CLOISTER,COLONIAL,COTTAGE,IVY,QUAD,TERRACE,TI,TOWER,CS_BUILDING, WU, WU_LIBRARY]
+let CLUB_NAMES : Array<String> = ["Cannon", "Cap", "Charter", "Cloister", "Colonial","Cottage", "Ivy", "Quad", "Terrace", "Tiger Inn", "Tower", "COS Building", "Wu", "Wu Library"]
 
-let GLOBAL_ClubLocations : Array<CLLocation> = [CANNON,CAP,CHARTER,CLOISTER,COLONIAL,COTTAGE,IVY,QUAD,TERRACE,TI,TOWER]
-let CLUB_NAMES : Array<String> = ["Cannon", "Cap", "Charter", "Cloister", "Colonial","Cottage", "Ivy", "Quad", "Terrace", "Tiger Inn", "Tower"]
-
-let CLUB_DISPLAY_NAMES : Array<String> = ["Cannon", "Cap", "Charter", "Cloister", "Colonial","Cottage", "Ivy", "Quad", "Terrace", "Tiger Inn", "Tower"]
+let CLUB_DISPLAY_NAMES : Array<String> = ["Cannon Dial Elm", "Cap and Gown", "Charter", "Cloister Inn", "Colonial","Cottage", "Ivy Inn", "Quadrangle Club", "Terrace", "Tiger Inn", "Tower", "COS Building", "Wu", "Wu Library"]
 
 func GET_NEAREST_CLUB() -> String{
     return ""
 }
 
-var HISTORY_TONIGHT : Array<String> = Array()
 
-
-//color of blue for Vole
-var VOLE_COLOR = UIColor(hue: 0.546, saturation: 0.58, brightness: 0.87, alpha: 1.0)
+//color of blue for flock
+var flock_COLOR = UIColor(hue: 0.546, saturation: 0.58, brightness: 0.87, alpha: 1.0)
+var DIM_RED = UIColor(hue: 0.971, saturation: 0.30, brightness: 0.67, alpha: 1.0)

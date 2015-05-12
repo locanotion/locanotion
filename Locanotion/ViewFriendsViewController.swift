@@ -7,18 +7,17 @@
 //
 
 
-//TODO:
-//Change way that friends are aquired to using a Friendship Activity
-
 import Foundation
 import UIKit
 
 class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var friendsTableView: UITableView!
-    var friendNames : Array<String> = Array()
-    var friendIDs : Array<String> = Array()
-    var friendLocations : Array<String> = Array()
+    var friendTuples : Array<(String, String)> = Array()
+    
+    var friendinfo = [String : String]()
+    
+    var friendCellArray : Array<FriendViewTableCell> = Array()
     let textCellIdentifier = "FriendCell"
     var backButton : UIButton!
     
@@ -30,35 +29,41 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     
     var menuButton : UIButton!
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        return refreshControl
+        }()
+    
     override func viewWillAppear(animated: Bool) {
         NSLog("WILL APPEAR")
+        self.friendsTableView.reloadData()
         //get the user's
         var user = PFUser.currentUser()
         if user == nil {
             //display some error message
         }
-        
-        
-        /*var query = PFUser.query()
-        query.findObjectsInBackgroundWithBlock { (objects : [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                for u : PFUser in (objects as [PFUser]) {
-                    self.friends.append(u)
-                }
-                dispatch_async(dispatch_get_main_queue()){
-                    self.friendsTableView.reloadData()
-                }
-            }
-        }*/
         self.getFacebookFriends()
         
+        //var timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("reloadPage"), userInfo: nil, repeats: true)
+        
     }
+    
+    func reloadPage(){
+        NSLog("Reloading the page")
+        self.getFacebookFriends()
+        // self.friendsTableView.reloadData()
+    }
+    
     
     override func viewDidLayoutSubviews() {
         menuButton = UIButton(frame:CGRect(x: 10, y: 25, width: 40, height: 30))
         menuButton.setBackgroundImage(UIImage(named: "MenuIcon"), forState: UIControlState.Normal)
         menuButton.addTarget(self, action: "menuTapped", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(menuButton)
+        
+        
     }
     
     func menuTapped() {
@@ -67,7 +72,8 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     func getFacebookFriends() {
-        var idArray : Array<String> = Array()
+        friendTuples.removeAll()
+     
         NSLog("called method")
         var request : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil)
         
@@ -77,23 +83,34 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
                 print(result)
                 var resultDict : NSDictionary = result as! NSDictionary
                 var data : NSArray = resultDict.objectForKey("data") as! NSArray
+                NSLog("found \(data.count) from facebook")
                 for value in data {
                     let valueDict : NSDictionary = value as! NSDictionary
                     let id = valueDict.objectForKey("id") as! String
                     var name = (valueDict.objectForKey("name") as! String)
-                    idArray.append(id)
-                    self.friendIDs.append(id)
-                    self.friendNames.append(name)
-                    NSLog("friend id's : \(self.friendIDs)")
                     
                     let userQuery = PFUser.query()
                     userQuery?.whereKey("facebook_ID", equalTo: id)
                     userQuery?.findObjectsInBackgroundWithBlock({ (result:[AnyObject]?, error:NSError?) -> Void in
-                        let res = result as! [PFUser]
-                        let user = res.first!
-                        let loc : String = user["LocationName"] as! String
-                        self.friendLocations.append(loc)
-                        self.friendsTableView.reloadData()
+                        if result != nil {
+                            NSLog("found \(result!.count) from parse")
+                            if result!.count != 0 {
+                                NSLog("not nil")
+                                let res = result as! [PFUser]
+                                let user = res.first!
+                                let loc : String = user["LocationName"] as! String
+                                let username = user["Full_Name"] as! String
+                                let cur_tuple = (username, loc)
+                                self.friendTuples.append(cur_tuple)
+                                
+                                self.friendinfo[user["Full_Name"] as! String] = user["LocationName"] as! String
+                                //sort the array of tubles by the first element(the names)
+                                self.friendTuples.sort { $0.0 < $1.0 }
+                                self.friendsTableView.reloadData()
+                                self.refreshing = false
+                            }
+                        }
+                        NSLog("ended friend query")
                     })
                 }
                 //todo: implement pic request
@@ -128,62 +145,14 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
-    
-    func getFriendLocations() {
-        if self.friendIDs.count > 0 {
-            
-            //friend query
-            var query : PFQuery = PFQuery(className: "Activity")
-            query.whereKey("From_User", equalTo: PFUser.currentUser()!)
-            query.includeKey("To_User")
-            query.findObjectsInBackgroundWithBlock({ (result:[AnyObject]?, error:NSError?) -> Void in
-                NSLog("firstQueryCount: \(result!.count)")
-                let resultArray = result as! [PFObject]
-                for res in resultArray {
-                    let user = res["To_User"] as! PFUser
-                    NSLog(user["Full_Name"] as! String)
-                
-                    
-                }
-            })
-            
-            //get friend PFUsers
-            var friendQuery : PFQuery = PFUser.query()!
-            friendQuery.whereKey("facebook_ID", containedIn: self.friendIDs)
-            
-            friendQuery.findObjectsInBackgroundWithBlock({ (objects:[AnyObject]?, error:NSError?) -> Void in
-                if error != nil {
-                    NSLog("Error finding friend objects")
-                }
-                let results : [PFUser] = objects as! [PFUser]
-                NSLog("results count: %d", results.count)
-                for user in results {
-                    let name : String = user["Full_Name"] as! String
-                    self.friendNames.append(name)
-                    let loc : String = user["LocationName"] as! String
-                    self.friendLocations.append(loc)
-                    NSLog("name:\(name) loc: \(loc)")
-                    
-                }
-                self.friendsTableView.reloadData()
-                
-            })
-            
-            
-        }
-        else {
-            //no friends
-        }
-
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         friendsTableView.delegate = self
         friendsTableView.dataSource = self
+        
+        self.friendsTableView.addSubview(self.refreshControl)
         
     }
     
@@ -192,22 +161,19 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if friendIDs.count == 0 {
-            NSLog("zero count")
-            return 0
-        }
-        if friendIDs.count != friendLocations.count {
-            return 0
-        }
-        return friendIDs.count
+        return friendTuples.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        NSLog("making cell for row:\(indexPath.row)")
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! FriendViewTableCell
         
         let row = indexPath.row
-        let cellUser = friendNames[row] as String
-        let cellLoc = friendLocations[row] as String
+        
+        let (name, loc) = friendTuples[row] as (String, String)
+        
+        let cellUser = name
+        let cellLoc = loc
         //let loc = cellUser["LocationName"] as String
         
         cell.nameLabel.text = cellUser
@@ -215,6 +181,7 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
         cell.locLabel.text = cellLoc
         
         //cell.locImageView.image = UIImage(named: "ViewOnMap")
+        NSLog("returning cell")
         return cell
         
     }
@@ -232,31 +199,33 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
         
         var cell : FriendViewTableCell = friendsTableView.cellForRowAtIndexPath(indexPath) as! FriendViewTableCell
         self.selectedName = cell.nameLabel.text
-        self.SelectedFriendID = self.friendIDs[indexPath.row]
-        self.performSegueWithIdentifier("toDetailView", sender: cell)
         
-        friendsTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
         
     }
     
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toDetailView" {
-            //send data over to the detail VC
-            var destViewController : FriendDetailViewControlelr = segue.destinationViewController as! FriendDetailViewControlelr
-            destViewController.friendName = selectedName
-        }
-        
-    }
     
     func backToMainScreen(){
         self.performSegueWithIdentifier("backToMainScreen", sender: self)
     }
     
-    func emptyArrays(){
-        self.friendIDs.removeAll(keepCapacity: false)
-        self.friendNames.removeAll(keepCapacity: false)
-        self.friendLocations.removeAll(keepCapacity: false)
+    override func viewWillDisappear(animated: Bool) {
+        self.friendTuples.removeAll()
+    }
+    
+    var refreshing : Bool = false
+    //refresh method for the table view
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        
+        if !refreshing{
+            refreshing = true
+            // re-query the database and refresh the table
+            self.getFacebookFriends()
+            refreshControl.endRefreshing()
+        }
+        else {
+            refreshControl.endRefreshing()
+        }
     }
     
 }
@@ -287,5 +256,3 @@ extension ViewFriendsViewController: SidePanelViewControllerDelegate {
         }
     }
 }
-
-

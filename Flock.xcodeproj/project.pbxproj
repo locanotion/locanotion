@@ -24,7 +24,6 @@
 		3D5496B21ACB910200C133D7 /* ViewFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5496B11ACB910200C133D7 /* ViewFriendsViewController.swift */; };
 		3D8E82451ACCD0510074DD5D /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8E82441ACCD0510074DD5D /* ParseFacebookUtilsV4.framework */; };
 		3D8E824B1ACEF5270074DD5D /* FriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E824A1ACEF5270074DD5D /* FriendDetailViewController.swift */; };
-		3DA20DAB1AF754F500568136 /* HideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA20DAA1AF754F500568136 /* HideViewController.swift */; };
 		3DB35C211AE41FCB0009FA90 /* ViewClubsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB35C201AE41FCB0009FA90 /* ViewClubsViewController.swift */; };
 		3DB35C231AE421EF0009FA90 /* ClubCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB35C221AE421EF0009FA90 /* ClubCollectionViewCell.swift */; };
 		3DB35C251AE430970009FA90 /* ClubDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB35C241AE430970009FA90 /* ClubDetailViewController.swift */; };
@@ -79,21 +78,20 @@
 		3D5496B11ACB910200C133D7 /* ViewFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFriendsViewController.swift; sourceTree = "<group>"; };
 		3D8E82441ACCD0510074DD5D /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../parse-library-1.7.0 2/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
 		3D8E824A1ACEF5270074DD5D /* FriendDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDetailViewController.swift; sourceTree = "<group>"; };
-		3DA20DAA1AF754F500568136 /* HideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideViewController.swift; sourceTree = "<group>"; };
 		3DB35C201AE41FCB0009FA90 /* ViewClubsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewClubsViewController.swift; sourceTree = "<group>"; };
 		3DB35C221AE421EF0009FA90 /* ClubCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubCollectionViewCell.swift; sourceTree = "<group>"; };
 		3DB35C241AE430970009FA90 /* ClubDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailViewController.swift; sourceTree = "<group>"; };
 		3DB39F301AE7F654002D81B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3DD8B5FB1AC88A250002BBB7 /* FriendViewTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewTableCell.swift; sourceTree = "<group>"; };
 		3DECE3091ADCBFE6000149CE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		3DF965B91AC5BF430011ABC2 /* Locanotion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Locanotion.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DF965B91AC5BF430011ABC2 /* Flock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF965BD1AC5BF430011ABC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DF965BE1AC5BF430011ABC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DF965C11AC5BF430011ABC2 /* Locanotion.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Locanotion.xcdatamodel; sourceTree = "<group>"; };
 		3DF965C31AC5BF430011ABC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3DF965C61AC5BF430011ABC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DF965CB1AC5BF430011ABC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		3DF965D11AC5BF430011ABC2 /* LocanotionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocanotionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DF965D11AC5BF430011ABC2 /* FlockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF965D61AC5BF430011ABC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DF965D71AC5BF430011ABC2 /* LocanotionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocanotionTests.swift; sourceTree = "<group>"; };
 		3DF965E11AC5C24C0011ABC2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -185,8 +183,8 @@
 		3DF965BA1AC5BF430011ABC2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3DF965B91AC5BF430011ABC2 /* Locanotion.app */,
-				3DF965D11AC5BF430011ABC2 /* LocanotionTests.xctest */,
+				3DF965B91AC5BF430011ABC2 /* Flock.app */,
+				3DF965D11AC5BF430011ABC2 /* FlockTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -199,7 +197,6 @@
 				3D11BC701AF3E50800015AA0 /* SidePanelViewController.swift */,
 				3D11BC721AF3E5D700015AA0 /* NavItem.swift */,
 				3D11BC741AF3E77000015AA0 /* ContainerViewController.swift */,
-				3DA20DAA1AF754F500568136 /* HideViewController.swift */,
 				3D38CADD1AF48DD900738665 /* CenterViewController.swift */,
 				3D2782091ACAFF2C0088F95D /* MapPageViewController.swift */,
 				3D05EFFD1AEAA56C00F83AD5 /* ClubLabelAnnotation.swift */,
@@ -251,9 +248,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3DF965B81AC5BF430011ABC2 /* Locanotion */ = {
+		3DF965B81AC5BF430011ABC2 /* Flock */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3DF965DB1AC5BF430011ABC2 /* Build configuration list for PBXNativeTarget "Locanotion" */;
+			buildConfigurationList = 3DF965DB1AC5BF430011ABC2 /* Build configuration list for PBXNativeTarget "Flock" */;
 			buildPhases = (
 				3DF965B51AC5BF430011ABC2 /* Sources */,
 				3DF965B61AC5BF430011ABC2 /* Frameworks */,
@@ -263,14 +260,14 @@
 			);
 			dependencies = (
 			);
-			name = Locanotion;
+			name = Flock;
 			productName = Locanotion;
-			productReference = 3DF965B91AC5BF430011ABC2 /* Locanotion.app */;
+			productReference = 3DF965B91AC5BF430011ABC2 /* Flock.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3DF965D01AC5BF430011ABC2 /* LocanotionTests */ = {
+		3DF965D01AC5BF430011ABC2 /* FlockTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3DF965DE1AC5BF430011ABC2 /* Build configuration list for PBXNativeTarget "LocanotionTests" */;
+			buildConfigurationList = 3DF965DE1AC5BF430011ABC2 /* Build configuration list for PBXNativeTarget "FlockTests" */;
 			buildPhases = (
 				3DF965CD1AC5BF430011ABC2 /* Sources */,
 				3DF965CE1AC5BF430011ABC2 /* Frameworks */,
@@ -281,9 +278,9 @@
 			dependencies = (
 				3DF965D31AC5BF430011ABC2 /* PBXTargetDependency */,
 			);
-			name = LocanotionTests;
+			name = FlockTests;
 			productName = LocanotionTests;
-			productReference = 3DF965D11AC5BF430011ABC2 /* LocanotionTests.xctest */;
+			productReference = 3DF965D11AC5BF430011ABC2 /* FlockTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -293,7 +290,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0620;
-				ORGANIZATIONNAME = Locanotion;
+				ORGANIZATIONNAME = Flock;
 				TargetAttributes = {
 					3DF965B81AC5BF430011ABC2 = {
 						CreatedOnToolsVersion = 6.1;
@@ -305,7 +302,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3DF965B41AC5BF430011ABC2 /* Build configuration list for PBXProject "Locanotion" */;
+			buildConfigurationList = 3DF965B41AC5BF430011ABC2 /* Build configuration list for PBXProject "Flock" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -318,8 +315,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3DF965B81AC5BF430011ABC2 /* Locanotion */,
-				3DF965D01AC5BF430011ABC2 /* LocanotionTests */,
+				3DF965B81AC5BF430011ABC2 /* Flock */,
+				3DF965D01AC5BF430011ABC2 /* FlockTests */,
 			);
 		};
 /* End PBXProject section */
@@ -353,7 +350,6 @@
 				CED6158D1AC89298002BC56F /* SignUpViewController.swift in Sources */,
 				3DECE30A1ADCBFE6000149CE /* Constants.swift in Sources */,
 				3DF965C41AC5BF430011ABC2 /* ViewController.swift in Sources */,
-				3DA20DAB1AF754F500568136 /* HideViewController.swift in Sources */,
 				3DD8B5FC1AC88A250002BBB7 /* FriendViewTableCell.swift in Sources */,
 				3D11BC731AF3E5D700015AA0 /* NavItem.swift in Sources */,
 				3DF965BF1AC5BF430011ABC2 /* AppDelegate.swift in Sources */,
@@ -385,7 +381,7 @@
 /* Begin PBXTargetDependency section */
 		3DF965D31AC5BF430011ABC2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3DF965B81AC5BF430011ABC2 /* Locanotion */;
+			target = 3DF965B81AC5BF430011ABC2 /* Flock */;
 			targetProxy = 3DF965D21AC5BF430011ABC2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -515,7 +511,7 @@
 				);
 				INFOPLIST_FILE = Locanotion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Flock;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Locanotion/Locanotion-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -547,7 +543,7 @@
 				);
 				INFOPLIST_FILE = Locanotion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Flock;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Locanotion/Locanotion-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -568,7 +564,7 @@
 				);
 				INFOPLIST_FILE = LocanotionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FlockTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Locanotion.app/Locanotion";
 			};
 			name = Debug;
@@ -583,7 +579,7 @@
 				);
 				INFOPLIST_FILE = LocanotionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FlockTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Locanotion.app/Locanotion";
 			};
 			name = Release;
@@ -591,7 +587,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3DF965B41AC5BF430011ABC2 /* Build configuration list for PBXProject "Locanotion" */ = {
+		3DF965B41AC5BF430011ABC2 /* Build configuration list for PBXProject "Flock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3DF965D91AC5BF430011ABC2 /* Debug */,
@@ -600,7 +596,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3DF965DB1AC5BF430011ABC2 /* Build configuration list for PBXNativeTarget "Locanotion" */ = {
+		3DF965DB1AC5BF430011ABC2 /* Build configuration list for PBXNativeTarget "Flock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3DF965DC1AC5BF430011ABC2 /* Debug */,
@@ -609,7 +605,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3DF965DE1AC5BF430011ABC2 /* Build configuration list for PBXNativeTarget "LocanotionTests" */ = {
+		3DF965DE1AC5BF430011ABC2 /* Build configuration list for PBXNativeTarget "FlockTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3DF965DF1AC5BF430011ABC2 /* Debug */,

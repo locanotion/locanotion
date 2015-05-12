@@ -13,7 +13,7 @@ class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
     
     
     @IBOutlet var previewScrollView: UIScrollView!
-    let previewImages : Array<String> = ["FindFriends","viewClubs","previewNotifications"]
+    let previewImages : Array<String> = ["FirstPreview","FindFriends","viewClubs","FlockPreview"]
     
     
     //Properties for side-panel menu
@@ -65,12 +65,9 @@ class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
             
             request.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result: AnyObject!, error : NSError!) -> Void in
                 if error == nil {
-                    print(result)
                     var resultDict : NSDictionary = result as! NSDictionary
                     id = resultDict.objectForKey("id") as! String
                     println("the id from FB is : \(id)")
-                    
-                    
                     let newUserQuery : PFQuery = PFUser.query()!
                     newUserQuery.whereKey("facebook_ID", equalTo:id)
                     
@@ -83,7 +80,7 @@ class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
                             
                             if objects.count == 0 {
                                 NSLog("Creating a new User")
-                                
+                                //self.createNewParseUserFromFacebook()
                                 var request : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
                                 
                                 request.startWithCompletionHandler { (connection:FBSDKGraphRequestConnection!, result: AnyObject!, error:NSError!) -> Void in
@@ -103,28 +100,35 @@ class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
                                         newUser["Full_Name"] = fullName
                                         newUser.email = email
                                         newUser["facebook_ID"] = fbID
-                                        newUser.password = "tempPassword"
+                                        newUser["LocationName"] = "Migrating"
+                                        newUser.password = "temppassword"
                                         
+                                        NSLog("About to sign up")
                                         newUser.signUpInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
                                             if success {
+                                                NSLog("Success")
                                                 let alertView = UIAlertView()
                                                 alertView.title = "Signed up as new user!"
                                                 alertView.addButtonWithTitle("Ok")
                                                 alertView.show()
                                                 
-                                                let permissions = ["public_profile", "email", "user_friends"]
-                                                PFFacebookUtils.linkUserInBackground(PFUser.currentUser()!, withReadPermissions: permissions, block: { (success : Bool, error : NSError?) -> Void in
-                                                    if success {
-                                                        NSLog("linked new user with new pfuser")
+                                                
+                                                //log in the new user
+                                                PFUser.logInWithUsernameInBackground(newUser.username!, password: newUser.password!, block: { (user:PFUser?, error:NSError?) -> Void in
+                                                    if user != nil {
+                                                        let user2 = user! as PFUser
+                                                        UserCurrentClub = user2["LocationName"] as! String
+                                                        
+                                                    
+                                                        
                                                         //push main screen onto uinav stack
                                                         let del = self.delegate as! ContainerViewController
                                                         let nav = del.centerNavigationController
                                                         nav.pushViewController(del.viewController, animated: true)
                                                     }
+                                                    
                                                 })
-                                                
-                                                //self.createFriendshipRelations()!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                                                
+                                             
                                             }
                                         })
                                         
@@ -135,7 +139,7 @@ class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
                             }//end of objects.count == 0
                                 
                                 
-                            else if objects.count == 1 {
+                            else{
                                 //log in this user
                                 var  curUser : PFUser = objects[0] as! PFUser
                                 let username = curUser["username"] as! String
@@ -143,57 +147,11 @@ class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
                                 
                                 PFUser.logInWithUsernameInBackground(username, password: password, block: { (user:PFUser?, error:NSError?) -> Void in
                                     if user != nil {
+                                        let user2 = user! as PFUser
+                                        UserCurrentClub = user2["LocationName"] as! String
+                                        
                                         NSLog("logged in \(username)")
-                                        
-                                        //self.createFriendshipRelations()!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                                        
-                                        NSLog("Updating Friendships")
-                                        //update all friendship relatons
-                                        var request : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil)
-                                        var idArray : Array<String> = Array()
-                                        /*request.startWithCompletionHandler({ (connection:FBSDKGraphRequestConnection!, result:AnyObject!, error:NSError!) -> Void in
-                                            var resultDict : NSDictionary = result as! NSDictionary
-                                            var data : NSArray = resultDict.objectForKey("data") as! NSArray
-                                            
-                                            for value in data {
-                                                let valueDict : NSDictionary = value as! NSDictionary
-                                                let id = valueDict.objectForKey("id") as! String
-                                                idArray.append(id)
-                                                
-                                            }
-                                            
-                                            var query = PFQuery(className: "Activity")
-                                            query.whereKey("From_User", equalTo: user!)
-                                            query.includeKey("To_User")
-                                            query.findObjectsInBackgroundWithBlock({ (result:[AnyObject]?, error:NSError?) -> Void in
-                                                if result?.count == idArray.count {}
-                                                
-                                                else {
-                                                    let resultArray = result as! [PFObject]
-                                                    for fbID in idArray{
-                                                        var makeNewFriend = true
-                                                        for i in 0 ..< resultArray.count {
-                                                            let resultActivity = resultArray[i]
-                                                            let toUser = resultActivity["To_User"] as! PFUser
-                                                            if toUser["facebook_ID"] as! String == fbID {
-                                                                makeNewFriend = false
-                                                            }
-                                                        }
-                                                        if makeNewFriend == true {
-                                                            //create new parse activity object
-                                                            var act : PFObject = PFObject(className: "Activity")
-                                                            act["Type"] = "Friend"
-                                                            act["From_User"] = user!
-                                                            act["To_User"] = user! //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!query for to_User? included ?????
-                                                        }
-                                                        makeNewFriend = true
-                                                        
-                                                    }
-                                                }
-                                            })
 
-                                        })*/
-                                        
                                         //push main screen onto uinav stack
                                         let del = self.delegate as! ContainerViewController
                                         let nav = del.centerNavigationController
@@ -203,7 +161,6 @@ class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
                                 })
                             }
                             
-                            else {}
                         }
                         
                     })

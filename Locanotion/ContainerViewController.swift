@@ -19,17 +19,17 @@ enum SlideOutState {
 
 
 class ContainerViewController: UIViewController, CenterViewControllerDelegate {
-    
-    var centerNavigationController: UINavigationController!
+    var coverView : UIView!
+    var centerNavigationController: UINavigationController! //instead of navigation controller, use a refrence to a single view controller
     var centerViewController: CenterViewController!
     
     //View Controllers for the app
     var viewController: ViewController!
     var mapPageViewController : MapPageViewController!
     var friendsViewController : ViewFriendsViewController!
+    var friendsDetailViewController : FriendDetailViewControlelr!
     var clubsViewController : ViewClubsViewController!
     var signInViewController : SignInPageViewController!
-    var hideView : HideViewController!
     
     //detail view controller
     var clubDetailViewController : ClubDetailViewController!
@@ -37,7 +37,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
     //keep track of which view controller is currently on top
     
     
-    
+    //
     
     var currentState: SlideOutState = .BothCollapsed {
         didSet {
@@ -47,23 +47,26 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
     }
     var leftViewController: SidePanelViewController?
     
-    let centerPanelExpandedOffset: CGFloat = 200
+    
+    var centerPanelExpandedOffset: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        centerPanelExpandedOffset = self.view.frame.width * 1 / 5
         centerViewController = UIStoryboard.centerViewController()
         centerViewController.delegate = self
         
         
         //instantiate the views for each page
         friendsViewController = UIStoryboard.FriendsPageView()
+        friendsDetailViewController = UIStoryboard.friendDetailView()
         clubsViewController = UIStoryboard.ClubsPageView()
         mapPageViewController = UIStoryboard.MapPageView()
         viewController = UIStoryboard.viewController()
         signInViewController = UIStoryboard.signInPage()
         clubDetailViewController = UIStoryboard.clubDetailView()
-        hideView = UIStoryboard.hideView()
+      
+        friendsDetailViewController.delegate = self
         viewController.delegate = self
         mapPageViewController.delegate = self
         friendsViewController.delegate = self
@@ -81,6 +84,20 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
         
         centerNavigationController.didMoveToParentViewController(self)
         
+        
+        //swipe rec
+        //let panGestureRec = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
+        //centerNavigationController.view.addGestureRecognizer(panGestureRec)
+        
+        coverView = UIView(frame: CGRect(x: 0, y: 50, width: centerNavigationController.view.frame.width, height: centerNavigationController.view.frame.height - 50))
+        
+    }
+    
+    
+    func getNewMapPage() -> MapPageViewController {
+        var newMapPageViewController = UIStoryboard.MapPageView()
+        newMapPageViewController?.delegate = self
+        return newMapPageViewController!
     }
     
     
@@ -90,6 +107,11 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
         
         if notAlreadyExpanded {
             addLeftPanelViewController()
+            coverView.backgroundColor = UIColor.clearColor()
+            centerNavigationController.view.addSubview(coverView)
+        }
+        else {
+            coverView.removeFromSuperview()
         }
         
         animateLeftPanel(shouldExpand: notAlreadyExpanded)
@@ -110,12 +132,10 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
     }
     
     func addLeftPanelViewController() {
-        print("adding left")
         if (leftViewController == nil) {
             leftViewController = UIStoryboard.leftViewController()
             leftViewController!.delegate =  centerViewController
             leftViewController!.items = NavItem.allItems()
-            print(leftViewController!.items.count)
             addChildSidePanelController(leftViewController!)
         }
     }
@@ -133,13 +153,13 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
     
     func animateLeftPanel(#shouldExpand: Bool) {
         if (shouldExpand) {
+            centerNavigationController.view.addSubview(coverView)
             currentState = .LeftPanelExpanded
-            
             animateCenterPanelXPosition(targetPosition: CGRectGetWidth(centerNavigationController.view.frame) - centerPanelExpandedOffset)
         } else {
             animateCenterPanelXPosition(targetPosition: 0) { finished in
                 self.currentState = .BothCollapsed
-                
+                self.coverView.removeFromSuperview()
                 self.leftViewController!.view.removeFromSuperview()
                 self.leftViewController = nil;
             }
@@ -215,10 +235,50 @@ private extension UIStoryboard {
         return mainStoryboard().instantiateViewControllerWithIdentifier("ClubDetailViewController") as? ClubDetailViewController
     }
     
-    class func hideView() -> HideViewController? {
-        return mainStoryboard().instantiateViewControllerWithIdentifier("HideViewController") as? HideViewController
+    
+    class func friendDetailView() -> FriendDetailViewControlelr? {
+        return mainStoryboard().instantiateViewControllerWithIdentifier("FriendDetailViewController") as? FriendDetailViewControlelr
     }
     
     
     
+}
+
+extension ContainerViewController: UIGestureRecognizerDelegate{
+    func handlePanGesture(recognizer: UIPanGestureRecognizer){
+        let gestureIsDraggingFromLeftToRight = (recognizer.velocityInView(view).x > 0)
+        
+        switch(recognizer.state) {
+        case .Began:
+            if (currentState == .BothCollapsed) {
+                if (gestureIsDraggingFromLeftToRight) {
+                    addLeftPanelViewController()
+                } else {
+                    //addRightPanelViewController()
+                }
+                
+                showShadowForCenterViewController(true)
+            }
+        case .Changed:
+            if gestureIsDraggingFromLeftToRight {
+                recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translationInView(view).x
+                recognizer.setTranslation(CGPointZero, inView: view)
+            }
+            else {
+                if currentState == .LeftPanelExpanded{
+                    recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translationInView(view).x
+                    recognizer.setTranslation(CGPointZero, inView: view)
+                }
+            }
+        case .Ended:
+            if (leftViewController != nil) {
+                // animate the side panel open or closed based on whether the view has moved more or less than halfway
+                let hasMovedGreaterThanHalfway = recognizer.view!.center.x > view.bounds.size.width
+                animateLeftPanel(shouldExpand: hasMovedGreaterThanHalfway)
+            }
+            
+        default:
+            break
+        }
+    }
 }
