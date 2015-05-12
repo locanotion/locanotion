@@ -4,12 +4,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" title="View Controller" id="BYZ-38-t0r" customClass="ViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" title="View Controller" id="BYZ-38-t0r" customClass="ViewController" customModule="Flock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -73,7 +74,7 @@
         <!--Map Page View Controller-->
         <scene sceneID="ufH-pc-YR7">
             <objects>
-                <viewController storyboardIdentifier="MapPageViewController" id="CUy-WP-Vbk" customClass="MapPageViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapPageViewController" id="CUy-WP-Vbk" customClass="MapPageViewController" customModule="Flock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UVu-Ff-QoC"/>
                         <viewControllerLayoutGuide type="bottom" id="F2g-yt-W8Y"/>
@@ -91,6 +92,13 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="BXy-zR-KMe"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fz8-tf-Prx">
+                                <rect key="frame" x="518" y="41" width="53" height="30"/>
+                                <state key="normal" title="Refresh"/>
+                                <connections>
+                                    <action selector="refreshMapAnnotations" destination="CUy-WP-Vbk" eventType="touchUpInside" id="NKq-dV-AWI"/>
+                                </connections>
+                            </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWJ-G3-HUp">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.30680659413337708" green="0.6804468035697937" blue="0.83827179670333862" alpha="1" colorSpace="calibratedRGB"/>
@@ -102,8 +110,10 @@
                             <constraint firstItem="97Y-Zb-RuW" firstAttribute="leading" secondItem="N3h-wC-hPU" secondAttribute="leadingMargin" id="A98-RT-UNS"/>
                             <constraint firstItem="jWJ-G3-HUp" firstAttribute="top" secondItem="N3h-wC-hPU" secondAttribute="topMargin" id="J8x-y8-eUk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jWJ-G3-HUp" secondAttribute="trailing" constant="-16" id="Jyu-73-uwJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fz8-tf-Prx" secondAttribute="trailing" constant="13" id="Lez-lG-T8q"/>
                             <constraint firstItem="jWJ-G3-HUp" firstAttribute="leading" secondItem="N3h-wC-hPU" secondAttribute="leadingMargin" constant="-16" id="Nhp-kZ-n7W"/>
                             <constraint firstItem="F2g-yt-W8Y" firstAttribute="top" secondItem="jWJ-G3-HUp" secondAttribute="bottom" id="W6G-Yb-bX8"/>
+                            <constraint firstItem="fz8-tf-Prx" firstAttribute="top" secondItem="UVu-Ff-QoC" secondAttribute="bottom" constant="21" id="z5M-1l-c2x"/>
                         </constraints>
                     </view>
                     <connections>
@@ -113,12 +123,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ehy-ew-icC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1054" y="-133"/>
+            <point key="canvasLocation" x="1052" y="-71"/>
         </scene>
         <!--View Friends View Controller-->
         <scene sceneID="3bZ-Fj-XwH">
             <objects>
-                <viewController storyboardIdentifier="ViewFriendsViewController" id="CUn-Wq-ZIq" customClass="ViewFriendsViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewFriendsViewController" id="CUn-Wq-ZIq" customClass="ViewFriendsViewController" customModule="Flock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gww-6e-RG2"/>
                         <viewControllerLayoutGuide type="bottom" id="2YV-LC-aRz"/>
@@ -134,10 +144,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GMT-fZ-gCf">
-                                <rect key="frame" x="16" y="105" width="568" height="495"/>
+                                <rect key="frame" x="16" y="105" width="568" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendCell" rowHeight="44" id="qpA-Mc-e9a" customClass="FriendViewTableCell" customModule="Locanotion" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendCell" rowHeight="44" id="qpA-Mc-e9a" customClass="FriendViewTableCell" customModule="Flock" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qpA-Mc-e9a" id="gvW-Gl-Pcy">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -179,12 +189,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2YV-LC-aRz" firstAttribute="top" secondItem="GMT-fZ-gCf" secondAttribute="bottom" id="D85-XC-skJ"/>
+                            <constraint firstItem="GMT-fZ-gCf" firstAttribute="height" secondItem="KdU-2u-SeH" secondAttribute="height" multiplier="0.5" id="NJf-ap-PlG"/>
                             <constraint firstItem="GMT-fZ-gCf" firstAttribute="leading" secondItem="KdU-2u-SeH" secondAttribute="leadingMargin" id="Sw3-Ew-woX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GMT-fZ-gCf" secondAttribute="trailing" id="kKa-Fa-SOO"/>
                             <constraint firstAttribute="centerX" secondItem="h4p-gM-W3m" secondAttribute="centerX" id="tCi-oD-CIC"/>
                             <constraint firstItem="GMT-fZ-gCf" firstAttribute="top" secondItem="h4p-gM-W3m" secondAttribute="bottom" constant="32" id="ulX-KI-6D6"/>
                             <constraint firstItem="h4p-gM-W3m" firstAttribute="top" secondItem="gww-6e-RG2" secondAttribute="top" constant="20" id="vtm-u8-xYi"/>
+                            <constraint firstItem="GMT-fZ-gCf" firstAttribute="width" secondItem="KdU-2u-SeH" secondAttribute="height" multiplier="71:75" id="zS7-fA-vxh"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="zS7-fA-vxh"/>
+                                <exclude reference="D85-XC-skJ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="friendsTableView" destination="GMT-fZ-gCf" id="07o-Hd-htg"/>
@@ -199,7 +217,7 @@
         <!--View Clubs View Controller-->
         <scene sceneID="30k-oY-VKX">
             <objects>
-                <viewController storyboardIdentifier="ViewClubsViewController" id="Wcf-me-8Tc" customClass="ViewClubsViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewClubsViewController" id="Wcf-me-8Tc" customClass="ViewClubsViewController" customModule="Flock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dbw-bY-NBV"/>
                         <viewControllerLayoutGuide type="bottom" id="fZ6-MX-hw0"/>
@@ -221,7 +239,7 @@
         <!--ClubDetailViewController-->
         <scene sceneID="UEW-UC-d4Z">
             <objects>
-                <viewController storyboardIdentifier="ClubDetailViewController" title="ClubDetailViewController" id="1VT-53-zm0" customClass="ClubDetailViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClubDetailViewController" title="ClubDetailViewController" id="1VT-53-zm0" customClass="ClubDetailViewController" customModule="Flock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ifc-j6-iwl"/>
                         <viewControllerLayoutGuide type="bottom" id="sP9-01-er0"/>
@@ -316,7 +334,7 @@
         <!--Friend Detail View Controlelr-->
         <scene sceneID="e7U-nj-TkJ">
             <objects>
-                <viewController storyboardIdentifier="FriendDetailViewController" id="6EA-s5-BPq" customClass="FriendDetailViewControlelr" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FriendDetailViewController" id="6EA-s5-BPq" customClass="FriendDetailViewControlelr" customModule="Flock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0hx-Ex-QoN"/>
                         <viewControllerLayoutGuide type="bottom" id="MJ7-2g-WCd"/>
@@ -372,7 +390,7 @@
         <!--Hide View Controller-->
         <scene sceneID="l2Q-2j-8eB">
             <objects>
-                <viewController storyboardIdentifier="HideViewController" title="Hide View Controller" id="ecO-QH-2cM" customClass="HideViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HideViewController" title="Hide View Controller" id="ecO-QH-2cM" customClass="HideViewController" customModule="Flock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MWr-dD-6PO"/>
                         <viewControllerLayoutGuide type="bottom" id="acy-s5-3l8"/>
@@ -390,7 +408,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="UFk-JH-q65">
             <objects>
-                <viewController id="JmG-2f-0gb" customClass="SignUpViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JmG-2f-0gb" customClass="SignUpViewController" customModule="Flock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="342-Vz-dtj"/>
                         <viewControllerLayoutGuide type="bottom" id="yNG-fr-5Lq"/>
@@ -490,7 +508,7 @@
         <!--Sign In Page View Controller-->
         <scene sceneID="4uK-nh-JhA">
             <objects>
-                <viewController storyboardIdentifier="SignInPageViewController" id="IJv-w4-28j" customClass="SignInPageViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInPageViewController" id="IJv-w4-28j" customClass="SignInPageViewController" customModule="Flock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l5u-w1-Ag5"/>
                         <viewControllerLayoutGuide type="bottom" id="aWd-FQ-3bC"/>
@@ -545,7 +563,7 @@
         <!--Left View Controller-->
         <scene sceneID="DPc-W5-D0G">
             <objects>
-                <viewController storyboardIdentifier="LeftViewController" title="Left View Controller" id="9kL-2F-Uij" customClass="SidePanelViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LeftViewController" title="Left View Controller" id="9kL-2F-Uij" customClass="SidePanelViewController" customModule="Flock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="R4x-LN-6bO"/>
                         <viewControllerLayoutGuide type="bottom" id="FQR-hR-diL"/>
@@ -558,7 +576,7 @@
                                 <rect key="frame" x="0.0" y="76" width="600" height="307"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItemCell" id="8Ks-Ks-WvD" customClass="ItemCell" customModule="Locanotion" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItemCell" id="8Ks-Ks-WvD" customClass="ItemCell" customModule="Flock" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Ks-Ks-WvD" id="dq2-xR-3Pf">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -620,7 +638,7 @@
         <!--Center View Controller-->
         <scene sceneID="tau-yg-0dM">
             <objects>
-                <viewController storyboardIdentifier="CenterViewController" id="vds-q2-xFZ" customClass="CenterViewController" customModule="Locanotion" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CenterViewController" id="vds-q2-xFZ" customClass="CenterViewController" customModule="Flock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mGN-g3-yey"/>
                         <viewControllerLayoutGuide type="bottom" id="GQQ-pg-ABZ"/>
@@ -659,8 +677,8 @@
         <image name="MenuIcon" width="256" height="221"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="t20-vg-Dnd"/>
-        <segue reference="IL1-yW-ExE"/>
+        <segue reference="eKc-We-f3N"/>
         <segue reference="Aln-OT-swW"/>
+        <segue reference="IL1-yW-ExE"/>
     </inferredMetricsTieBreakers>
 </document>

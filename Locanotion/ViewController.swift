@@ -114,84 +114,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
         if firstLocation?.horizontalAccuracy < 30 {
             self.getAndUpdateUserLocationDescription(firstLocation!)
         }
+        NSLog("Updating")
     }
-    
-    /*
-    func getAndUpdateUserLocationDescription(loc: CLLocation) {
-        locationManager.stopUpdatingLocation()
-        var lastLocation = UserCurrentClub
-        NSLog("Last Location: \(lastLocation)")
-        let lat = loc.coordinate.latitude
-        let lon = loc.coordinate.longitude
-        
-        //var currentLocationDescription = "Migrating"
-        
-        var currentClosestClub : String = "Migrating"
-        var currentClosestDistance = CGFloat(30)
-        
-        for clubLocIndex in 0 ..< GLOBAL_ClubLocations.count {
-            if CGFloat(GLOBAL_ClubLocations[clubLocIndex].distanceFromLocation(loc)) < currentClosestDistance {
-                currentClosestClub = CLUB_DISPLAY_NAMES[clubLocIndex]
-                currentClosestDistance = CGFloat(GLOBAL_ClubLocations[clubLocIndex].distanceFromLocation(loc))
-            }
-        }
-        
-        UserCurrentClub = currentClosestClub
-        
-        NSLog("New Location: \(UserCurrentClub)")
-        
-        // changed location
-        if currentClosestClub != lastLocation {
-            locationManager.stopUpdatingLocation()
-            NSLog("Changed Location")
-            //query for club
-            if lastLocation != "Migrating" {
-                NSLog("Left a club")
-                //left a club, subtract from attendence
-                var clubQuery : PFQuery = PFQuery(className: "Club")
-                clubQuery.whereKey("Club_Name", equalTo: lastLocation)
-                clubQuery.findObjectsInBackgroundWithBlock({ (result:[AnyObject]?, error:NSError?) -> Void in
-                    if result!.count == 1 {
-                        let club : PFObject = result?.first as! PFObject
-                        let club_name = club["Club_Name"] as! String
-                        NSLog("Subtracting one from \(club_name)")
-                        
-                        club["Attendance"]! = club["Attendance"] as! Int - 1
-                        club.saveInBackground()
-                    }
-                })
-                
-            }
-            
-            //entered a club
-            if currentClosestClub != "Migrating" {
-                NSLog("Entered new club")
-                var clubQuery : PFQuery = PFQuery(className: "Club")
-                clubQuery.whereKey("Club_Name", equalTo: currentClosestClub)
-                clubQuery.findObjectsInBackgroundWithBlock({ (result:[AnyObject]?, error:NSError?) -> Void in
-                    if result!.count == 1 {
-                        let club : PFObject = result?.first as! PFObject
-                        let club_name = club["Club_Name"] as! String
-                        NSLog("Adding one to \(club_name)")
-                        
-                        club["Attendance"]! = club["Attendance"] as! Int + 1
-                        club.saveInBackground()
-                    }
-                })
-            }
-            
-        }
-        
-        var user : PFUser? = PFUser.currentUser() // problem with updating could be here if the users are not being linked correctly
-        if user != nil {
-            let user2 : PFUser = user! as PFUser
-            user2["LocationName"] = UserCurrentClub
-            //user2["history"] = HISTORY_TONIGHT
-            user2.saveInBackground()
-        }
-        NSLog("soy finito")
-    }*/
-    
     
     func getAndUpdateUserLocationDescription(loc: CLLocation) {
         
@@ -208,7 +132,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
         
         for clubLocIndex in 0 ..< GLOBAL_ClubLocations.count {
             if CGFloat(GLOBAL_ClubLocations[clubLocIndex].distanceFromLocation(loc)) < currentClosestDistance {
-                currentClosestClub = CLUB_DISPLAY_NAMES[clubLocIndex]
+                currentClosestClub = CLUB_NAMES[clubLocIndex]
                 currentClosestDistance = CGFloat(GLOBAL_ClubLocations[clubLocIndex].distanceFromLocation(loc))
             }
         }
@@ -219,6 +143,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
         
         var user : PFUser? = PFUser.currentUser() // problem with updating could be here if the users are not being linked correctly
         if user != nil {
+            NSLog("Saving to Parse")
             let user2 : PFUser = user! as PFUser
             user2["LocationName"] = UserCurrentClub
             //user2["history"] = HISTORY_TONIGHT

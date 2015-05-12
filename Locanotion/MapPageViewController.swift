@@ -156,6 +156,11 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
             MapViewAnnotations.append(cpa)
         }
     }
+    
+    //refresh the map
+    @IBAction func refreshMapAnnotations(){
+        self.getAllClubInfo()
+    }
 
     
     func getFacebookFriendsLocations() {

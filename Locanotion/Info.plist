@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>Locanotion.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>Flock.$(PRODUCT_NAME:rfc1034identifier)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -34,11 +34,11 @@
 	<key>FacebookAppID</key>
 	<string>794068607315524</string>
 	<key>FacebookDisplayName</key>
-	<string>Locanotion</string>
+	<string>Flock</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app requires accesing your location</string>
+	<string>This app requires accessing your location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Let this app find your location?</string>
 	<key>UILaunchStoryboardName</key>
@@ -48,6 +48,11 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string></string>
+		<string>location</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

@@ -29,6 +29,13 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     
     var menuButton : UIButton!
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        return refreshControl
+        }()
+    
     override func viewWillAppear(animated: Bool) {
         NSLog("WILL APPEAR")
         self.friendsTableView.reloadData()
@@ -55,6 +62,8 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
         menuButton.setBackgroundImage(UIImage(named: "MenuIcon"), forState: UIControlState.Normal)
         menuButton.addTarget(self, action: "menuTapped", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(menuButton)
+        
+        
     }
     
     func menuTapped() {
@@ -95,8 +104,10 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
                                 self.friendTuples.append(cur_tuple)
                                 
                                 self.friendinfo[user["Full_Name"] as! String] = user["LocationName"] as! String
+                                //sort the array of tubles by the first element(the names)
+                                self.friendTuples.sort { $0.0 < $1.0 }
                                 self.friendsTableView.reloadData()
-                                
+                                self.refreshing = false
                             }
                         }
                         NSLog("ended friend query")
@@ -140,6 +151,8 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
         
         friendsTableView.delegate = self
         friendsTableView.dataSource = self
+        
+        self.friendsTableView.addSubview(self.refreshControl)
         
     }
     
@@ -198,6 +211,21 @@ class ViewFriendsViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewWillDisappear(animated: Bool) {
         self.friendTuples.removeAll()
+    }
+    
+    var refreshing : Bool = false
+    //refresh method for the table view
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        
+        if !refreshing{
+            refreshing = true
+            // re-query the database and refresh the table
+            self.getFacebookFriends()
+            refreshControl.endRefreshing()
+        }
+        else {
+            refreshControl.endRefreshing()
+        }
     }
     
 }

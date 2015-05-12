@@ -14,9 +14,9 @@ protocol SidePanelViewControllerDelegate {
     func navItemSelected(item: NavItem)
 }
 
-class SidePanelViewController: UIViewController {
+class SidePanelViewController: UIViewController, FBSDKLoginButtonDelegate {
     
-    
+    var loginButton : FBSDKLoginButton!
     var items: Array<NavItem>!
     @IBOutlet var tableView : UITableView!
     
@@ -32,6 +32,24 @@ class SidePanelViewController: UIViewController {
         super.viewDidLoad()
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         tableView.reloadData()
+        
+        loginButton = FBSDKLoginButton(frame: CGRect(x: 10, y: self.tableView.frame.height + 50, width: 120, height: 30))
+        loginButton.delegate = self
+        self.view.addSubview(loginButton)
+    }
+    
+    //mark login button delegate methods
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        let del = delegate as! CenterViewController
+        let delDel = del.delegate as! ContainerViewController
+        let nav = delDel.centerNavigationController
+        delDel.viewController.locationManager.stopUpdatingLocation()
+        nav.popToRootViewControllerAnimated(false)
     }
     
     

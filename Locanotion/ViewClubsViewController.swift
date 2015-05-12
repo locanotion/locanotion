@@ -24,6 +24,15 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
     //open array
     var clubOpenInfo = [String: String]()
     
+    //lazily instantiated refesch control variable that declares which function should be called when the collection
+    //is pulled to refresh
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        return refreshControl
+        }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,7 +57,7 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
         menuButton.addTarget(self, action: "menuTapped", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(menuButton)
         
-      
+        clubCollectionView?.addSubview(self.refreshControl)
         
     }
     
@@ -189,6 +198,13 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
             }
             nav.pushViewController(del.clubDetailViewController, animated: true)
         }
+    }
+    
+    //refresh method for the table view
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        // re-query the database and refresh the table
+        self.getAllClubInfo()
+        refreshControl.endRefreshing()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

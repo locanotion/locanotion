@@ -25,8 +25,7 @@ class NavItem {
         return [ NavItem(title: "View Map", image: UIImage(named: "MapIcon.jpg")),
             NavItem(title: "View Friends", image: UIImage(named: "FriendsIcon.jpg")),
             NavItem(title: "View Clubs", image: UIImage(named: "ClubsIcon.jpg")),
-            NavItem(title: "Home", image: UIImage(named: "ClubsIcon.jpg")),
-            NavItem(title: "Log Out", image: UIImage(named: "ClubsIcon.jpg"))]
+            NavItem(title: "Home", image: UIImage(named: "ClubsIcon.jpg"))]
     }
     
     

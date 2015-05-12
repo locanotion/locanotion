@@ -30,7 +30,6 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
     var friendsDetailViewController : FriendDetailViewControlelr!
     var clubsViewController : ViewClubsViewController!
     var signInViewController : SignInPageViewController!
-    var hideView : HideViewController!
     
     //detail view controller
     var clubDetailViewController : ClubDetailViewController!
@@ -47,6 +46,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
         }
     }
     var leftViewController: SidePanelViewController?
+    
     
     var centerPanelExpandedOffset: CGFloat = 0
     
@@ -65,7 +65,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate {
         viewController = UIStoryboard.viewController()
         signInViewController = UIStoryboard.signInPage()
         clubDetailViewController = UIStoryboard.clubDetailView()
-        hideView = UIStoryboard.hideView()
+      
         friendsDetailViewController.delegate = self
         viewController.delegate = self
         mapPageViewController.delegate = self
@@ -235,9 +235,6 @@ private extension UIStoryboard {
         return mainStoryboard().instantiateViewControllerWithIdentifier("ClubDetailViewController") as? ClubDetailViewController
     }
     
-    class func hideView() -> HideViewController? {
-        return mainStoryboard().instantiateViewControllerWithIdentifier("HideViewController") as? HideViewController
-    }
     
     class func friendDetailView() -> FriendDetailViewControlelr? {
         return mainStoryboard().instantiateViewControllerWithIdentifier("FriendDetailViewController") as? FriendDetailViewControlelr

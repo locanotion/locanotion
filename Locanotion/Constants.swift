@@ -36,13 +36,11 @@ let WU_LIBRARY : CLLocation = CLLocation(latitude: 40.344530, longitude: -74.656
 let GLOBAL_ClubLocations : Array<CLLocation> = [CANNON,CAP,CHARTER,CLOISTER,COLONIAL,COTTAGE,IVY,QUAD,TERRACE,TI,TOWER,CS_BUILDING, WU, WU_LIBRARY]
 let CLUB_NAMES : Array<String> = ["Cannon", "Cap", "Charter", "Cloister", "Colonial","Cottage", "Ivy", "Quad", "Terrace", "Tiger Inn", "Tower", "COS Building", "Wu", "Wu Library"]
 
-let CLUB_DISPLAY_NAMES : Array<String> = ["Cannon", "Cap", "Charter", "Cloister", "Colonial","Cottage", "Ivy", "Quad", "Terrace", "Tiger Inn", "Tower", "COS Building", "Wu", "Wu Library"]
+let CLUB_DISPLAY_NAMES : Array<String> = ["Cannon Dial Elm", "Cap and Gown", "Charter", "Cloister Inn", "Colonial","Cottage", "Ivy Inn", "Quadrangle Club", "Terrace", "Tiger Inn", "Tower", "COS Building", "Wu", "Wu Library"]
 
 func GET_NEAREST_CLUB() -> String{
     return ""
 }
-
-var HISTORY_TONIGHT : Array<String> = Array()
 
 
 //color of blue for flock
