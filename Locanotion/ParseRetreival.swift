@@ -27,7 +27,7 @@ class ParseRetreival : NSObject {
         for club in CLUB_NAMES {
             self.clubInfoArray[club] = 0
         }
-        // self.clubInfoArray["Not In A Club"] = 0
+        // self.clubInfoArray["Migrating"] = 0
         var clubQuery = PFQuery(className: "Club")
         clubQuery.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
             let clubArray = result as! [PFObject]
@@ -47,7 +47,7 @@ class ParseRetreival : NSObject {
         }
         
         //migrating
-        self.friendsInfoArray["Not In A Club"] = 0
+        self.friendsInfoArray["Migrating"] = 0
         //cerate and call query to find all user's friends at clubs
         
         NSLog("Before Query")

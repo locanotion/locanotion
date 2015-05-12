@@ -100,7 +100,7 @@ class SignInPageViewController : UIViewController, FBSDKLoginButtonDelegate {
                                         newUser["Full_Name"] = fullName
                                         newUser.email = email
                                         newUser["facebook_ID"] = fbID
-                                        newUser["LocationName"] = "Not In A Club"
+                                        newUser["LocationName"] = "Migrating"
                                         newUser.password = "temppassword"
                                         
                                         NSLog("About to sign up")

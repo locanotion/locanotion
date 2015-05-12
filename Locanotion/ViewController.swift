@@ -57,20 +57,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
             let res = result as! PFUser
             
             UserCurrentClub = res["LocationName"] as! String
-            self.createLocationManager()
+          
             NSLog("ended")
         })
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print(RADIUS)
+       
         
         loginButton = FBSDKLoginButton(frame: CGRect(x: self.view.frame.width - 125, y: 40, width: 120, height: 30))
         loginButton.delegate = self
         self.view.addSubview(loginButton)
-    
+        self.createLocationManager()
         //scedule timer
-        
+        //NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: "updateLocationManual", userInfo: nil, repeats: true)
         
     }
     
@@ -79,6 +79,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
         
     }
 
@@ -103,18 +104,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
         }
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        
-        let firstLocation = locations.first as? CLLocation
-        
-        //println("lat:\(firstLocation?.coordinate.latitude) lon:\(firstLocation?.coordinate.longitude)")
-        
-        self.getAndUpdateUserLocationDescription(firstLocation!)
-        
-        
+    func updateLocationManual(){
+        locationManager.startUpdatingLocation()
     }
     
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        NSLog("Location Updated")
+        let firstLocation = locations.first as? CLLocation
+        if firstLocation?.horizontalAccuracy < 30 {
+            self.getAndUpdateUserLocationDescription(firstLocation!)
+        }
+    }
     
+    /*
     func getAndUpdateUserLocationDescription(loc: CLLocation) {
         locationManager.stopUpdatingLocation()
         var lastLocation = UserCurrentClub
@@ -122,10 +124,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
         let lat = loc.coordinate.latitude
         let lon = loc.coordinate.longitude
         
-        //var currentLocationDescription = "Not In A Club"
+        //var currentLocationDescription = "Migrating"
         
-        var currentClosestClub : String = "Not In A Club"
-        var currentClosestDistance = CGFloat(100.0)
+        var currentClosestClub : String = "Migrating"
+        var currentClosestDistance = CGFloat(30)
         
         for clubLocIndex in 0 ..< GLOBAL_ClubLocations.count {
             if CGFloat(GLOBAL_ClubLocations[clubLocIndex].distanceFromLocation(loc)) < currentClosestDistance {
@@ -143,7 +145,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
             locationManager.stopUpdatingLocation()
             NSLog("Changed Location")
             //query for club
-            if lastLocation != "Not In A Club" {
+            if lastLocation != "Migrating" {
                 NSLog("Left a club")
                 //left a club, subtract from attendence
                 var clubQuery : PFQuery = PFQuery(className: "Club")
@@ -162,7 +164,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
             }
             
             //entered a club
-            if currentClosestClub != "Not In A Club" {
+            if currentClosestClub != "Migrating" {
                 NSLog("Entered new club")
                 var clubQuery : PFQuery = PFQuery(className: "Club")
                 clubQuery.whereKey("Club_Name", equalTo: currentClosestClub)
@@ -188,6 +190,42 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FBSDKLoginBut
             user2.saveInBackground()
         }
         NSLog("soy finito")
+    }*/
+    
+    
+    func getAndUpdateUserLocationDescription(loc: CLLocation) {
+        
+        //locationManager.stopUpdatingLocation()
+        var lastLocation = UserCurrentClub
+        NSLog("Last Location: \(lastLocation)")
+        let lat = loc.coordinate.latitude
+        let lon = loc.coordinate.longitude
+        
+        //var currentLocationDescription = "Migrating"
+        
+        var currentClosestClub : String = "Migrating"
+        var currentClosestDistance = CGFloat(30)
+        
+        for clubLocIndex in 0 ..< GLOBAL_ClubLocations.count {
+            if CGFloat(GLOBAL_ClubLocations[clubLocIndex].distanceFromLocation(loc)) < currentClosestDistance {
+                currentClosestClub = CLUB_DISPLAY_NAMES[clubLocIndex]
+                currentClosestDistance = CGFloat(GLOBAL_ClubLocations[clubLocIndex].distanceFromLocation(loc))
+            }
+        }
+        
+        UserCurrentClub = currentClosestClub
+        
+        NSLog("New Location: \(UserCurrentClub)")
+        
+        var user : PFUser? = PFUser.currentUser() // problem with updating could be here if the users are not being linked correctly
+        if user != nil {
+            let user2 : PFUser = user! as PFUser
+            user2["LocationName"] = UserCurrentClub
+            //user2["history"] = HISTORY_TONIGHT
+            user2.saveInBackground()
+        }
+
+
     }
     
     

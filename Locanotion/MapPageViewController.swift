@@ -195,30 +195,31 @@ class MapPageViewController : UIViewController, CLLocationManagerDelegate, MKMap
     
     
     func getAllClubInfo() {
-        for club2 in CLUB_NAMES {
-            self.clubInfoArray[club2] = 0
+        for club in CLUB_NAMES {
+            self.clubInfoArray[club] = 0
         }
-        // self.clubInfoArray["Not In A Club"] = 0
-        var clubQuery = PFQuery(className: "Club")
-        clubQuery.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
-            let clubArray = result as! [PFObject]
-            for club3 in clubArray {
-                let clubName = club3["Club_Name"] as! String
-                let attendance = club3["Attendance"] as! Int
-                self.clubInfoArray[clubName] = attendance
+        self.clubInfoArray["Migrating"] = 0
+        
+        var peopleQuery = PFUser.query()
+        peopleQuery?.findObjectsInBackgroundWithBlock({ (result:[AnyObject]?, error:NSError?) -> Void in
+            
+            let resultArray = result as! [PFUser]
+            for user in resultArray {
+                let clubName = user["LocationName"] as! String
+                self.clubInfoArray[clubName] = self.clubInfoArray[clubName]! + 1
             }
             self.getFriendsClubInfo()
-        }
+        })
         
     }
     
     
     //get info for all of the user's friends based on their facebok ID's
     func getFriendsClubInfo() {
-        for club1 in CLUB_NAMES {
-            self.friendsInfoArray[club1] = 0
+        for club in CLUB_NAMES {
+            self.friendsInfoArray[club] = 0
         }
-        self.friendsInfoArray["Not In A Club"] = 0
+        self.friendsInfoArray["Migrating"] = 0
         
         var request : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil)
         

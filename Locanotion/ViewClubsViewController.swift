@@ -27,8 +27,8 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let voleColor = UIColor(red: 178, green: 225, blue: 249, alpha: 1.0)
-        self.view.backgroundColor = voleColor
+        let flockColor = UIColor(red: 178, green: 225, blue: 249, alpha: 1.0)
+        self.view.backgroundColor = flockColor
         let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top:0, left:0, bottom: 0, right:0)
         layout.itemSize = CGSize(width: self.view.frame.width, height: 200)
@@ -58,7 +58,7 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
             clubInfoArray[club] = 0
             clubOpenInfo[club] = "Default"
         }
-        self.getAllInfo()
+        self.getAllClubInfo()
     }
     
     
@@ -69,24 +69,22 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
     
     
     //get the info for all the clubs from parse 
-    func getAllInfo(){
+    func getAllClubInfo() {
         for club in CLUB_NAMES {
             self.clubInfoArray[club] = 0
         }
-        // self.clubInfoArray["Not In A Club"] = 0
-        var clubQuery = PFQuery(className: "Club")
-        clubQuery.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
-            let clubArray = result as! [PFObject]
-            for club in clubArray {
-                let clubName = club["Club_Name"] as! String
-                let attendance = club["Attendance"] as! Int
-                let openBool = club["Open"] as! Bool
-                
-                //if open, description = club["Description"] as! String
-                self.clubInfoArray[clubName] = attendance
+        self.clubInfoArray["Migrating"] = 0
+        
+        var peopleQuery = PFUser.query()
+        peopleQuery?.findObjectsInBackgroundWithBlock({ (result:[AnyObject]?, error:NSError?) -> Void in
+            
+            let resultArray = result as! [PFUser]
+            for user in resultArray {
+                let clubName = user["LocationName"] as! String
+                self.clubInfoArray[clubName] = self.clubInfoArray[clubName]! + 1
             }
             self.getFriendsClubInfo()
-        }
+        })
         
     }
     
@@ -95,7 +93,7 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
         for club1 in CLUB_NAMES {
             self.friendsInfoArray[club1] = 0
         }
-        self.friendsInfoArray["Not In A Club"] = 0
+        self.friendsInfoArray["Migrating"] = 0
         
         var request : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil)
         
@@ -164,15 +162,6 @@ class ViewClubsViewController : UIViewController, UICollectionViewDataSource, UI
             let total : Int = clubInfoArray[CLUB_NAMES[indexPath.row]]!
             var fraction : String = "(" + (friends as NSNumber).stringValue + "/" + (total as NSNumber).stringValue + ")"
             cell.clubNameLabel.text = title + " " + fraction
-            if clubOpenInfo[CLUB_NAMES[indexPath.row]]! == "Open" {
-                cell.clubOpenLabel.text = "Open"
-            }
-            else {
-                cell.clubOpenLabel.text = "Closed"
-            }
-            
-            cell.clubAttendanceLabel.text = String(clubInfoArray[CLUB_NAMES[indexPath.row]]! as Int) + " Flock Size"
-            
             var name : String = CLUB_NAMES[indexPath.row] + "CellImage"
             cell.clubImageView.image = UIImage(named: name)
         }

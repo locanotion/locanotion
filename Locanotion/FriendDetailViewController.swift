@@ -43,7 +43,7 @@ class FriendDetailViewControlelr: UIViewController {
         
         
         historyScrollView = UIScrollView(frame:CGRect(x: 0, y: self.view.frame.height / 2, width: self.view.frame.width, height: self.view.frame.height / 2))
-        historyScrollView.backgroundColor = VOLE_COLOR
+        historyScrollView.backgroundColor = flock_COLOR
         
         var label = UILabel(frame: CGRect(x: 0, y: 10, width: 180, height: 40))
         label.text = "\(friendName)'s History"
@@ -108,7 +108,7 @@ class FriendDetailViewControlelr: UIViewController {
         query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
             let res = result as! [PFUser]
             let friend : PFUser = res[0]
-            if friend["LocationName"] as! String == "Not In A Club" {
+            if friend["LocationName"] as! String == "Migrating" {
                 var alert = UIAlertView()
                 alert.title = "That friend is not out right now"
                 alert.addButtonWithTitle("OK")
